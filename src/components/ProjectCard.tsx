@@ -1,6 +1,4 @@
-'use client';
-
-import styles from '../styles/ProjectCard.module.css';
+import styles from './ProjectCard.module.css';
 
 interface ProjectCardProps {
   title: string;
@@ -15,7 +13,7 @@ export default function ProjectCard({ title, participant,count }: ProjectCardPro
       <div className={styles.footer}>
         <span>{participant}</span>
         <span>{count}</span>
-        <button className={styles.more}>⋯</button> {/* ...은 따로 컴포넌트 구분해서 다시 제작*/}
+        <button>⋯</button> {/* ...은 따로 컴포넌트 구분해서 다시 제작*/}
       </div>
     </div>
   );

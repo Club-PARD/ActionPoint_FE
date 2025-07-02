@@ -1,7 +1,7 @@
 'use client';
 
 import ProjectCard from '@/components/ProjectCard';
-import styles from '../styles/project.module.css';
+import styles from '../styles/ProjectListPage.module.css';
 import ProjectCreateButton from '@/components/ProjectCreateButton';
 import ParticipationProjectButton from '@/components/ParticipationProjectButton';
 
@@ -16,7 +16,7 @@ export default function ProjectListPage() {
   return (
     <main className={styles.container}>
       <header className={styles.header}>
-        <h2>프로젝트 리스트</h2>
+        <h2>📁프로젝트 리스트</h2>
         <div className={styles.actions}>
           <ProjectCreateButton></ProjectCreateButton>
           <ParticipationProjectButton></ParticipationProjectButton>

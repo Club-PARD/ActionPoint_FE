@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import ParticipateProject from './ParticipateProject';
+import styles from './ParticipationProjectButton.module.css';
 
 export default function ParticipationProjectButton() {
   const [showPopup, setShowPopup] = useState(false);
@@ -9,7 +10,7 @@ export default function ParticipationProjectButton() {
   return (
     <>
       <button
-        className="bg-white text-black border border-gray-300 px-4 py-2 rounded"
+        className={styles.participationButton}
         onClick={() => setShowPopup(true)}
       >
         프로젝트 참여

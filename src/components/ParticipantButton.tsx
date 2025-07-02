@@ -1,5 +1,7 @@
 'use client';
 
+import styles from './ParticipantButton.module.css';
+
 interface ParticipantButtonProps {
   projectTitle: string;
   onClick: (code: string) => void;
@@ -9,7 +11,7 @@ export default function ParticipantButton({ projectTitle, onClick }: Participant
   return (
     <button
       onClick={() => onClick(projectTitle)}
-      className="bg-[#D9D9D9] text-black px-6 py-2 rounded hover:bg-gray-300"
+      className={styles.button}
     >
       참여
     </button>

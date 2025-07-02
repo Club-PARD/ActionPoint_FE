@@ -1,5 +1,7 @@
 'use client';
 
+import styles from './XButton.module.css';
+
 interface XButtonProps {
   onClick: () => void;
 }
@@ -7,8 +9,8 @@ interface XButtonProps {
 export default function XButton({ onClick }: XButtonProps) {
   return (
     <button
-      className="absolute top-2 right-2 text-gray-600 hover:text-black text-l"
       onClick={onClick}
+      className={styles.button} // 모달 닫기용 X 버튼
     >
       X
     </button>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import AddProject from './AddProject';
+import styles from './ProjectCreateButton.module.css';
 
 export default function ProjectCreateButton() {
   const [showPopup, setShowPopup] = useState(false);
@@ -9,7 +10,7 @@ export default function ProjectCreateButton() {
   return (
     <>
       <button
-        className="bg-white text-black border border-gray-300 px-4 py-2 rounded"
+        className={styles.createButton}
         onClick={() => setShowPopup(true)}
       >
         프로젝트 생성

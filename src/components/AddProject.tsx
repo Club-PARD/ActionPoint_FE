@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import XButton from './XButton';
 import CancelButton from './CancelButton';
+import styles from './AddProject.module.css';
 
 interface AddProjectProps {
   onClose: () => void;
@@ -31,13 +32,13 @@ export default function AddProject({ onClose }: AddProjectProps) {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded w-[400px] relative text-black">
+    <div className={styles.backdrop}>
+      <div className={styles.modal}>
         <XButton onClick={onClose} />
 
-        <h2 className="text-xl font-bold mb-6">프로젝트 추가하기</h2>
+        <h2 className={styles.heading}>프로젝트 추가하기</h2>
 
-        <label className="block text-sm font-semibold mb-1">프로젝트명</label>
+        <label className={styles.label}>프로젝트명</label>
 
         {/* 프로젝트 제목 */}
         <input
@@ -45,42 +46,45 @@ export default function AddProject({ onClose }: AddProjectProps) {
           value={projectTitle}
           onChange={(e) => setProjectTitle(e.target.value)}
           placeholder="프로젝트 제목을 입력해주세요."
-          className="w-full bg-[#D9D9D9] text-sm text-black px-3 py-2 rounded placeholder:text-black"
+          className={styles.input}
         />
 
-          {/* 프로젝트 코드 서버한테서 받아오기, 지금 더미 랜덤 값 */}
+        {/* 프로젝트 코드 서버한테서 받아오기, 지금 더미 랜덤 값 */}
         {generatedCode && (
-          <div className="mt-6">
-            <label className="block text-sm font-semibold mb-1">프로젝트 참여 코드</label>
-            <input
-              type="text"
-              readOnly
-              value={generatedCode}
-              className="w-full bg-[#D9D9D9] text-sm text-black px-3 py-2 rounded placeholder:text-black"
-            />
+          <div className={styles.generatedBlock}>
+            <div className={styles.codeWrapper}>
+              <input
+                type="text"
+                readOnly
+                value={generatedCode}
+                className={styles.inputCode}
+              />
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(generatedCode);
+                }}
+                className={styles.copyButton}
+              >
+                📋
+              </button>
+            </div>
           </div>
-        )}
+          )}
 
         {/* 코드 생성 버튼 컴포 필요 */}
-        <div className="flex justify-between mt-6">
+        <div className={styles.buttonRow}>
           <button
             onClick={handleButtonClick}
-            className={`px-6 py-2 rounded text-black ${
-              isCodeGenerated ? 'bg-black hover:bg-gray-800' : 'bg-gray-800 hover:bg-black'
-            }`}
+            className={`${styles.actionButton} ${isCodeGenerated ? styles.confirmed : ''}`}
           >
             {/* 확인 버튼을 누르면 서버한테 다시 get을 받아서 프로젝트 갱신 */}
-            {isCodeGenerated ? '확인' : '코드 생성'} 
+            {isCodeGenerated ? '확인' : '코드 생성'}
           </button>
 
-            {/* 취소 버튼 */}
+          {/* 취소 버튼 */}
           <CancelButton onClose={onClose} />
-
         </div>
       </div>
     </div>
   );
 }
-
-//확인 부분 컴포넌트 화
-//프로젝트 참여 코드도 컴포넌트화 하면 좋을듯

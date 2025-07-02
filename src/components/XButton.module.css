@@ -1,0 +1,15 @@
+/* XButton.module.css */
+
+.button {
+  position: absolute;
+  top: 0.5rem;                  /* top-2 */
+  right: 0.5rem;                /* right-2 */
+  color: #4b5563;               /* text-gray-600 */
+  font-size: 1.125rem;          /* text-l (실제 Tailwind에선 text-lg ≒ 1.125rem) */
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.button:hover {
+  color: black;                 /* hover:text-black */
+}
