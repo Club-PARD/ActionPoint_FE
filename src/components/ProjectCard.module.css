@@ -1,0 +1,21 @@
+.card {
+  background-color: #3c3f45;
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 140px;
+}
+
+.title {
+  font-weight: bold;
+  padding: 1rem;
+  padding-right: 4rem;
+}
+
+.footer {
+  display: flex;
+  background-color: #e0e0e0;
+  color: black;
+}
