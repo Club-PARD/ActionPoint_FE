@@ -1,6 +1,6 @@
 'use client';
 
-import styles from './CancelButton.module.css';
+import styles from '../../styles/CancelButton.module.css';
 
 interface CancelButtonProps {
   onClose: () => void;

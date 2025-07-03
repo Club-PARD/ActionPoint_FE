@@ -1,6 +1,6 @@
 'use client';
 
-import styles from './CodeCreateButton.module.css';
+import styles from '../../styles/CodeCreateButton.module.css';
 
 interface CodeCreateButtonProps {
   projectTitle: string;

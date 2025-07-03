@@ -1,6 +1,6 @@
 'use client';
 
-import styles from './ParticipantButton.module.css';
+import styles from '../../styles/ParticipantButton.module.css';
 
 interface ParticipantButtonProps {
   projectTitle: string;
