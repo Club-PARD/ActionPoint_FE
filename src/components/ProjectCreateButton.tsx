@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import AddProject from './AddProject';
-import styles from './ProjectCreateButton.module.css';
+import AddProject from './ProjectListPage/AddProject';
+import styles from '../styles/ProjectCreateButton.module.css';
 
 export default function ProjectCreateButton() {
   const [showPopup, setShowPopup] = useState(false);

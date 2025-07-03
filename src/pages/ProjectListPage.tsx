@@ -1,6 +1,6 @@
 'use client';
 
-import ProjectCard from '@/components/ProjectCard';
+import ProjectCard from '@/components/ProjectListPage/ProjectCard';
 import styles from '../styles/ProjectListPage.module.css';
 import ProjectCreateButton from '@/components/ProjectCreateButton';
 import ParticipationProjectButton from '@/components/ParticipationProjectButton';

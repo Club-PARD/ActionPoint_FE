@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import ParticipateProject from './ParticipateProject';
-import styles from './ParticipationProjectButton.module.css';
+import ParticipateProject from './ProjectListPage/ParticipateProject';
+import styles from '../styles/ParticipationProjectButton.module.css';
 
 export default function ParticipationProjectButton() {
   const [showPopup, setShowPopup] = useState(false);

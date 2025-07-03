@@ -1,6 +1,6 @@
 'use client';
 
-import styles from './XButton.module.css';
+import styles from '../../styles/XButton.module.css';
 
 interface XButtonProps {
   onClick: () => void;

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import XButton from './XButton';
 import CancelButton from './CancelButton';
 import ParticipantButton from './ParticipantButton';
-import styles from './ParticipateProject.module.css';
+import styles from '../../styles/ParticipateProject.module.css';
 
 interface ParticipateProjectProps {
   onClose: () => void;
