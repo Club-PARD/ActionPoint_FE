@@ -31,9 +31,10 @@ export default function LandingPage() {
               <img src="/Logo.png" alt="ACTION POINT 로고" className={styles.modalLogo} />
             </div>
             <p className={styles.modalDesc}>액션 포인트를 통해 효율적 회의를 누려보세요</p>
-            <button className={styles.googleButton} onClick={() => signIn("google")}>
+            <button className={styles.googleButton} onClick={() => signIn("google", { callbackUrl: "/MainPage" })}>
               Sign up with Google
             </button>
+
           </div>
         </div>
       )}
