@@ -1,8 +1,8 @@
 'use client';
 
 import styles from '../styles/ProjectPage.module.css';
-import MeetingCard from '@/components/MeetingCard';
-import MeetingLogRow from '@/components/MeetingLogRow';
+import MeetingCard from '@/components/ProjectPage/MeetingCard';
+import MeetingLogRow from '@/components/ProjectPage/MeetingLogRow';
 
 export default function ProjectPage() {
   const recentMeetings = [

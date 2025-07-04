@@ -17,7 +17,6 @@ export default function ActionPointCard({ title, checklist }: Props) {
               <input type="checkbox" id={`check-${idx}`} />
               <label htmlFor={`check-${idx}`}>{item}</label>
             </li>
-            
           ))}
         </ul>
       </div>

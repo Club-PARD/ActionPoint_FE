@@ -1,4 +1,4 @@
-import styles from './MeetingCard.module.css';
+import styles from '../../styles/MeetingCard.module.css';
 
 interface MeetingCardProps {
   title: string;
