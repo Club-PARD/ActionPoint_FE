@@ -1,0 +1,65 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: white;
+}
+
+.backgroundArea {
+  width: 100%;
+  min-height: calc(100vh - 54px); /* 헤더바 높이 제외 */
+  background-color: #e8f0ff; /* 하늘색 */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.content {
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.pageTitle {
+  font-size: 24px;
+  margin: 20px 0 40px;
+  text-align: left;
+}
+
+.emptyBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 100%;
+}
+
+.emptyIcon {
+  margin-bottom: 20px;
+}
+
+.emptyText {
+  font-size: 18px;
+  color: #9F9FA9; /* zinc/400 */
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 500; /* Pretendard semibold 기준 */
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.carouselContainer {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.carouselItem {
+  min-width: 300px;
+  flex-shrink: 0;
+}
