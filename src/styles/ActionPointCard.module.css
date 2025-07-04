@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 .card {
+=======
+card {
+>>>>>>> 6ce1c9f ([FEAT] 파일 에러 수정)
   position: relative;
   width: 100%;
   min-height: 150px;
@@ -24,4 +28,8 @@
   align-items: center;
   gap: 8px;
   margin-top: 5px;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 6ce1c9f ([FEAT] 파일 에러 수정)

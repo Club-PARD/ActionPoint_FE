@@ -8,6 +8,7 @@
   box-sizing: border-box;
 }
 
+
 .inner {
   width: 1440px;
   height: 54px;
@@ -15,6 +16,7 @@
   justify-content: space-between;
   align-items: center;
 }
+
 
 .left {
   display: flex;
@@ -33,9 +35,35 @@
 
 .right {
   display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.userName {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
+.center {
+  display: flex;
   gap: 16px;
+  font-weight: bold;
+
+}
+
+.active {
+  color: #3B82F6; /* 파란색 강조 */
+
+}
+
+.right {
+  display: flex;
+  gap: 16px;
+
 }
 
 .profileText {
   color: #09090B; /* zinc/950 */
+
 }
