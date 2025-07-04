@@ -25,20 +25,20 @@ export default function ParticipateProject({ onClose }: ParticipateProjectProps)
   return (
     <div className={styles.backdrop}>
       <div className={styles.modal}>
-        <XButton onClick={onClose} />
+        <h2 className={styles.label}>프로젝트 참여하기</h2>
+          <h3 className={styles.inputCode}> 프로젝트 코드 입력 </h3>
+            <input
+              type="text"
+              value={projectTitle}
+              onChange={(e) => setProjectTitle(e.target.value)}
+              placeholder="코드를 입력해주세요"
+              className={styles.input}
+            />
 
-        <label className={styles.label}>프로젝트 참여하기</label>
-
-        <input
-          type="text"
-          value={projectTitle}
-          onChange={(e) => setProjectTitle(e.target.value)}
-          placeholder="프로젝트 참여할 코드를 입력해주세요."
-          className={styles.input}
-        />
-
-        <ParticipantButton projectTitle={projectTitle} onClick={handleClick} />
-        <CancelButton onClose={onClose} />
+          <div className={styles.buttonRow}>
+            <CancelButton onClose={onClose} />
+            <ParticipantButton projectTitle={projectTitle} onClick={handleClick} />
+          </div>
       </div>
     </div>
   );
