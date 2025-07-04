@@ -1,21 +1,44 @@
 .card {
-  background-color: #3c3f45;
-  border-radius: 8px;
-  color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 366px;
+  height: 240px;
+  padding: 1rem;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 140px;
+}
+
+/* 상태별 배경 */
+.active {
+  background-image: url('/activeProject.svg');
+}
+
+.normal {
+  background-image: url('/NormalProject.svg');
+}
+
+.die {
+  background-image: url('/DieProject.svg');
 }
 
 .title {
+    padding-left: 10px;
+
+  margin-top:60px;
+  font-size: 16px;
   font-weight: bold;
-  padding: 1rem;
-  padding-right: 4rem;
+  color: #000; /* 필요 시 white 등으로 조절 */
 }
 
 .footer {
-  display: flex;
-  background-color: #e0e0e0;
-  color: black;
+  padding-left: 10px;
+  color: var(--zinc-950, #09090B);
+  font-family: Pretendard;
+  font-size: 14.538px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%; /* 17.446px */
 }

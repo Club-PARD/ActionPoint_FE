@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import XButton from './XButton';
 import CancelButton from './CancelButton';
+import GenerateCodeButton from './GenerateCodeButton';
 import styles from '../../styles/AddProject.module.css';
 
 interface AddProjectProps {
@@ -34,56 +35,52 @@ export default function AddProject({ onClose }: AddProjectProps) {
   return (
     <div className={styles.backdrop}>
       <div className={styles.modal}>
-        <XButton onClick={onClose} />
+        <div className={styles.contentArea}>
+          <h2 className={styles.heading}>프로젝트 생성하기</h2>
 
-        <h2 className={styles.heading}>프로젝트 추가하기</h2>
+          <label className={styles.label}>프로젝트명</label>
 
-        <label className={styles.label}>프로젝트명</label>
+          {/* 프로젝트 제목 */}
+          <input
+            type="text"
+            value={projectTitle}
+            onChange={(e) => setProjectTitle(e.target.value)}
+            placeholder="프로젝트 제목을 입력해주세요."
+            maxLength={10} 
+            className={styles.input}
+          />
 
-        {/* 프로젝트 제목 */}
-        <input
-          type="text"
-          value={projectTitle}
-          onChange={(e) => setProjectTitle(e.target.value)}
-          placeholder="프로젝트 제목을 입력해주세요."
-          className={styles.input}
-        />
+          {/* 프로젝트 코드 서버한테서 받아오기, 지금 더미 랜덤 값 */}
+          {isCodeGenerated && (
+            <div className={styles.generatedSection}>
+              <label className={styles.label2}>
+                프로젝트 참여 코드
+                <span className={styles.helperText}> * 복사를 통해 프로젝트를 공유해봐요.</span>
+              </label>
 
-        {/* 프로젝트 코드 서버한테서 받아오기, 지금 더미 랜덤 값 */}
-        {generatedCode && (
-          <div className={styles.generatedBlock}>
-            <div className={styles.codeWrapper}>
+              <div className={styles.codeWrapper}>
               <input
                 type="text"
                 readOnly
-                value={generatedCode}
+                value={generatedCode ?? ''}
                 className={styles.inputCode}
-              />
-              <button
                 onClick={() => {
-                  navigator.clipboard.writeText(generatedCode);
+                  if (generatedCode) navigator.clipboard.writeText(generatedCode);
                 }}
-                className={styles.copyButton}
-              >
-                📋
-              </button>
+              />
+              </div>
             </div>
-          </div>
           )}
-
-        {/* 코드 생성 버튼 컴포 필요 */}
-        <div className={styles.buttonRow}>
-          <button
-            onClick={handleButtonClick}
-            className={`${styles.actionButton} ${isCodeGenerated ? styles.confirmed : ''}`}
-          >
-            {/* 확인 버튼을 누르면 서버한테 다시 get을 받아서 프로젝트 갱신 */}
-            {isCodeGenerated ? '확인' : '코드 생성'}
-          </button>
-
-          {/* 취소 버튼 */}
-          <CancelButton onClose={onClose} />
         </div>
+
+        <div className={styles.buttonRow}>
+          <CancelButton onClose={onClose} />
+          <GenerateCodeButton
+            isCodeGenerated={isCodeGenerated}
+            onClick={handleButtonClick}
+          />          
+        </div>
+        
       </div>
     </div>
   );

@@ -1,8 +1,10 @@
 .container {
   padding: 2rem;
-  background-color: #c9c9c9;
+  background-color:white;
   min-height: 100vh;
   border-radius: 12px;
+  padding-left: 145px;  
+  padding-right: 145px;
 }
 
 .header {
@@ -12,17 +14,25 @@
   margin-bottom: 2rem;
 }
 
-.actions button {
-  margin-left: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  border: none;
-  background-color: white;
-  cursor: pointer;
+.main{
+  color: var(--zinc-950, #09090B);
+  font-family: Pretendard;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 40px; /* 142.857% */
+  letter-spacing: -0.098px;
+}
+
+.actions {
+  display: flex;
+  gap: 24px; 
+  align-items: center; 
+  margin-bottom: 50px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(370px, 1fr));
-  gap: 1.2rem;
+  grid-template-columns: repeat(3, minmax(330px, 1fr));
+  gap: 30px;
 }

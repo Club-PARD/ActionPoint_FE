@@ -1,6 +1,4 @@
-/* ParticipantButton.module.css */
-
-.button {
+.actionButton {
     display: inline-flex;
     padding: 8px 15px;
     justify-content: center;

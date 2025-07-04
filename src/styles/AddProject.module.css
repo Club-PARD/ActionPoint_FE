@@ -11,38 +11,65 @@
 }
 
 .modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  /* 위/아래 분리 */
   background-color: white;
   color: black;
-  padding: 1.5rem;             /* p-6 */
-  border-radius: 0.5rem;       /* rounded */
-  width: 400px;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  width: 684px;
+  height: 356px;
+  flex-shrink: 0;
   position: relative;
 }
 
+.contentArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+
 .heading {
-  font-size: 1.25rem;          /* text-xl */
+  color: var(--zinc-950, #09090B);
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
   font-weight: 700;
-  margin-bottom: 1.5rem;       /* mb-6 */
+  line-height: 37.377px; /* 169.896% */
+  letter-spacing: -0.077px;
+  margin-bottom: 10px;
 }
 
 .label {
-  display: block;
-  font-size: 0.875rem;         /* text-sm */
+  color: var(--zinc-950, #09090B);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
   font-weight: 600;
-  margin-bottom: 0.25rem;      /* mb-1 */
+  line-height: 33.88px; /* 188.221% */
+  letter-spacing: -0.063px;
+  margin-bottom: 5px;
 }
 
 .input {
   width: 100%;
-  background-color: #D9D9D9;
+  background-color:white;
   color: black;
   font-size: 0.875rem;
   padding: 0.5rem 0.75rem;
   border-radius: 0.375rem;
-}
-
-.input::placeholder {
-  color: black;
+  color: var(--zinc-500, #71717A);
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 33.88px; /* 225.865% */
+  letter-spacing: -0.052px;
+  border-radius: 10px;
+  border: 1px solid var(--zinc-300, #D4D4D8);
+  margin-bottom: 5px;
 }
 
 .codeWrapper {
@@ -54,43 +81,55 @@
 }
 
 .inputCode {
-  color: black;
-  font-size: 1.25rem;
-  font-weight: bold;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.375rem;
-  border: none;
-  letter-spacing: 0.5rem;
-  text-align: center;
+  width: 620px;
+  height: 52.514px;
+  padding-left: 10px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid var(--zinc-300, #D4D4D8);
+  color: var(--blue-500, #3B82F6);
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  outline: none;
+
 }
 
-.copyButton {
-  background-color: #4b5563; /* gray-700 */
-  color: white;
-  border-radius: 0.375rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+.input::placeholder{
+  color: var(--zinc-950, #09090B);
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 33.88px; /* 225.865% */
+  letter-spacing: -0.052px;
 }
 
-.generatedBlock {
-  margin-top: 1.5rem;          /* mt-6 */
+.helperText{
+  color: var(--zinc-500, #71717A);
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 33.88px; /* 225.865% */
+  letter-spacing: -0.052px;
+}
+
+.label2{
+  color: var(--zinc-950, #09090B);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 33.88px; /* 188.221% */
+  letter-spacing: -0.063px;
 }
 
 .buttonRow {
   display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-}
-
-.actionButton {
-  padding: 0.5rem 1.5rem;      /* px-6 py-2 */
-  border-radius: 0.375rem;
-  color: black;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.confirmed {
-  background-color: black;
+  justify-content: flex-end;  /* 오른쪽 정렬 */
+  gap: 12px;                  /* 버튼 사이 간격 */
+  margin-top:20px;
 }
