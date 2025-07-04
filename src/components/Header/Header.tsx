@@ -1,4 +1,5 @@
-import styles from "../styles/Header.module.css";
+// import styles from "../styles/Header.module.css";
+import styles from "//actionpoint_fe/src/styles/Header.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";

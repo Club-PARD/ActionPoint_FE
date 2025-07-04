@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-import Header from "@/components/Header";
+import Header from "@/components/Header/Header";
 import styles from "../styles/LandingPage.module.css";
 
 export default function LandingPage() {
