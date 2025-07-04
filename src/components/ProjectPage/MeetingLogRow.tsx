@@ -1,4 +1,4 @@
-import styles from './MeetingLogRow.module.css';
+import styles from '../../styles/MeetingLogRow.module.css';
 
 interface MeetingLogRowProps {
   title: string;

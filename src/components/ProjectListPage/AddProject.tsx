@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import XButton from './XButton';
 import CancelButton from './CancelButton';
-import styles from './AddProject.module.css';
+import styles from '../../styles/AddProject.module.css';
 
 interface AddProjectProps {
   onClose: () => void;
