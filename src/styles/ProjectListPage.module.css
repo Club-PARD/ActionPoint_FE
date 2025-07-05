@@ -1,10 +1,24 @@
+.pageBackground {
+  border-radius: 4.115px;
+  margin-bottom: 20px;
+  background: var(--blue-100, #DBEAFE);
+  width: 1440px;
+  height: 1024px;
+  justify-content: center;      /* ✅ 수평 정렬 */
+  align-items: center;          /* ✅ 수직 정렬 */
+  box-sizing: border-box;
+}
+
+
 .container {
+  width: 1200px;
+  height: 718px;
   padding: 2rem;
   background-color:white;
   min-height: 100vh;
+  margin-top: 30px;
+  margin-left: 150px;
   border-radius: 12px;
-  padding-left: 145px;  
-  padding-right: 145px;
 }
 
 .header {
@@ -28,7 +42,15 @@
   display: flex;
   gap: 24px; 
   align-items: center; 
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+}
+
+
+.sort{
+  display: flex;
+  justify-content: flex-end; /* ⭐ 오른쪽 끝 정렬 */
+  padding-bottom: 20px;
+  padding-right: 30px;
 }
 
 .grid {

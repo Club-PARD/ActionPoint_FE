@@ -5,6 +5,8 @@ import XButton from './XButton';
 import CancelButton from './CancelButton';
 import GenerateCodeButton from './GenerateCodeButton';
 import styles from '../../styles/AddProject.module.css';
+import Image from 'next/image';
+
 
 interface AddProjectProps {
   onClose: () => void;
@@ -48,30 +50,41 @@ export default function AddProject({ onClose }: AddProjectProps) {
             placeholder="프로젝트 제목을 입력해주세요."
             maxLength={10} 
             className={styles.input}
+            disabled={isCodeGenerated}
           />
 
           {/* 프로젝트 코드 서버한테서 받아오기, 지금 더미 랜덤 값 */}
-          {isCodeGenerated && (
-            <div className={styles.generatedSection}>
-              <label className={styles.label2}>
-                프로젝트 참여 코드
-                <span className={styles.helperText}> * 복사를 통해 프로젝트를 공유해봐요.</span>
-              </label>
+          <div className={styles.generatedSection}>
+            <label className={styles.label2}>
+              프로젝트 참여 코드
+              <span className={styles.helperText}> * 복사를 통해 프로젝트를 공유해봐요.</span>
+            </label>
 
-              <div className={styles.codeWrapper}>
-              <input
-                type="text"
-                readOnly
-                value={generatedCode ?? ''}
-                className={styles.inputCode}
-                onClick={() => {
-                  if (generatedCode) navigator.clipboard.writeText(generatedCode);
-                }}
-              />
+            <div className={styles.codeWrapper}>
+              <div className={styles.inputCodeContainer}>
+                <input
+                  type="text"
+                  readOnly
+                  value={generatedCode ?? ''}
+                  placeholder="코드를 생성중입니다."
+                  className={styles.inputCode}
+                  onClick={() => {
+                    if (generatedCode) navigator.clipboard.writeText(generatedCode);
+                  }}
+                />
+                {/* input 내부 아이콘 */}
+                <button
+                  type="button"
+                  className={styles.copyIcon}
+                  onClick={() => {
+                    if (generatedCode) navigator.clipboard.writeText(generatedCode);
+                  }}
+                >
+                  <Image src="./copy.svg" alt="copy" width={18} height={18} />
+                </button>
               </div>
             </div>
-          )}
-        </div>
+          </div>
 
         <div className={styles.buttonRow}>
           <CancelButton onClose={onClose} />
@@ -80,7 +93,7 @@ export default function AddProject({ onClose }: AddProjectProps) {
             onClick={handleButtonClick}
           />          
         </div>
-        
+        </div>
       </div>
     </div>
   );

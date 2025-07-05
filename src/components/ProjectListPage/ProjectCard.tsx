@@ -20,7 +20,7 @@ export default function ProjectCard({ title, participant, count, status }: Proje
         return '';
     }
   };
-
+//다이일때 footer 색 바꿔야함
   return (
     <div className={`${styles.card} ${getBackgroundClass()}`}>
       <div className={styles.title}>{title}</div>
@@ -30,7 +30,6 @@ export default function ProjectCard({ title, participant, count, status }: Proje
         <span> 외 </span>
         <span>{count}</span>
         <span>명</span>
-        <button>⋯</button>{/* 이건 컴포넌트로 따로 기능 넣어야해요~~*/}
       </div>
     </div>
   );
