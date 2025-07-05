@@ -1,7 +1,7 @@
 import Header from "@/components/Header/Header";
 import styles from "../styles/MainPage.module.css";
 import { useState } from "react";
-
+import Calendar from "@/components/MainPage/Calender";
 export default function MainPage() {
   const dummyProjects = [
     { id: 1, title: "불만있냐", actionPointCount: 4 },
@@ -55,7 +55,7 @@ export default function MainPage() {
 
         {/* 우측 영역 */}
         <div className={styles.rightArea}>
-          <div className={styles.calendarArea}>달력(오늘만 강조)</div>
+          <div className={styles.calendarArea}><Calendar /></div>
 
           <div className={styles.projectListArea}>
             <div className={styles.pageIndicator}>
