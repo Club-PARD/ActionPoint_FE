@@ -1,0 +1,51 @@
+.meetingSection {
+  margin-top: 32px;
+}
+
+.meetingHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.sectionTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.createBtn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.meetingList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.meetingItem {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+}
+
+.meetingTitle {
+  font-weight: 500;
+  max-width: 70%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meetingDate {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
