@@ -30,7 +30,7 @@ export default function Header() {
           <span className={styles.profileText}>
             {session?.user?.name ?? "이름"}님
           </span>
-          <span className={styles.profileText}>내프로필</span>
+          <span className={styles.profileText}>내 프로필</span>
         </div>
       </div>
     </header>
