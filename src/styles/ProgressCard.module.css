@@ -1,0 +1,55 @@
+.card {
+  position: relative;
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width:458px;
+  height: 377px;
+}
+
+.progressWrapper {
+  width: 100%;
+}
+
+.percentLabel {
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+}
+
+.progressBar {
+  height: 18px;
+  width: 400px;
+  background-color: #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: #3b82f6;
+  transition: width 0.3s ease;
+}
+
+.progressMessage {
+  padding-top: 20px;
+  color: var(--zinc-900, #18181B);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 33.88px; /* 188.221% */
+  letter-spacing: -0.063px;
+}
+
+.imageWrapper {
+  position: absolute;
+  top: 230px;     /* 위 여백 */
+  right: 30px;   /* 오른쪽 여백 */
+} 
