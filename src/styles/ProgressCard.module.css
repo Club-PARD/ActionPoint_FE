@@ -7,27 +7,39 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width:458px;
+  width:536px;
   height: 377px;
+  border-radius: 10px;
+  border: 1px solid var(--blue-500, #3B82F6);
 }
 
 .progressWrapper {
-  width: 100%;
+  flex: 1;
+  margin-right: 16px; /* 이미지와 간격 */
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* 퍼센트와 바 사이 간격 */
+  margin-bottom: 12px;
 }
 
 .percentLabel {
-  font-weight: 600;
-  margin-bottom: 4px;
-  font-size: 0.9rem;
+  color: var(--zinc-500, #71717A);
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .progressBar {
   height: 18px;
-  width: 400px;
+  width: 370px;
   background-color: #e5e7eb;
   border-radius: 6px;
   overflow: hidden;
-  margin-bottom: 8px;
 }
 
 .progressFill {
@@ -37,7 +49,8 @@
 }
 
 .progressMessage {
-  padding-top: 20px;
+  white-space: pre-line;
+  padding-top: 100px;
   color: var(--zinc-900, #18181B);
   text-align: center;
   font-family: Pretendard;

@@ -1,5 +1,13 @@
 .meetingSection {
+  width: 1148px;
+  height: 343px;
+  flex-shrink: 0;
   margin-top: 32px;
+  border-radius: 10px;
+  padding-left: 42px;
+  padding-top: 29px;
+  padding-right: 29px;
+  background: var(--zinc-50, #FAFAFA);
 }
 
 .meetingHeader {
@@ -10,8 +18,13 @@
 }
 
 .sectionTitle {
-  font-size: 1.2rem;
+  color: var(--zinc-900, #18181B);
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
   font-weight: 700;
+  line-height: 37.377px; /* 169.896% */
+  letter-spacing: -0.077px;
 }
 
 .createBtn {
@@ -31,21 +44,50 @@
 }
 
 .meetingItem {
+  position: relative;
+  display: flex;
   padding: 12px;
   border-bottom: 1px solid #e5e7eb;
-  display: flex;
-  justify-content: space-between;
+}
+
+.meetingItem:hover {
+  border-radius: 12px;
+  background: var(--blue-50, #EFF6FF);
+}
+
+.selected {
+  border-radius: 12px;
+  background: var(--blue-50, #EFF6FF);
 }
 
 .meetingTitle {
+  color: var(--zinc-900, #18181B);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
   font-weight: 500;
-  max-width: 70%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+  line-height: 33.88px; /* 188.221% */
+  letter-spacing: -0.063px;
+  }
 
 .meetingDate {
-  font-size: 0.85rem;
-  color: #6b7280;
+  position: absolute;
+  color: var(--zinc-400, #A1A1AA);
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 33.88px; /* 225.865% */
+  letter-spacing: -0.052px;
+  left:70%;
+}
+
+.menuBtn {
+  position: absolute;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #A1A1AA;
+  cursor: pointer;
+  left:99%;
 }

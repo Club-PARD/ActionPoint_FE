@@ -11,12 +11,14 @@ export default function ProgressCard({ percent, message }: Props) {
   return (
     <div className={styles.card}>
       <div className={styles.progressWrapper}>
-        <span className={styles.percentLabel}>{percent}%</span>
-        <div className={styles.progressBar}>
-          <div
-            className={styles.progressFill}
-            style={{ width: `${percent}%` }}
-          ></div>
+        <div className={styles.progressRow}>
+          <span className={styles.percentLabel}>{percent}%</span>
+          <div className={styles.progressBar}>
+            <div
+              className={styles.progressFill}
+              style={{ width: `${percent}%` }}
+            ></div>
+          </div>
         </div>
         <p className={styles.progressMessage}>{message}</p>
       </div>

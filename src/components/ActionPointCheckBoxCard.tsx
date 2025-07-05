@@ -6,6 +6,7 @@ import styles from '../styles/ActionPointCheckBoxCard.module.css';
 interface Props {
   meeting: {
     id: number;
+    title: string;
     actionPoints: string[];
     completedPoints: string[];
   };
@@ -15,7 +16,7 @@ interface Props {
 export default function ActionPointCheckBoxCard({ meeting, toggleActionPoint }: Props) {
   return (
     <div className={styles.card}>
-      <h3 className={styles.cardTitle}>중간산출물 제출하기</h3>
+      <h3 className={styles.cardTitle}>{meeting.title}</h3>
 
       <div className={styles.contentWrapper}>
         <ul className={styles.actionList}>
