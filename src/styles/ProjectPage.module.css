@@ -12,12 +12,32 @@
 .pageWrapper {
   max-width: 1152px;
   margin: 0 auto;
-  padding: 24px;
+}
+
+.projectTitle{
+  width: 199px;
+  height: 63px;
+  flex-shrink: 0;
+  border-radius: 10px 10px 0px 0px;
+  background: var(--zinc-50, #FAFAFA);
+  color: var(--zinc-900, #18181B);
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 37.377px; /* 169.896% */
+  letter-spacing: -0.077px;
 }
 
 .topSection {
+  background-color: white;
   display: flex;
-  gap: 16px;
   align-items: flex-start;
   justify-content: space-between;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  padding-left: 23px;
+  padding-right: 23px;
+  padding-bottom: 23px;
+  padding-top:126px;
 }
