@@ -1,19 +1,11 @@
-<svg width="367" height="235" viewBox="0 0 367 235" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="365.509" height="228.482" rx="10" fill="#A1A1AA"/>
-<g filter="url(#filter0_d_620_2822)">
-<rect x="23" y="35" width="321" height="64" fill="white"/>
-</g>
-<path d="M179.845 14.001C183.69 14.001 231 52.0761 234 52.376C237 52.6757 366 52.376 366 52.376V167.319H366.284V225.001C366.284 230.524 361.807 235.001 356.284 235.001H10C4.47729 235.001 0.000218401 230.524 0 225.001V14.001H179.845Z" fill="#E4E4E7"/>
-<defs>
-<filter id="filter0_d_620_2822" x="19" y="35" width="329" height="72" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_620_2822"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_620_2822" result="shape"/>
-</filter>
-</defs>
+<svg width="307" height="251" viewBox="0 0 307 251" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="1.68457" y="21.8994" width="251" height="229.101" rx="8.22951" fill="#1E40AF"/>
+<rect x="14.6721" y="6.17285" width="238.053" height="228.369" rx="4.11475" fill="#DBEAFE"/>
+<rect x="26.6946" width="226.03" height="228.369" rx="4.11475" fill="#EFF6FF"/>
+<path d="M54.3474 29.832H210.645" stroke="#93C5FD" stroke-width="2.05738"/>
+<path d="M54.3474 53.4912H181.79" stroke="#93C5FD" stroke-width="2.05738"/>
+<path d="M54.3474 77.1514H205.836" stroke="#93C5FD" stroke-width="2.05738"/>
+<path d="M54.3474 92.582H205.836" stroke="#93C5FD" stroke-width="2.05738"/>
+<path d="M54.3474 108.013H205.836" stroke="#93C5FD" stroke-width="2.05738"/>
+<path d="M296.105 21.8994H56.651C52.7874 21.8994 49.444 24.5872 48.6137 28.3606L2.19969 239.318C1.06993 244.453 4.97925 249.316 10.237 249.316H244.5C248.292 249.316 251.593 246.725 252.494 243.042L304.099 32.0844C305.367 26.9006 301.442 21.8994 296.105 21.8994Z" fill="#3B82F6" stroke="#3B82F6" stroke-width="2.54752"/>
 </svg>

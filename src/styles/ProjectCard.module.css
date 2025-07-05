@@ -2,8 +2,9 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  width: 366px;
-  height: 240px;
+  width: 306.591px;
+  height: 227.416px;
+  flex-shrink: 0;
   padding: 1rem;
   border-radius: 12px;
   display: flex;
@@ -14,28 +15,49 @@
 /* 상태별 배경 */
 .active {
   background-image: url('/activeProject.svg');
+  padding-left: 30px;
+  padding-top: 65px;
+  color: var(--white, #FFF);
+  font-family: Pretendard;
+  font-size: 17.446px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 23.261px; /* 133.333% */
+  letter-spacing: -0.061px;
 }
 
 .normal {
   background-image: url('/NormalProject.svg');
+  padding-left: 30px;
+  padding-top: 20px;
+  color: var(--white, #FFF);
+  font-family: Pretendard;
+  font-size: 17.446px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 23.261px; /* 133.333% */
+  letter-spacing: -0.061px;
 }
 
 .die {
   background-image: url('/DieProject.svg');
+  padding-left: 30px;
+  padding-top: 20px;
+  color: var(--white, #FFF);
+  font-family: Pretendard;
+  font-size: 17.446px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 23.261px; /* 133.333% */
+  letter-spacing: -0.061px;
 }
 
 .title {
-    padding-left: 10px;
-
-  margin-top:60px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #000; /* 필요 시 white 등으로 조절 */
+  padding-left: 30px;
 }
 
 .footer {
-  padding-left: 10px;
-  color: var(--zinc-950, #09090B);
+  color: var(--white, #FFF);
   font-family: Pretendard;
   font-size: 14.538px;
   font-style: normal;
