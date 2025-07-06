@@ -25,19 +25,32 @@ export default function LandingPage() {
       </main>
 
       {showLogin && (
-        <div className={styles.modalOverlay}>
-          <div className={styles.modal}>
-            <div className={styles.modalLogoWrapper}>
-              <img src="/Logo.png" alt="ACTION POINT 로고" className={styles.modalLogo} />
-            </div>
-            <p className={styles.modalDesc}>액션 포인트를 통해 효율적 회의를 누려보세요</p>
-            <button className={styles.googleButton} onClick={() => signIn("google", { callbackUrl: "/MainPage" })}>
-              Sign up with Google
-            </button>
+  <div
+    className={styles.modalOverlay}
+    onClick={() => {
+      setShowLogin(false); // 팝업 닫기
+    }}
+  >
+    <div
+      className={styles.modal}
+      onClick={(e) => e.stopPropagation()} // 모달 내부 클릭은 이벤트 전파 막기
+    >
+      <div className={styles.modalLogoWrapper}>
+        <img src="/Logo.png" alt="ACTION POINT 로고" className={styles.modalLogo} />
+      </div>
+      <p className={styles.modalDesc}>액션 포인트를 통해 효율적 회의를 누려보세요</p>
+      <button
+        className={styles.googleButton}
+        onClick={() =>
+          signIn("google", { callbackUrl: "/MainPage" })
+        }
+      >
+        Sign up with Google
+      </button>
+    </div>
+  </div>
+)}
 
-          </div>
-        </div>
-      )}
     </div>
   );
 }
