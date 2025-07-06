@@ -1,0 +1,25 @@
+.button {
+    display: flex;
+    color: var(--zinc-700, #3F3F46);
+    cursor: pointer;
+}
+
+.leaveproject{
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px; /* 266.667% */
+    letter-spacing: -0.052px;
+    padding-left: 16px;
+}
+
+
+.button:hover {
+  background-color: #f3f4f6; /* hover:bg-gray-100 */
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
