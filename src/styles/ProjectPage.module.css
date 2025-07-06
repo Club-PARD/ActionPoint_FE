@@ -2,8 +2,6 @@
   border-radius: 4.115px;
   margin-bottom: 20px;
   background: var(--blue-100, #DBEAFE);
-  width: 1440px;
-  height: 1024px;
   justify-content: center;      /* ✅ 수평 정렬 */
   align-items: center;          /* ✅ 수직 정렬 */
   box-sizing: border-box;
@@ -14,12 +12,17 @@
   margin: 0 auto;
 }
 
+.settingsPanelWrapper {
+  position: absolute; /* 또는 relative/fixed 필요 시 */
+  z-index: 10; /* ✅ 충분히 높은 수치 */
+}
+
 .projectTitle{
   width: 199px;
   height: 63px;
   flex-shrink: 0;
   border-radius: 10px 10px 0px 0px;
-  background: var(--zinc-50, #FAFAFA);
+  background:white;
   color: var(--zinc-900, #18181B);
   font-family: Pretendard;
   font-size: 22px;
@@ -27,6 +30,13 @@
   font-weight: 700;
   line-height: 37.377px; /* 169.896% */
   letter-spacing: -0.077px;
+  padding-left: 43px;
+  padding-top:13px;
+  margin-top: 80px;
+}
+
+.optionsButton{
+  padding-left: 40px;
 }
 
 .topSection {
@@ -35,7 +45,7 @@
   align-items: flex-start;
   justify-content: space-between;
   border-radius: 10px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px rgba(0,0,0,0.1);
   padding-left: 23px;
   padding-right: 23px;
   padding-bottom: 23px;

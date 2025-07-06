@@ -5,6 +5,7 @@ import { useState } from 'react';
 import styles from '../styles/ProjectPage.module.css';
 import ActionPointCheckBoxCard from '@/components/ActionPointCheckBoxCard';
 import ProgressCard from '@/components/ProjectPage/ProgressCard';
+import ProjectSettingsPanel from '@/components/ProjectPage/ProjectSettingPannel';
 import MeetingRecordSection from '@/components/ProjectPage/MeetingRecordSection';
 import Header from '@/components/Header/Header';
 
@@ -63,7 +64,8 @@ export default function ProjectPage() {
   const sortedMeetings = [...dummyMeetings].sort((a, b) => b.id - a.id);
   const [meetings, setMeetings] = useState<Meeting[]>(sortedMeetings);
   const [selectedMeetingId, setSelectedMeetingId] = useState<number>(sortedMeetings[0].id);
-  
+  const [showSettings, setShowSettings] = useState(false);
+
   const toggleActionPoint = (meetingId: number, point: string) => {
     setMeetings(prev =>
       prev.map(meeting => {
@@ -89,8 +91,7 @@ export default function ProjectPage() {
     if (percent === 100) return '전부 끝! 정말 멋져요!\n오늘의 나에게 박수 짝짝~';
     if (percent >= 95) return '헉! 거의 다 왔어요~ 마지막 하나,\n우리 꼭 마무리해봐요!';
     if (percent >= 75) return '여기까지 온 거 진짜 대단해요!\n 이제 마무리만 남았어요!';
-    if (percent >= 50) return '우왕 시작이 반이다 벌써 반이 넘었어요!\n 우리 조금만 더 화이팅해요~';
-    if (percent >= 25) return '좋아요! 이미 첫 발을 내디뎠어요.\n 계속 이렇게만 가봐요~';
+     if (percent >= 25) return '좋아요! 이미 첫 발을 내디뎠어요.\n 계속 이렇게만 가봐요~';
     return '처음 한 걸음이 가장 멋진 거 아시죠?\n 우리 이제 시작해봐요!';
   };
 
@@ -100,7 +101,21 @@ export default function ProjectPage() {
 
 
       <div className={styles.pageWrapper}>
-       <h2 className={styles.projectTitle}>{projectTitle}</h2>
+        <div className={styles.projectTitleWrapper}>
+          <div className={styles.projectTitle}>{projectTitle}
+            <button
+              onClick={() => setShowSettings(prev => !prev)}
+              className={styles.optionsButton}
+            >
+              ⋮
+            </button>
+            {showSettings && (
+              <div className={styles.settingsPanelWrapper}>
+                <ProjectSettingsPanel onClose={() => setShowSettings(false)} />
+              </div>
+            )}
+          </div>
+        </div>
         <div className={styles.topSection}>
           <ActionPointCheckBoxCard
             meeting={currentMeeting}
