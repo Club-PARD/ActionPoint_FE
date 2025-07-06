@@ -33,7 +33,7 @@ export default function LandingPage() {
   >
     <div
       className={styles.modal}
-      onClick={(e) => e.stopPropagation()} // 모달 내부 클릭은 이벤트 전파 막기
+      onClick={(e) => e.stopPropagation()} 
     >
       <div className={styles.modalLogoWrapper}>
         <img src="/Logo.png" alt="ACTION POINT 로고" className={styles.modalLogo} />
