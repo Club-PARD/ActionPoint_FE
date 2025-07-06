@@ -1,12 +1,11 @@
-/* ParticipantButton.module.css */
-
-.button {
+.actionButton {
     display: inline-flex;
     padding: 10px 20px;
     justify-content: center;
     align-items: center;
     gap: 8px;
     border-radius: 10px;
+    background: var(--blue-500, #3B82F6);
     color: var(--white, #FFF);
     text-align: center;
     font-family: Pretendard;
@@ -14,6 +13,5 @@
     font-style: normal;
     font-weight: 500;
     line-height: 21px; /* 116.667% */
-    background: var(--blue-500, #3B82F6);   
 }
 

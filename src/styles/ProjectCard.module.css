@@ -1,21 +1,66 @@
 .card {
-  background-color: #3c3f45;
-  border-radius: 8px;
-  color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 306.591px;
+  height: 227.416px;
+  flex-shrink: 0;
+  padding: 1rem;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 140px;
 }
 
+/* 상태별 배경 */
+.active {
+  background-image: url('/activeProject.svg');
+  padding-left: 30px;
+  padding-top: 65px;
+  color: var(--white, #FFF);
+  font-family: Pretendard;
+  font-size: 17.446px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 23.261px; /* 133.333% */
+  letter-spacing: -0.061px;
+}
+
+.normal {
+  background-image: url('/NormalProject.svg');
+  padding-left: 30px;
+  padding-top: 20px;
+  color: var(--white, #FFF);
+  font-family: Pretendard;
+  font-size: 17.446px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 23.261px; /* 133.333% */
+  letter-spacing: -0.061px;
+}
+
+.die {
+  background-image: url('/DieProject.svg');
+  padding-left: 30px;
+  padding-top: 20px;
+  color: var(--white, #FFF);
+  font-family: Pretendard;
+  font-size: 17.446px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 23.261px; /* 133.333% */
+  letter-spacing: -0.061px;
+} 
+
 .title {
-  font-weight: bold;
-  padding: 1rem;
-  padding-right: 4rem;
+  padding-left: 30px;
 }
 
 .footer {
-  display: flex;
-  background-color: #e0e0e0;
-  color: black;
+  color: var(--white, #FFF);
+  font-family: Pretendard;
+  font-size: 14.538px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%; /* 17.446px */
 }

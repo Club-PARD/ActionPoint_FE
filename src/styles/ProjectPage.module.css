@@ -1,41 +1,43 @@
-/* ProjectPage.module.css */
-
-.container {
-  padding: 1.5rem;              /* p-6 */
-  background-color: #111827;   /* bg-gray-900 */
+.pageBackground {
+  border-radius: 4.115px;
+  margin-bottom: 20px;
+  background: var(--blue-100, #DBEAFE);
+  width: 1440px;
+  height: 1024px;
+  justify-content: center;      /* ✅ 수평 정렬 */
+  align-items: center;          /* ✅ 수직 정렬 */
+  box-sizing: border-box;
 }
 
-.header {
+.pageWrapper {
+  max-width: 1152px;
+  margin: 0 auto;
+}
+
+.projectTitle{
+  width: 199px;
+  height: 63px;
+  flex-shrink: 0;
+  border-radius: 10px 10px 0px 0px;
+  background: var(--zinc-50, #FAFAFA);
+  color: var(--zinc-900, #18181B);
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 37.377px; /* 169.896% */
+  letter-spacing: -0.077px;
+}
+
+.topSection {
+  background-color: white;
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
-  align-items: center;
-}
-
-.title {
-  font-size: 1.25rem;           /* text-xl */
-  font-weight: 700;             /* font-bold */
-  color: #ffffff;
-}
-
-.writeButton {
-  padding: 0.5rem 1rem;         /* px-4 py-2 */
-  background-color: #1f2937;   /* bg-gray-800 */
-  color: #ffffff;
-  border-radius: 0.375rem;     /* rounded */
-  border: none;
-  cursor: pointer;
-}
-
-.sectionTitle {
-  font-size: 1rem;              /* text-md */
-  font-weight: 600;             /* font-semibold */
-  margin-bottom: 0.75rem;       /* mb-3 or mb-2 */
-  color: #f3f4f6;               /* light gray for visibility */
-}
-
-.grid {
-  display: grid;
-  gap: 1rem;                    /* gap-4 */
-  grid-template-columns: repeat(3, 1fr);
-
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  padding-left: 23px;
+  padding-right: 23px;
+  padding-bottom: 23px;
+  padding-top:126px;
 }

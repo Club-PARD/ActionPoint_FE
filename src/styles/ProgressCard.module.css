@@ -1,0 +1,68 @@
+.card {
+  position: relative;
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width:536px;
+  height: 377px;
+  border-radius: 10px;
+  border: 1px solid var(--blue-500, #3B82F6);
+}
+
+.progressWrapper {
+  flex: 1;
+  margin-right: 16px; /* 이미지와 간격 */
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* 퍼센트와 바 사이 간격 */
+  margin-bottom: 12px;
+}
+
+.percentLabel {
+  color: var(--zinc-500, #71717A);
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.progressBar {
+  height: 18px;
+  width: 370px;
+  background-color: #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: #3b82f6;
+  transition: width 0.3s ease;
+}
+
+.progressMessage {
+  white-space: pre-line;
+  padding-top: 100px;
+  color: var(--zinc-900, #18181B);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 33.88px; /* 188.221% */
+  letter-spacing: -0.063px;
+}
+
+.imageWrapper {
+  position: absolute;
+  top: 230px;     /* 위 여백 */
+  right: 30px;   /* 오른쪽 여백 */
+} 
