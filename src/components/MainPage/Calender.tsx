@@ -1,58 +1,88 @@
 import styles from "../../styles/Calendar.module.css";
+import { useState } from "react";
 
-export default function Calendar() {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth(); // 0~11
-  const today = now.getDate();
+const Calendar = () => {
+  const [currentDate, setCurrentDate] = useState(new Date());
 
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+
+  const firstDay = new Date(year, month, 1).getDay();
+  const lastDate = new Date(year, month + 1, 0).getDate();
+
+  const today = new Date();
+
+  const handlePrev = () => {
+    setCurrentDate(new Date(year, month - 1, 1));
+  };
+
+  const handleNext = () => {
+    setCurrentDate(new Date(year, month + 1, 1));
+  };
+
   const monthNames = [
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ];
 
-  const firstDay = new Date(year, month, 1).getDay(); // 0: Sunday ~ 6: Saturday
+  const weeks = [];
+  let dayCount = 1 - firstDay;
+
+  while (dayCount <= lastDate || new Date(year, month, dayCount).getDay() !== 0) {
+    const days = [];
+    for (let j = 0; j < 7; j++) {
+      const date = new Date(year, month, dayCount);
+      const isCurrentMonth = date.getMonth() === month;
+      const isToday =
+        date.getFullYear() === today.getFullYear() &&
+        date.getMonth() === today.getMonth() &&
+        date.getDate() === today.getDate();
+
+      days.push(
+        <div key={j} className={styles.cell}>
+          <div
+            className={`${styles.date} ${
+              isToday ? styles.today : ""
+            } ${!isCurrentMonth ? styles.otherMonth : ""}`}
+          >
+            {date.getDate()}
+          </div>
+        </div>
+      );
+      dayCount++;
+    }
+    weeks.push(
+      <div key={dayCount} className={styles.week}>
+        {days}
+      </div>
+    );
+  }
 
   return (
-    <div className={styles.calendarArea}>
-      <div className={styles.calendarHeader}>
-        <span>{monthNames[month]} {year}</span>
-        <div>
-          <button>&lt;</button>
-          <button>&gt;</button>
+    <div className={styles.calendarWrapper}>
+      <div className={styles.calendar}>
+        <div className={styles.header}>
+          <div className={styles.monthText}>
+            {monthNames[month]} {year}
+          </div>
+          <div className={styles.navButtons}>
+            <button onClick={handlePrev}>&lt;</button>
+            <button onClick={handleNext}>&gt;</button>
+          </div>
         </div>
-      </div>
-
-      <div className={styles.weekDays}>
-        <span>S</span>
-        <span>M</span>
-        <span>T</span>
-        <span>W</span>
-        <span>T</span>
-        <span>F</span>
-        <span>S</span>
-      </div>
-
-      <div className={styles.daysGrid}>
-        {/* 시작 요일만큼 빈칸 */}
-        {Array.from({ length: firstDay }, (_, i) => (
-          <div key={`empty-${i}`}></div>
-        ))}
-        
-        {/* 날짜 출력 */}
-        {Array.from({ length: daysInMonth }, (_, i) => {
-          const day = i + 1;
-          return (
-            <div
-              key={day}
-              className={`${styles.day} ${day === today ? styles.today : ""}`}
-            >
-              {day}
-            </div>
-          );
-        })}
+        <div className={styles.days}>
+          <div>S</div>
+          <div>M</div>
+          <div>T</div>
+          <div>W</div>
+          <div>T</div>
+          <div>F</div>
+          <div>S</div>
+        </div>
+        {weeks}
       </div>
     </div>
   );
-}
+};
+
+export default Calendar;
