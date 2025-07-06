@@ -1,0 +1,57 @@
+.calendarArea {
+    background: white;
+    width: 415px;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.calendarHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.calendarHeader button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 5px;
+}
+
+.weekDays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: gray;
+}
+
+.daysGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    gap: 5px;
+}
+
+.day {
+    padding: 5px;
+    border-radius: 50%;
+}
+.date {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.today {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 50%;
+}
+
