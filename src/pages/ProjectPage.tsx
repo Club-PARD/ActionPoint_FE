@@ -63,7 +63,7 @@ export default function ProjectPage() {
   const projectTitle = dummyProjects[0].title;
   const sortedMeetings = [...dummyMeetings].sort((a, b) => b.id - a.id);
   const [meetings, setMeetings] = useState<Meeting[]>(sortedMeetings);
-  const [selectedMeetingId, setSelectedMeetingId] = useState<number>(sortedMeetings[0].id);
+  const [selectedMeetingId, setSelectedMeetingId] = useState<number>(sortedMeetings[0]?.id || 0);
   const [showSettings, setShowSettings] = useState(false);
 
   const toggleActionPoint = (meetingId: number, point: string) => {
@@ -83,15 +83,15 @@ export default function ProjectPage() {
   };
 
   const currentMeeting = meetings.find(m => m.id === selectedMeetingId)!;
-  const total = currentMeeting.actionPoints.length;
-  const done = currentMeeting.completedPoints.length;
-  const percent = Math.round((done / total) * 100);
+  const total = currentMeeting?.actionPoints.length || 0;
+  const done = currentMeeting?.completedPoints.length || 0;
+  const percent = total === 0 ? 0 : Math.round((done / total) * 100);
 
   const getProgressMessage = (percent: number): string => {
     if (percent === 100) return '전부 끝! 정말 멋져요!\n오늘의 나에게 박수 짝짝~';
     if (percent >= 95) return '헉! 거의 다 왔어요~ 마지막 하나,\n우리 꼭 마무리해봐요!';
     if (percent >= 75) return '여기까지 온 거 진짜 대단해요!\n 이제 마무리만 남았어요!';
-     if (percent >= 25) return '좋아요! 이미 첫 발을 내디뎠어요.\n 계속 이렇게만 가봐요~';
+    if (percent >= 25) return '좋아요! 이미 첫 발을 내디뎠어요.\n 계속 이렇게만 가봐요~';
     return '처음 한 걸음이 가장 멋진 거 아시죠?\n 우리 이제 시작해봐요!';
   };
 
@@ -116,22 +116,36 @@ export default function ProjectPage() {
             )}
           </div>
         </div>
-        <div className={styles.topSection}>
-          <ActionPointCheckBoxCard
-            meeting={currentMeeting}
-            toggleActionPoint={toggleActionPoint}
-          />
-          <ProgressCard
-            percent={percent}
-            message={getProgressMessage(percent)}
-          />
-        </div>
 
-        <MeetingRecordSection
-          meetings={meetings}
-          selectedMeetingId={selectedMeetingId}
-          onSelect={(id) => setSelectedMeetingId(id)}
-        />
+        {meetings.length === 0 ? (
+          <div className={styles.emptyWrapper}>
+            <img src="/empty.svg" alt="빈 화면 이미지" className={styles.emptyImage} />
+            <p className={styles.emptyText}>
+              아직 추가된 회의가 없어요!<br />
+              회의의 목표 작성을 통해 첫 회의를 만들어보세요!
+            </p>
+            <button className={styles.createButton}>+ 회의 기록 작성하기</button>
+          </div>
+        ) : (
+          <>
+            <div className={styles.topSection}>
+              <ActionPointCheckBoxCard
+                meeting={currentMeeting}
+                toggleActionPoint={toggleActionPoint}
+              />
+              <ProgressCard
+                percent={percent}
+                message={getProgressMessage(percent)}
+              />
+            </div>
+
+            <MeetingRecordSection
+              meetings={meetings}
+              selectedMeetingId={selectedMeetingId}
+              onSelect={(id) => setSelectedMeetingId(id)}
+            />
+          </>
+        )}
       </div>
     </div>
   );
