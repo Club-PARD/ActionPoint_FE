@@ -12,7 +12,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
 }
 
 .container {
@@ -47,8 +46,7 @@
 
 .sort{
   display: flex;
-  justify-content: flex-end; /* ⭐ 오른쪽 끝 정렬 */
-  padding-bottom: 20px;
+  padding-bottom: 40px;
   padding-right: 30px;
 }
 
