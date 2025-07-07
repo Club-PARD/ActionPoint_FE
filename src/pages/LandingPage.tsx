@@ -58,6 +58,31 @@ export default function LandingPage() {
       </main>
 
       {showLogin && (
+  <div
+    className={styles.modalOverlay}
+    onClick={() => {
+      setShowLogin(false); // 팝업 닫기
+    }}
+  >
+    <div
+      className={styles.modal}
+      onClick={(e) => e.stopPropagation()} 
+    >
+      <div className={styles.modalLogoWrapper}>
+        <img src="/Logo.png" alt="ACTION POINT 로고" className={styles.modalLogo} />
+      </div>
+      <p className={styles.modalDesc}>액션 포인트를 통해 효율적 회의를 누려보세요</p>
+      <button
+        className={styles.googleButton}
+        onClick={() =>
+          signIn("google", { callbackUrl: "/MainPage" })
+        }
+      >
+        Sign up with Google
+      </button>
+    </div>
+  </div>
+)}
         <div
           className={styles.modalOverlay}
           onClick={() => {
@@ -82,7 +107,6 @@ export default function LandingPage() {
             </button>
           </div>
         </div>
-      )}
     </div>
   );
 }
