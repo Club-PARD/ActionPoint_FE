@@ -1,6 +1,7 @@
 import Header from "@/components/Header/Header";
 import styles from "../styles/MainPage.module.css";
 import { useState } from "react";
+
 export default function MainPage() {
   const dummyProjects = [
     { id: 1, title: "불만있냐", actionPointCount: 4 },
@@ -54,7 +55,9 @@ export default function MainPage() {
 
         {/* 우측 영역 */}
         <div className={styles.rightArea}>
+
           <div className={styles.calendarArea}></div>
+
 
           <div className={styles.projectListArea}>
             <div className={styles.pageIndicator}>
