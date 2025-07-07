@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import XButton from './XButton';
+// import XButton from './XButton';
 import CancelButton from './CancelButton';
 import ParticipantButton from './ParticipantButton';
 import styles from '../../styles/ParticipateProject.module.css';
