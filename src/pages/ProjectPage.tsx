@@ -1,4 +1,3 @@
-// 파일: ProjectPage.tsx
 'use client';
 
 import { useState } from 'react';
@@ -17,22 +16,16 @@ interface Meeting {
   completedPoints: string[];
 }
 
-const dummyProjects: {
-  title: string;
-  participant: string;
-  count: number;
-  status: 0 | 1 | 2;
-}[] = [
+const dummyProjects = [
   { title: '불만있나', participant: '정사목', count: 6, status: 2 },
 ];
-
 
 const dummyMeetings: Meeting[] = [
   {
     id: 1,
     title: '제목은 이정도 길이로 가져가고 만약에 만약에 길어진다면 어느정도까지 잡는게 좋을까요?',
     date: '2025/07/01',
-    actionPoints: ['중간산출물 제출하기', '나는 빡빡이다' , 'primary 색상 정하기', '서브테마 결정'],
+    actionPoints: ['중간산출물 제출하기', '나는 빡빡이다', 'primary 색상 정하기', '서브테마 결정'],
     completedPoints: ['primary 색상 정하기']
   },
   {
@@ -58,13 +51,13 @@ const dummyMeetings: Meeting[] = [
   }
 ];
 
-
 export default function ProjectPage() {
   const projectTitle = dummyProjects[0].title;
   const sortedMeetings = [...dummyMeetings].sort((a, b) => b.id - a.id);
   const [meetings, setMeetings] = useState<Meeting[]>(sortedMeetings);
   const [selectedMeetingId, setSelectedMeetingId] = useState<number>(sortedMeetings[0].id);
   const [showSettings, setShowSettings] = useState(false);
+  const [showCopiedToast, setShowCopiedToast] = useState(false); // ✅ 복사 토스트 상태
 
   const toggleActionPoint = (meetingId: number, point: string) => {
     setMeetings(prev =>
@@ -82,6 +75,16 @@ export default function ProjectPage() {
     );
   };
 
+  const handleCopy = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setShowCopiedToast(true);
+      setTimeout(() => setShowCopiedToast(false), 2000);
+    } catch (err) {
+      console.error('복사 실패:', err);
+    }
+  };
+
   const currentMeeting = meetings.find(m => m.id === selectedMeetingId)!;
   const total = currentMeeting.actionPoints.length;
   const done = currentMeeting.completedPoints.length;
@@ -91,7 +94,7 @@ export default function ProjectPage() {
     if (percent === 100) return '전부 끝! 정말 멋져요!\n오늘의 나에게 박수 짝짝~';
     if (percent >= 95) return '헉! 거의 다 왔어요~ 마지막 하나,\n우리 꼭 마무리해봐요!';
     if (percent >= 75) return '여기까지 온 거 진짜 대단해요!\n 이제 마무리만 남았어요!';
-     if (percent >= 25) return '좋아요! 이미 첫 발을 내디뎠어요.\n 계속 이렇게만 가봐요~';
+    if (percent >= 25) return '좋아요! 이미 첫 발을 내디뎠어요.\n 계속 이렇게만 가봐요~';
     return '처음 한 걸음이 가장 멋진 거 아시죠?\n 우리 이제 시작해봐요!';
   };
 
@@ -99,10 +102,10 @@ export default function ProjectPage() {
     <div className={styles.pageBackground}>
       <Header />
 
-
       <div className={styles.pageWrapper}>
         <div className={styles.projectTitleWrapper}>
-          <div className={styles.projectTitle}>{projectTitle}
+          <div className={styles.projectTitle}>
+            {projectTitle}
             <button
               onClick={() => setShowSettings(prev => !prev)}
               className={styles.optionsButton}
@@ -116,6 +119,7 @@ export default function ProjectPage() {
             )}
           </div>
         </div>
+
         <div className={styles.topSection}>
           <ActionPointCheckBoxCard
             meeting={currentMeeting}
@@ -132,6 +136,13 @@ export default function ProjectPage() {
           selectedMeetingId={selectedMeetingId}
           onSelect={(id) => setSelectedMeetingId(id)}
         />
+
+        {/* ✅ 복사 토스트 메시지 */}
+        {showCopiedToast && (
+          <div className={styles.toastMessage}>
+            클립보드에 복사되었습니다!
+          </div>
+        )}
       </div>
     </div>
   );
