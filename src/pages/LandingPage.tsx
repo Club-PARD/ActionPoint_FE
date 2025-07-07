@@ -10,35 +10,6 @@ export default function LandingPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  // 로그인 완료 후 서버로 사용자 정보 POST
-  useEffect(() => {
-    const sendUserToServer = async () => {
-      if (status === "authenticated" && session?.user) {
-        try {
-          const response = await axios.post(
-            `${process.env.NEXT_PUBLIC_API_URL}/auth/google`,
-            {
-              email: session.user.email,
-              name: session.user.name,
-            },
-            {
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
-
-          const userId = response.data.userId;
-          router.push(`/MainPage?userId=${userId}`);
-        } catch (error) {
-          console.error("서버 전송 실패:", error);
-        }
-      }
-    };
-
-    sendUserToServer();
-  }, [status, session, router]);
-
   return (
     <div className={styles.container}>
       <Header />
