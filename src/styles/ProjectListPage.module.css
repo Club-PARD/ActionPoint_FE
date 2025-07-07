@@ -1,12 +1,13 @@
 .pageBackground {
   border-radius: 4.115px;
   margin-bottom: 20px;
-  background: var(--blue-100, #DBEAFE);
+  background: var(--blue-50, #EFF6FF);
   justify-content: center;      /* ✅ 수평 정렬 */
   align-items: center;          /* ✅ 수직 정렬 */
   box-sizing: border-box;
   height:1020px;
 }
+
 
 .header {
   display: flex;
