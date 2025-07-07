@@ -1,0 +1,45 @@
+.panel {
+  width: 234px;
+  height: 161px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: var(--zinc-50, #FAFAFA);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-left: 170px;
+  margin-top: 20px;
+  padding-left: 16px;
+  padding-top: 10px;
+  padding-right: 14px;
+  
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem; /* mb-4 */
+  border-bottom: 1px solid #e5e7eb; /* ✅ 회색 라인 추가 */
+  stroke-width: 1px;
+  stroke: var(--zinc-400, #A1A1AA);
+}
+
+.title {
+  color: var(--zinc-950, #09090B);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 40px; /* 222.222% */
+  letter-spacing: -0.063px;
+}
+
+.closeButton {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}

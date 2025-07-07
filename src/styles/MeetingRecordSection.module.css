@@ -8,6 +8,8 @@
   padding-top: 29px;
   padding-right: 29px;
   background: var(--zinc-50, #FAFAFA);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
 }
 
 .meetingHeader {
