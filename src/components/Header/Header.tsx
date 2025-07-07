@@ -24,15 +24,33 @@ export default function Header() {
           <Link href="/MainPage">
             <span className={router.pathname === "/MainPage" ? styles.active : ""}>액션 포인트</span>
           </Link>
+           <Link href="/ProjectPage">
+            <span className={router.pathname === "/ProjectPage" ? styles.active : ""}>프로젝트 페이지</span>
+          </Link>
+          <Link href="/MeetingPage">
+            <span className={router.pathname === "/MeetingPage" ? styles.active : ""}>회의 페이지</span>
+          </Link>
         </nav>
 
-        <div className={styles.right}>
-          <span className={styles.profileText}>
-            {session?.user?.name ?? "이름"}님
-          </span>
-          <span className={styles.profileText}>내 프로필</span>
-        </div>
-      </div>
+  
+      {/* 🔹 오른쪽 사용자 정보 */}
+<div className={styles.right}>
+  <div className={styles.profile}>
+    <Image
+      src="/profile.svg"
+      alt="유저 아이콘"
+      width={40}
+      height={40}
+      className={styles.profileImage}
+    />
+    <span className={styles.profileText}>
+      {session?.user?.name ?? "김사랑"}님
+    </span>
+  </div>
+</div>
+
+</div>
     </header>
-  );
+)
 }
+

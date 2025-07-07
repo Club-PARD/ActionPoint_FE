@@ -18,8 +18,8 @@
   color: black;
   padding: 1.5rem;
   border-radius: 0.5rem;
-  width: 684px;
-  height: 356px;
+  width: 700px;
+  height: 500px;
   flex-shrink: 0;
   position: relative;
 }
@@ -162,12 +162,14 @@
 }
 
 .copyMessage {
-  margin-top: 8px;
+  position: absolute;        /* 👈 추가 */
+  top: calc(100% + 4px);     /* input 아래 살짝 여백 두고 */
+  left: 0;
   font-size: 12px;
   color: #3B82F6;
-  text-align: center;
   animation: fadeInOut 2s ease-in-out;
 }
+
 
 
 @keyframes fadeInOut {

@@ -23,3 +23,18 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* styles/globals.css */
+/* @font-face {
+  font-family: "NanumPen";
+  src: url("/fonts/NanumPen.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "NanumPen", sans-serif;
+  margin: 0;
+  padding: 0;
+} */
