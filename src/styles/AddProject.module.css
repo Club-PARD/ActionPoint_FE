@@ -160,3 +160,19 @@
   gap: 12px;                  /* 버튼 사이 간격 */
   margin-top:20px;
 }
+
+.copyMessage {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #3B82F6;
+  text-align: center;
+  animation: fadeInOut 2s ease-in-out;
+}
+
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
