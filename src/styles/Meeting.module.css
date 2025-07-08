@@ -1,0 +1,173 @@
+/* 전체 컨테이너 */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  font-family: 'Pretendard', sans-serif;
+  color: #222;
+}
+
+/* 뒤로가기 텍스트 */
+.backLink {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 32px;
+  cursor: pointer;
+}
+
+/* 각 섹션 박스 */
+.section {
+  margin-bottom: 48px;
+}
+
+/* 섹션 제목 */
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #ccc;
+}
+
+/* form 요소 배치 */
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.formRow {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.formRow label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.formRow input[type="text"],
+.formRow input[type="date"],
+.formRow input[type="time"],
+.formRow input[type="file"],
+.formRow textarea,
+.formRow select {
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+.formRow input:focus,
+.formRow textarea:focus {
+  border-color: #4a90e2;
+}
+
+.formRow textarea {
+  min-height: 120px;
+  resize: vertical;
+  background-color: #f9f9f9;
+}
+
+/* 업로드 버튼 */
+.uploadButton {
+  margin-top: 8px;
+  width: fit-content;
+  padding: 8px 16px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.uploadButton:hover {
+  background-color: #3b7ccd;
+}
+
+/* 액션 포인트 */
+.actionPointRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.actionPointRow input {
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.actionPointRow .removeButton {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #999;
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 16px;
+  background-color: #f3f3f3;
+  border: 1px dashed #ccc;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #333;
+}
+
+.addButton:hover {
+  background-color: #eaeaea;
+}
+
+/* 회의 안건 */
+.agendaBox {
+  margin-top: 16px;
+}
+
+.agendaTitle {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.uploadArea {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #666;
+}
+
+/* 하단 버튼 */
+.buttonGroup {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 48px;
+}
+
+.blueButton {
+  padding: 10px 24px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.blueButton:hover {
+  background-color: #3a7bd5;
+}

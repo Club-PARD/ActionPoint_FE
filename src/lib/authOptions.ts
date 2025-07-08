@@ -50,15 +50,18 @@ export const authOptions: NextAuthOptions = {
         console.log('✅ 서버 응답:', response.data);
 
         return true;
-      } catch (error: any) {
-        if (error.response) {
-          console.error('❌ 서버 응답 실패:', {
-            status: error.response.status,
-            data: error.response.data,
-          });
-        } else {
-          console.error('❌ 요청 실패:', error.message);
-        }
+      } 
+     catch (error: unknown) {
+  if (axios.isAxiosError(error)) {
+    console.error('❌ 서버 응답 실패:', {
+      status: error.response?.status,
+      data: error.response?.data,
+    });
+  } else if (error instanceof Error) {
+    console.error('❌ 요청 실패:', error.message);
+  } else {
+    console.error('❌ 알 수 없는 에러 발생');
+  }
 
         return false;
       }
