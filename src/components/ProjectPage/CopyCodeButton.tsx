@@ -14,7 +14,7 @@ export default function CopyCodeButton() {
       const res = await axios.get('/api/project/code');
       const code = res.data.code || res.data;
       await navigator.clipboard.writeText(code);
-      alert('코드가 복사되었습니다!');
+      alert('코드가 복사되었습니다람쥐~!');
     } catch {
       alert('복사 실패');
     } finally {
