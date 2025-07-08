@@ -16,11 +16,11 @@ const dummyProjects: {
   status: 0 | 1 | 2;
 }[] = [
   { title: '불만있나', participant: '정사목', count: 6, status: 2 },
-  { title: '스마트미디어시스템트', participant: '정사목 김사현 외 N명', count: 6, status: 1 },
-  { title: '스마트미디어시스템트', participant: '정사목 김사현 외 N명', count: 6, status: 0 },
-  { title: '불만있나', participant: '정사목 김사현 외 N명', count: 6, status: 2 },
-  { title: '스마트미디어시스템트', participant: '정사목 김사현 외 N명', count: 6, status: 1 },
-  { title: '0gang', participant: '정사목 김사현 외 N명', count: 6, status: 0 },
+  { title: '스마트미디어시스템트', participant: '정사목', count: 6, status: 1 },
+  { title: '스마트미디어시스템트', participant: '정사목', count: 6, status: 0 },
+  { title: '불만있나', participant: '정사목', count: 6, status: 2 },
+  { title: '스마트미디어시스템트', participant: '정사목', count: 6, status: 1 },
+  { title: '0gang', participant: '정사목', count: 6, status: 0 },
 ];
 
 export default function ProjectListPage() {
@@ -39,17 +39,12 @@ export default function ProjectListPage() {
   <div className={styles.pageBackground}>
     <Header />
       <main className={styles.container}>
-        <header className={styles.header}>
-          <h2 className={styles.main}>프로젝트 리스트</h2>
-
-          <div className={styles.actions}>
-            <ProjectCreateButton />
-            <ParticipationProjectButton />
-          </div>
-        </header>
-
-        <div className={styles.sort}>
-            <SortDropdown onSelect={(option) => setSelectedFilter(option)} />
+        
+        <div className={styles.header1}>
+            <h2 className={styles.main}>프로젝트 리스트</h2>
+            <div className={styles.sort}>
+              <SortDropdown onSelect={(option) => setSelectedFilter(option)} />
+          </div> 
         </div>
 
         <section className={styles.grid}>
@@ -63,6 +58,14 @@ export default function ProjectListPage() {
             />
           ))}
         </section>
+
+        <header className={styles.header}>
+          <div className={styles.actions}>
+            <ParticipationProjectButton />
+            <ProjectCreateButton />
+          </div>
+        </header>
+
       </main>
     </div>
     </>

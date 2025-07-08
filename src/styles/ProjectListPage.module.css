@@ -1,7 +1,6 @@
 .pageBackground {
   border-radius: 4.115px;
   margin-bottom: 20px;
-  background: var(--blue-50, #EFF6FF);
   justify-content: center;      /* ✅ 수평 정렬 */
   align-items: center;          /* ✅ 수직 정렬 */
   box-sizing: border-box;
@@ -10,9 +9,11 @@
 
 
 .header {
+  padding-top: 50px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+  padding-right: 40px;
 }
 
 .container {
@@ -28,13 +29,17 @@
 
 
 .main{
-  color: var(--zinc-950, #09090B);
+  color: #000;
   font-family: Pretendard;
-  font-size: 28px;
+  font-size: 20px;
   font-style: normal;
-  font-weight: 600;
-  line-height: 40px; /* 142.857% */
-  letter-spacing: -0.098px;
+  font-weight: 700;
+  line-height: 37.377px; /* 186.885% */
+  letter-spacing: -0.07px;
+  text-decoration: underline;
+  text-decoration-color: var(--Color-Sub-Logo, #3B82F6); /* 밑줄 색상 */
+  text-underline-offset: 10px; /* 텍스트와 밑줄 간격 조절 (선택 사항) */
+  padding-left: 5px;
 }
 
 .actions {
@@ -44,15 +49,20 @@
   margin-bottom: 20px;
 }
 
+.header1{
+  display: flex;
+  justify-content: space-between;
+}
 
 .sort{
   display: flex;
-  padding-bottom: 40px;
-  padding-right: 30px;
+  justify-content: flex-end;
+  padding-bottom: 47px;
+  padding-right: 40px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(330px, 1fr));
-  gap: 30px;
+  row-gap: 50px;
 }

@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import styles from '../styles/ActionPointCheckBoxCard.module.css';
 
 interface Props {
@@ -16,7 +15,9 @@ interface Props {
 export default function ActionPointCheckBoxCard({ meeting, toggleActionPoint }: Props) {
   return (
     <div className={styles.card}>
+      <h2 className={styles.next}>다음 회의 안건</h2>
       <h3 className={styles.cardTitle}>{meeting.title}</h3>
+      <h4 className={styles.countaction}>총 {meeting.actionPoints.length}개의 액션 포인트가 있어요!</h4>
 
       <div className={styles.contentWrapper}>
         <ul className={styles.actionList}>
@@ -27,7 +28,7 @@ export default function ActionPointCheckBoxCard({ meeting, toggleActionPoint }: 
               return aDone === bDone ? 0 : aDone ? 1 : -1;
             })
             .map((point, i) => (
-              <li
+               <li
                 key={i}
                 className={`${styles.actionItem} ${
                   meeting.completedPoints.includes(point) ? styles.completedGoal : ''
@@ -38,21 +39,11 @@ export default function ActionPointCheckBoxCard({ meeting, toggleActionPoint }: 
                   checked={meeting.completedPoints.includes(point)}
                   onChange={() => toggleActionPoint(meeting.id, point)}
                 />
-                {point}
+                <span className={styles.actionText}>{point}</span> 
               </li>
             ))}
         </ul>
-
-        {/* next/image로 이미지 추가 */}
-        <div className={styles.imageWrapper}>
-          <Image
-            src="./Paper.svg"
-            alt="액션 포인트 이미지"
-            width={174}
-            height={181}
-          />
         </div>
       </div>
-    </div>
   );
 }
