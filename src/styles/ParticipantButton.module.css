@@ -1,19 +1,23 @@
-/* ParticipantButton.module.css */
-
 .button {
-    display: inline-flex;
-    padding: 8px 15px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    border-radius: 20px;
-    background: var(--blue-500, #3B82F6);
-    color: var(--white, #FFF);
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
+  color: var(--white, #FFF);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 
+  display: flex;
+  width: 123px;
+  height: 58px;
+  padding: 0px 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  border-radius: 10px;
+  border: 2px solid var(--Color-Main-Blue, #3B82F6);
+  background: var(--Color-Main-Blue, #3B82F6);
+  cursor: pointer;
+}
