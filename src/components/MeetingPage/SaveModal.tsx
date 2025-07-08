@@ -19,7 +19,7 @@ export default function SaveChangesModal({ onSave, onCancel }: SaveChangesModalP
             저장하지 않음
           </button>
           <button className={styles.save} onClick={onSave}>
-            저장하기
+            저장하기! 
           </button>
         </div>
       </div>
