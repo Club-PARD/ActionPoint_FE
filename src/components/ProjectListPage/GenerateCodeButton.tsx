@@ -56,7 +56,6 @@
         const code = response.data.projectCode;
         onCodeGenerated(code);
         console.log('✅ 프로젝트 생성 성공:', code);
-        onCodeGenerated(code);
       } catch (error: any) {
         console.error('❌ 프로젝트 생성 실패:', error);
 
