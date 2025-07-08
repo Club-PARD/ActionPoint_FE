@@ -1,14 +1,13 @@
-import { useState, useEffect } from "react";
-import { signIn, useSession } from "next-auth/react";
+import { useState } from "react";
+import { signIn } from "next-auth/react";
 import Header from "@/components/Header/Header";
 import styles from "../styles/LandingPage.module.css";
-import axios from "axios";
-import { useRouter } from "next/router";
 
 export default function LandingPage() {
   const [showLogin, setShowLogin] = useState(false);
   const { data: session, status } = useSession();
   const router = useRouter();
+
 
   return (
     <div className={styles.container}>
@@ -54,30 +53,7 @@ export default function LandingPage() {
     </div>
   </div>
 )}
-        <div
-          className={styles.modalOverlay}
-          onClick={() => {
-            setShowLogin(false);
-          }}
-        >
-          <div
-            className={styles.modal}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className={styles.modalLogoWrapper}>
-              <img src="/Logo.png" alt="ACTION POINT 로고" className={styles.modalLogo} />
-            </div>
-            <p className={styles.modalDesc}>액션 포인트를 통해 효율적 회의를 누려보세요</p>
-            <button
-              className={styles.googleButton}
-              onClick={() =>
-                signIn("google", { callbackUrl: "/MainPage" })
-              }
-            >
-              Sign up with Google
-            </button>
-          </div>
-        </div>
+
     </div>
   );
 }
