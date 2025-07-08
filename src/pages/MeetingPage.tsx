@@ -26,47 +26,50 @@ export default function MeetingPage() {
         <span>&lt; 프로젝트로 돌아가기</span>
       </div>
 
+      {/* 회의 목표 섹션 */}
       <section className={styles.section}>
         <h3 className={styles.sectionTitle}>회의 목표</h3>
-
         <div className={styles.formRow}>
           <label>회의 목표 *</label>
           <input type="text" placeholder="회의 목표를 작성해주세요." />
         </div>
 
-        <div className={styles.formRow}>
-          <label>회의 날짜</label>
-          <input type="date" defaultValue="2025-07-07" />
-        </div>
+        <div className={styles.formGrid}>
+          <div className={styles.formRow}>
+            <label>회의 날짜</label>
+            <input type="date" defaultValue="2025-07-07" />
+          </div>
 
-        <div className={styles.formRow}>
-          <label>시간</label>
-          <input type="time" placeholder="시간을 입력해주세요" />
-        </div>
+          <div className={styles.formRow}>
+            <label>시간</label>
+            <input type="time" placeholder="시간을 입력해주세요" />
+          </div>
 
-        <div className={styles.formRow}>
-          <label>참여자 *</label>
-          <input type="text" placeholder="참여자를 입력해주세요" />
-        </div>
+          <div className={styles.formRow}>
+            <label>참여자 *</label>
+            <input type="text" placeholder="참여자를 입력해주세요" />
+          </div>
 
-        <div className={styles.formRow}>
-          <label>기록자 *</label>
-          <input type="text" placeholder="기록자를 입력해주세요" />
-        </div>
+          <div className={styles.formRow}>
+            <label>기록자 *</label>
+            <input type="text" placeholder="기록자를 입력해주세요" />
+          </div>
 
-        <div className={styles.formRow}>
-          <label>참고 자료</label>
-          <input type="file" />
-          <button className={styles.uploadButton}>업로드</button>
+          <div className={styles.formRow}>
+            <label>참고 자료</label>
+            <input type="file" />
+            <button className={styles.uploadButton}>업로드</button>
+          </div>
         </div>
       </section>
 
+      {/* 회의 안건 섹션 */}
       <section className={styles.section}>
         <h3 className={styles.sectionTitle}>회의 안건</h3>
 
         {agendaList.map((agenda, index) => (
           <div key={index} className={styles.formRow}>
-            <label>회의 안건{index + 1} *</label>
+            <label>회의 안건 {index + 1} *</label>
             <input
               type="text"
               placeholder="회의 안건을 작성해주세요"
@@ -81,6 +84,7 @@ export default function MeetingPage() {
         </button>
       </section>
 
+      {/* 하단 버튼 */}
       <div className={styles.buttonGroup}>
         <button className={styles.whiteButton}>회의록 작성</button>
         <button className={styles.blueButton}>회의 목표 저장</button>

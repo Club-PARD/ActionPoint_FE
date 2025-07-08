@@ -2,6 +2,7 @@
     width: 100%;
     min-height: 100vh;
     background: var(--blue-50, #EFF6FF);
+    margin-top: 80px;  
 }
 
 .contentWrapper {
