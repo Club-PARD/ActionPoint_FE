@@ -7,15 +7,9 @@ import AddProject from "@/components/ProjectListPage/AddProject";
 import ParticipateProject from "@/components/ProjectListPage/ParticipateProject";
 import ActionPointCheckBoxCard from "@/components/ActionPointCheckBoxCard";
 import styles from "../styles/MainPage.module.css";
-import { useSession } from "next-auth/react";
-import { useUserStore } from "@/stores/UserStore";
-import axios from "axios";
 
 export default function MainPage() {
-  const { data: session } = useSession(); // ✅ 세션 선언 추가
-  const dummyProjects: { id: number; title: string; actionPointCount: number }[] = [];
-  
-  //하솔
+  // ✅ 더미 프로젝트 데이터
   const dummyProjects = [
     { id: 1, title: "중간 산출물 제출하기", actionPointCount: 3 },
     { id: 2, title: "중간 산출물 제출하기", actionPointCount: 2 },
@@ -54,11 +48,7 @@ export default function MainPage() {
       {isEmpty ? (
         <div className={styles.emptyWrapper}>
           <img src="/empty.svg" alt="빈 상태 아이콘" className={styles.emptyIcon} />
-
-
- <p className={styles.emptyText}> {session?.user?.name ?? "김사랑"}님의 액션포인트가 없어요.</p>
-          {/* {session?.user?.name ?? "김사랑"}님 */}
-          
+          <p className={styles.emptyText}><strong>김사랑</strong>님의 액션포인트가 없어요.</p>
           <p className={styles.subText}>프로젝트를 통해 액션 포인트를 만들어 보아요!</p>
 
           <div className={styles.buttonGroup}>
@@ -103,7 +93,7 @@ export default function MainPage() {
 
             <div className={styles.projectInfo}>
               <img src="/folderIcon.svg" alt="프로젝트 아이콘" className={styles.projectIcon} />
-              <span className={styles.projectName}>PARD 콩커톤</span>
+              <span className={styles.projectName}>PARD 옹커톤</span>
             </div>
 
             <ActionPointCheckBoxCard
