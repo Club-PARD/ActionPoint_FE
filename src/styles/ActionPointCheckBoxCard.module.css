@@ -1,42 +1,73 @@
 .card {
-  width:536px;
-  height:376px;
-  position: relative;
-  background: white;
-  border-radius: 8px;
-  padding: 16px;
+  width: 597px;
+  height: 296px;
+  border-radius: 15px;
+  background: var(--neutral-50, #FAFAFA);
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-  background: var(--blue-500, #3B82F6);
+}
+
+.next{
+  color: #8E8B8B;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20.204px; /* 168.366% */
+  letter-spacing: -0.042px;
+  padding-left: 25px;
+  padding-top: 25px;
 }
 
 .cardTitle {
-  color: var(--zinc-50, #FAFAFA);
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-left: 36px;
+  padding-bottom: 27px;
+  color: #000;
   font-family: Pretendard;
-  font-size: 22px;
+  font-size: 15px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 37.377px; /* 169.896% */
-  letter-spacing: -0.077px;
+  font-weight: 600;
+  line-height: 34.592px; /* 230.611% */
+  letter-spacing: -0.052px;
+}
+
+.countaction{
+  padding-left: 25px;
+  color: var(--Color-Sub-Logo, #60A5FA);
+  font-family: Pretendard;
+  font-size: 12px;
+  padding-bottom: 13.5px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20.204px; /* 168.366% */
+  letter-spacing: -0.042px;
 }
 
 .actionList {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0; 
+}
+
+.actionText{
+  padding-left: 15px;
+  padding-top: 0px;
 }
 
 /* 부모 항목 */
 .actionItem {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  width: 520px;
+  min-height: 38px;
+  flex-shrink: 0;
+  margin-left: 25px;
+  color: var(--black, #000);
   font-family: Pretendard;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 33.88px;
-  color: #FAFAFA;
-  margin-bottom: 12px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  border-radius: 5px;
+  background: #FFF;
+  margin-bottom: 10px;
 }
 
 /* 기본 체크박스 숨기고 커스텀 스타일 적용 */
@@ -45,16 +76,18 @@
   -webkit-appearance: none;
   width: 20px;
   height: 20px;
-  border: 2px solid #ffffff;
+  border: 2px solid gray;
   border-radius: 4px;
   background-color: transparent;
   cursor: pointer;
   position: relative;
+  top:9px;
+  left:7px;
 }
 
 /* 체크됐을 때: 배경 흰색, 테두리 파랑 */
 .actionItem input[type='checkbox']:checked {
-  border-color: #ffffff;
+  background-color: blue;
 }
 
 /* 체크 마크 */
@@ -65,28 +98,19 @@
   top: 1px;
   width: 6px;
   height: 12px;
-  border: solid #ffffff;
+  border: solid white;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
 
-
+/* 여기 바꿔야됌 */
 .completedGoal {
-color: var(--zinc-200, #E4E4E7);
-
-/* T/M18 */
-font-family: Pretendard;
-font-size: 18px;
-font-style: normal;
-font-weight: 500;
-line-height: 33.88px; /* 188.221% */
-letter-spacing: -0.063px;
-text-decoration-line: line-through;
+  color: var(--zinc-200, #E4E4E7);
+  /* T/M18 */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: line-through;
 }
-
-.imageWrapper {
-  position: absolute;
-  padding-left: 300px;
-  top: 180px;     /* 위 여백 */
-  right: 30px;   /* 오른쪽 여백 */
-} 

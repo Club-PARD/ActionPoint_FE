@@ -1,16 +1,15 @@
 .card {
   position: relative;
-  background: white;
-  border-radius: 8px;
+  border-radius: 15px;
+  background: #FAFAFA;  border-radius: 8px;
   padding: 16px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width:536px;
-  height: 377px;
+  width: 528px;
+  height: 296px;
   border-radius: 10px;
-  border: 1px solid var(--blue-500, #3B82F6);
 }
 
 .progressWrapper {
@@ -19,50 +18,82 @@
 }
 
 .progressRow {
+  margin-left: 43px;
   display: flex;
   align-items: center;
   gap: 12px; /* 퍼센트와 바 사이 간격 */
   margin-bottom: 12px;
 }
 
-.percentLabel {
-  color: var(--zinc-500, #71717A);
+.today{
+  width: 320px;
+  height: 105px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: var(--white, #FFF);
+  color: #000;
   font-family: Pretendard;
-  font-size: 15px;
+  font-size: 17px;
   font-style: normal;
   font-weight: 500;
-  line-height: normal;
+  line-height: 140%; /* 23.8px */
+  letter-spacing: -0.059px;
+  padding-top: 29px;
+  padding-left: 49px;
+  margin-left: 165px;
+  margin-top: 47px;
+  margin-bottom: 34px;
+}
+
+.actionPoint{
+  color: var(--Color-Main-Blue, #3B82F6);
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+  letter-spacing: -0.059px;
+}
+
+.percentLabel {
+  margin-left: 140px;
+  color: var(--Color-Sub-Logo, #60A5FA);
+  text-align: right;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -0.07px;
 }
 
 .progressBar {
   height: 18px;
-  width: 370px;
-  background-color: #e5e7eb;
-  border-radius: 6px;
+  width: 442px;
+  border-radius: 5px;
+  background: #E9E9E9;
   overflow: hidden;
+  margin-left: 43px;
+
 }
 
 .progressFill {
   height: 100%;
-  background-color: #3b82f6;
+  border-radius: 5px;
+  background: #60A5FA;
   transition: width 0.3s ease;
 }
 
 .progressMessage {
-  white-space: pre-line;
-  padding-top: 100px;
-  color: var(--zinc-900, #18181B);
-  text-align: center;
+  color: var(--Color-Main-Blue, #3B82F6);
   font-family: Pretendard;
-  font-size: 18px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 33.88px; /* 188.221% */
-  letter-spacing: -0.063px;
+  letter-spacing: -0.042px;
 }
 
 .imageWrapper {
   position: absolute;
-  top: 230px;     /* 위 여백 */
-  right: 30px;   /* 오른쪽 여백 */
+  top: 72px;     /* 위 여백 */
+  left: 58px;   /* 오른쪽 여백 */
 } 

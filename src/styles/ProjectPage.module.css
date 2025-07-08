@@ -1,7 +1,6 @@
 .pageBackground {
   border-radius: 4.115px;
   margin-bottom: 20px;
-  background: var(--blue-50, #EFF6FF);
   justify-content: center;      /* ✅ 수평 정렬 */
   align-items: center;          /* ✅ 수직 정렬 */
   box-sizing: border-box;
@@ -18,25 +17,29 @@
 }
 
 .projectTitle{
-  width: 199px;
-  height: 63px;
+  width: 1148px;
+  height: 73px;
   flex-shrink: 0;
-  border-radius: 10px 10px 0px 0px;
-  background:white;
-  color: var(--zinc-900, #18181B);
+  padding-left: 25px;
+  padding-top: 19px;
+  margin-bottom: 92px;
+  margin-top: 100px;
+
+  color: var(--Color-Main-Text, var(--zinc-900, #18181B));
   font-family: Pretendard;
-  font-size: 22px;
+  font-size: 25px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 37.377px; /* 169.896% */
-  letter-spacing: -0.077px;
-  padding-left: 43px;
-  padding-top:13px;
-  margin-top: 80px;
+  font-weight: 600;
+  line-height: 34.592px; /* 138.366% */
+  letter-spacing: -0.087px;
+
+  border-radius: 10px;
+  opacity: 0.23;
+  background: var(--Color-Blue50, #CBE2FF);
 }
 
 .optionsButton{
-  padding-left: 40px;
+  padding-left: 1000px;
 }
 
 .topSection {
@@ -46,8 +49,50 @@
   justify-content: space-between;
   border-radius: 10px;
   box-shadow: 0 2px rgba(0,0,0,0.1);
-  padding-left: 23px;
-  padding-right: 23px;
+  padding-right: 25px;
   padding-bottom: 23px;
-  padding-top:126px;
+  padding-top:35px;
+  gap:32px;
+}
+
+.maintitle{
+  display: flex;
+
+}
+
+.Action{
+  display: flex;
+  width: 120px;
+  height: 20px;
+  justify-content: center;
+  color: var(--Color-Main-Text, var(--zinc-900, #18181B));
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 37.377px; /* 186.885% */
+  letter-spacing: -0.07px;
+  text-decoration: underline;
+  text-decoration-color: var(--Color-Sub-Logo, #3B82F6); /* 밑줄 색상 */
+  text-underline-offset: 10px; /* 텍스트와 밑줄 간격 조절 (선택 사항) */
+  padding-right: 20px;
+}
+
+.Process{
+  display: flex;
+  width: 120px;
+  height: 20px;
+  justify-content: center;
+  color: var(--Color-Main-Text, var(--zinc-900, #18181B));
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 37.377px; /* 186.885% */
+  letter-spacing: -0.07px;
+  text-decoration: underline;
+  text-decoration-color: var(--Color-Sub-Logo, #3B82F6); /* 밑줄 색상 */
+  text-underline-offset: 10px; /* 텍스트와 밑줄 간격 조절 (선택 사항) */
+  padding-left: 5px;
+  margin-left: 475px;
 }

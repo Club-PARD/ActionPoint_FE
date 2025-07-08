@@ -2,18 +2,18 @@
 
 .button {
     display: inline-flex;
-    padding: 10px 20px;
+    padding: 8px 15px;
     justify-content: center;
     align-items: center;
     gap: 8px;
-    border-radius: 10px;
+    border-radius: 20px;
+    background: var(--blue-500, #3B82F6);
     color: var(--white, #FFF);
     text-align: center;
     font-family: Pretendard;
-    font-size: 19px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 500;
-    line-height: 21px; /* 116.667% */
-    background: var(--blue-500, #3B82F6);   
+    line-height: normal;
 }
 

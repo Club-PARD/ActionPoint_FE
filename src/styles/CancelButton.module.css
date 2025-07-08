@@ -2,21 +2,19 @@
 
 .button {
   display: inline-flex;
-  padding: 10px 20px;
+  padding: 8px 15px;
   justify-content: center;
   align-items: center;
   gap: 8px;
+  border-radius: 20px;
+  border: 1px solid var(--zinc-400, #A1A1AA);
   color: var(--zinc-400, #A1A1AA);
   text-align: center;
-
-  /* B/M/T/M/18 */
   font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 21px; /* 116.667% */
-  border-radius: 10px;
-  border: 1px solid var(--zinc-400, #A1A1AA);
+  line-height: normal;
 }
 
 .button:hover {

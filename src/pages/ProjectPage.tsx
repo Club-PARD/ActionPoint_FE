@@ -98,8 +98,6 @@ export default function ProjectPage() {
   return (
     <div className={styles.pageBackground}>
       <Header />
-
-
       <div className={styles.pageWrapper}>
         <div className={styles.projectTitleWrapper}>
           <div className={styles.projectTitle}>{projectTitle}
@@ -128,6 +126,10 @@ export default function ProjectPage() {
           </div>
         ) : (
           <>
+          <div className={styles.maintitle}>
+            <span className={styles.Action}>액션 포인트</span>
+            <span className={styles.Process}>나의 진행도</span>
+          </div>
             <div className={styles.topSection}>
               <ActionPointCheckBoxCard
                 meeting={currentMeeting}

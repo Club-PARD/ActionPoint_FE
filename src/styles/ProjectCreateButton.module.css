@@ -1,16 +1,15 @@
 /* ProjectCreateButton.module.css */
 
 .createButton {
-  color: var(--blue-500, #3B82F6);
+  color: var(--white, #FFF);
   text-align: center;
   font-family: Pretendard;
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 600;
-  line-height: 40px; /* 250% */
-  letter-spacing: -0.056px;
+  line-height: 21px; /* 116.667% */
   display: flex;
-  width: 150px;
+  width: 153px;
   height: 58px;
   padding: 0px 20px;
   flex-direction: column;
@@ -18,7 +17,6 @@
   align-items: center;
   gap: 8px;
   border-radius: 10px;
-  border: 2px solid var(--blue-500, #3B82F6);
-  background: var(--blue-50, #EFF6FF);
+  background: #5B8AD6;
 }
 

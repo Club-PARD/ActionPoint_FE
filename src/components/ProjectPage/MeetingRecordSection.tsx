@@ -1,5 +1,7 @@
 // 파일: components/MeetingRecordSection.tsx
+import { useState } from 'react';
 import styles from '../../styles/MeetingRecordSection.module.css';
+import MeetingSettingPannel from './MeetingSettingPannel';
 
 interface Meeting {
   id: number;
@@ -14,6 +16,8 @@ interface Props {
 }
 
 export default function MeetingRecordSection({ meetings, selectedMeetingId, onSelect }: Props) {
+  const [openMenuId, setOpenMenuId] = useState<number | null>(null);
+
   return (
     <div className={styles.meetingSection}>
       <div className={styles.meetingHeader}>
@@ -30,7 +34,30 @@ export default function MeetingRecordSection({ meetings, selectedMeetingId, onSe
           >
             <p className={styles.meetingTitle}>{meeting.title}</p>
             <span className={styles.meetingDate}>{meeting.date}</span>
-            <button className={styles.menuBtn}>⋮</button>
+
+            {/* 메뉴 버튼 + 토글 */}
+              <button
+                className={styles.menuBtn}
+                onClick={(e) => {
+                  e.stopPropagation(); // 회의 선택 방지
+                  setOpenMenuId(openMenuId === meeting.id ? null : meeting.id);
+                }}
+              >
+                ⋮
+              </button>
+
+              {openMenuId === meeting.id && (
+                <MeetingSettingPannel
+                  onEdit={() => {
+                    console.log(`Edit ${meeting.id}`);
+                    setOpenMenuId(null);
+                  }}
+                  onDelete={() => {
+                    console.log(`Delete ${meeting.id}`);
+                    setOpenMenuId(null);
+                  }}
+                />
+              )}
           </li>
         ))}
       </ul>
