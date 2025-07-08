@@ -58,7 +58,7 @@ export default function ParticipateProject({ onClose }: ParticipateProjectProps)
       <div className={styles.modal}>
         <h2 className={styles.label}>프로젝트 참여하기</h2>
 
-        <h3 className={styles.inputCode}>프로젝트 코드 입력</h3>
+        <h3 className={styles.inputCode}>프로젝트 코드입력</h3>
         <input
           type="text"
           value={projectTitle}
