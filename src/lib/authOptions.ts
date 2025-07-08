@@ -60,11 +60,12 @@ export const authOptions: NextAuthOptions = {
   } else if (error instanceof Error) {
     console.error('❌ 요청 실패:', error.message);
   } else {
-    console.error('❌ 알 수 없는 에러 발생');
+    console.error('❌ 알 수 없는 에러');
   }
 
-        return false;
-      }
+  return false;
+}
+
     },
   },
 };
