@@ -13,7 +13,7 @@ export default function LandingPage() {
       <main className={styles.main}>
         <h2 className={styles.mainText}>Dreams come true.</h2>
         <p className={`${styles.mainText} ${styles.textSpacing}`}>
-          Action Point를 통해 회의를 만들어 보아요
+          Action Point를 통해 회의를 만들어 보아요!
         </p>
 
         <div className={styles.logoWrapper}>
@@ -38,7 +38,7 @@ export default function LandingPage() {
       <div className={styles.modalLogoWrapper}>
         <img src="/Logo.png" alt="ACTION POINT 로고" className={styles.modalLogo} />
       </div>
-      <p className={styles.modalDesc}>액션 포인트를 통해 효율적 회의를 누려보세요</p>
+      <p className={styles.modalDesc}>액션 포인트를 통해 효율적 회의를 진행해보세요</p>
       <button
         className={styles.googleButton}
         onClick={() =>

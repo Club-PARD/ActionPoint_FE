@@ -1,8 +1,8 @@
 .pageBackground {
-  border-radius: 4.115px;
+  border-radius: 4px;
   margin-bottom: 20px;
-  justify-content: center;      /* ✅ 수평 정렬 */
-  align-items: center;          /* ✅ 수직 정렬 */
+  justify-content: center;     
+  align-items: center;          
   box-sizing: border-box;
   height:1020px;
 }
