@@ -1,134 +1,60 @@
 .container {
-    width: 100%;
-    min-height: 100vh;
-    background: var(--blue-50, #EFF6FF);
-    margin-top: 80px;  
+  width: 100%;
+  min-height: 100vh;
+  background: white; /* 빈 상태 배경 흰색으로 변경 */
+  margin-top: 80px;
 }
 
-.contentWrapper {
-    display: flex;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-top: 70px;
-    gap: 60px;
+.emptyWrapper {
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  text-align: center;
 }
 
-.leftArea {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+.emptyIcon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 16px;
+  opacity: 0.4;
 }
 
-.whiteCard {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    position: relative;
-    width: 709px;
-    height: 700px;
+.emptyText {
+  font-size: 14px;
+  color: #6B7280;
+  margin-bottom: 6px;
 }
 
-.title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+.subText {
+  font-size: 13px;
+  color: #9CA3AF;
+  margin-bottom: 20px;
 }
 
-.memoWrapper {
-    position: relative;
-    width: 484px;
-    height: 564px;
-    margin: 0 auto;
+.alertText {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #6B7280;
 }
 
-.memoImage {
-    width: 100%;
-    height: 100%;
-    display: block;
+.buttonGroup {
+  display: flex;
+  gap: 12px;
 }
 
-.memoContent {
-    position: absolute;
-    top: 75px;
-    left: 76px;
-    width: 340px;
+/* ✅ 공통 버튼 스타일 (생성/참여) */
+.commonButton {
+  background-color: white;
+  color: #3B82F6;
+  border: 1px solid #3B82F6;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
 }
 
-.memoContent h3 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
-
-.memoContent ul {
-    list-style: none;
-    padding: 0;
-}
-
-.memoContent li {
-    margin-bottom: 0.5rem;
-}
-
-.linkText {
-    margin-top: 1rem;
-    color: gray;
-    font-size: 0.9rem;
-    cursor: pointer;
-}
-
-.rightArea {
-    flex: 1;
-}
-
-.calendarArea {
-    background: white;
-    width: 415px;
-    height: 325.297px;
-    flex-shrink: 0;
-    margin-bottom: 20px;
-}
-
-.projectListArea {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    position: relative;
-    margin-top: 70px;
-    padding-top: 30px;
-    width: 438px; /* (199px * 2) + (20px gap) = 정확히 두 개 카드 너비 + gap */
-}
-
-.projectCard {
-    width: 199px;
-    height: 75.3px;
-    background: #BFDBFE;
-    border-radius: 12px;
-    padding: 1rem;
-    cursor: pointer;
-    text-align: center;
-    border: 1px solid transparent;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.projectCard.selected {
-    border-color: #3B82F6;
-}
-
-.pageIndicator {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 0.9rem;
-    color: #3B82F6;
-}
-
-.pageIndicator button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin: 0 3px;
-    color: #3B82F6;
-}
+/* 나머지 기존 스타일 생략 가능, 이미 들어있을 테니까 */

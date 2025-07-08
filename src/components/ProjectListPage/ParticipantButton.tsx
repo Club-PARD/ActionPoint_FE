@@ -1,7 +1,6 @@
-
 'use client';
 
-import styles from '../../styles/ParticipantButton.module.css';
+import styles from '../../styles/MainPage.module.css';
 
 interface ParticipantButtonProps {
   projectTitle: string;
@@ -12,9 +11,9 @@ export default function ParticipantButton({ projectTitle, onClick }: Participant
   return (
     <button
       onClick={() => onClick(projectTitle)}
-      className={styles.button}
+      className={styles.commonButton} // ✅ 동일 스타일 적용
     >
-      참여
+      프로젝트 참여
     </button>
   );
 }
