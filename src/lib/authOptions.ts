@@ -1,5 +1,4 @@
-// /lib/authOptions.ts
-
+// lib/authOptions.ts
 import { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import axios from 'axios';
@@ -23,45 +22,36 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ account }) {
-      const BASE_URL = process.env.NEXT_PUBLIC_API_URL?.replace(/\/+$/, '') || '';
-      const LOGIN_URL = `${BASE_URL}/auth/login`;
+    async jwt({ token, account }) {
+      if (account?.id_token) {
+        try {
+          const res = await axios.post(
+            `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
+            { idToken: account.id_token },
+            { headers: { 'Content-Type': 'application/json' } }
+          );
 
-      const idToken = account?.id_token; // ✅ 올바르게 추출
-
-      console.log('🟢 signIn 시작 - ID Token:', idToken);
-
-      if (!idToken) {
-        console.error('❌ ID token 없음');
-        return false;
-      }
-
-      try {
-        const response = await axios.post(
-          LOGIN_URL,
-          { idToken },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        );
-
-        console.log('✅ 서버 응답:', response.data);
-
-        return true;
-      } catch (error: any) {
-        if (error.response) {
-          console.error('❌ 서버 응답 실패:', {
-            status: error.response.status,
-            data: error.response.data,
-          });
-        } else {
-          console.error('❌ 요청 실패:', error.message);
+          const userId = res.data.userId;
+          console.log("✅ 서버 응답에서 받은 userId:", userId);
+          token.userId = userId;
+        } catch (error) {
+          console.error('❌ 로그인 서버 오류:', error);
         }
-
-        return false;
       }
+
+      return token;
+    },
+
+    async session({ session, token }) {
+      if (session.user && token.userId) {
+        (session.user as any).id = token.userId;
+      }
+      return session;
+    },
+
+    async signIn({ account }) {
+      return !!account?.id_token;
     },
   },
+  secret: process.env.NEXTAUTH_SECRET,
 };
