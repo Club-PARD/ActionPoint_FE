@@ -1,22 +1,27 @@
+/* 헤더 전체 */
 .header {
   width: 100%;
-  height: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: white;
-  box-sizing: border-box;
-  padding: 20px;               
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: center; /* 내부 정렬 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
-
+/* 내부 콘텐츠 정렬 */
 .inner {
-  width: 1440px;
-  height: 54px;
+  width: 100%;
+  max-width: 1200px;  /* 혹은 너가 사용하는 페이지 최대 폭 */
+  padding: 16px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
+
 
 
 .left {
