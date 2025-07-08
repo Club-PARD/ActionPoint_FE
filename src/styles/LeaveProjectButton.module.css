@@ -1,25 +1,16 @@
+/* styles/LeaveProjectButton.module.css */
 .button {
-    display: flex;
-    color: var(--zinc-700, #3F3F46);
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  font-size: 14px;
 }
 
-.leaveproject{
-    font-family: Pretendard;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 40px; /* 266.667% */
-    letter-spacing: -0.052px;
-    padding-left: 16px;
-}
-
-
-.button:hover {
-  background-color: #f3f4f6; /* hover:bg-gray-100 */
-}
-
-.button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.text {
+  color: #333; /* ✅ 흐릿한 rgba 말고 완전한 검정 */
+  font-weight: 500;
 }
