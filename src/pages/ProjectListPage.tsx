@@ -40,9 +40,16 @@ export default function ProjectListPage() {
         'X-USER-ID': Number(userId),
       },
     })
-      .then((res) => {
-        console.log("✅ 응답:", res.data);
-      })
+    .then((res) => {
+      console.log("✅ 응답:", res.data);
+
+      if (Array.isArray(res.data) && res.data.length === 0) {
+        console.log("📭 프로젝트 없음 → NoProjectPage로 이동");
+        router.push('/NoProjectsPage'); // 경로는 실제 파일명에 맞게 수정
+      } else {
+        setProjects(res.data);
+      }
+    })
       .catch((err) => {
         console.error("❌ 요청 실패", err);
         console.log("📦 최종 전송 userId:", userId, typeof userId);

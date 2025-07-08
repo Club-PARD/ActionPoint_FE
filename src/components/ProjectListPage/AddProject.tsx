@@ -2,7 +2,6 @@
 'use client';
 
 import { useState } from 'react';
-// import XButton from './XButton';
 import CancelButton from './CancelButton';
 import GenerateCodeButton from './GenerateCodeButton';
 import styles from '../../styles/AddProject.module.css';
@@ -16,28 +15,13 @@ export default function AddProject({ onClose }: AddProjectProps) {
   const [projectTitle, setProjectTitle] = useState('');
   const [generatedCode, setGeneratedCode] = useState<string | null>(null);
   const [isCodeGenerated, setIsCodeGenerated] = useState(false);
-  const [copyMessageVisible, setCopyMessageVisible] = useState(false); // ✅ 복사 메시지 상태
-
-  const handleButtonClick = () => {
-    if (!projectTitle.trim()) {
-      alert('프로젝트명을 입력해주세요.');
-      return;
-    }
-
-    if (!isCodeGenerated) {
-      const code = Math.random().toString(36).substring(2, 8).toUpperCase();
-      setGeneratedCode(code);
-      setIsCodeGenerated(true);
-    } else {
-      onClose();
-    }
-  };
+  const [copyMessageVisible, setCopyMessageVisible] = useState(false);
 
   const handleCopyCode = () => {
     if (generatedCode) {
       navigator.clipboard.writeText(generatedCode);
       setCopyMessageVisible(true);
-      setTimeout(() => setCopyMessageVisible(false), 5000); 
+      setTimeout(() => setCopyMessageVisible(false), 3000);
     }
   };
 
@@ -47,20 +31,18 @@ export default function AddProject({ onClose }: AddProjectProps) {
         <div className={styles.contentArea}>
           <h2 className={styles.heading}>프로젝트 생성하기</h2>
 
-            <label className={styles.label}>프로젝트명</label>
+          <label className={styles.label}>프로젝트명</label>
+          <input
+            type="text"
+            value={projectTitle}
+            onChange={(e) => setProjectTitle(e.target.value)}
+            placeholder="프로젝트 제목을 입력해주세요."
+            maxLength={10}
+            className={styles.input}
+            disabled={isCodeGenerated}
+          />
 
-            <input
-              type="text"
-              value={projectTitle}
-              onChange={(e) => setProjectTitle(e.target.value)}
-              placeholder="프로젝트 제목을 입력해주세요."
-              maxLength={10}
-              className={styles.input}
-              disabled={isCodeGenerated}
-            />
-
-            <div className={styles.generatedSection}>
-
+          <div className={styles.generatedSection}>
             <label className={styles.label2}>
               프로젝트 참여 코드
               <span className={styles.helperText}> * 복사를 통해 프로젝트를 공유해봐요.</span>
@@ -81,10 +63,9 @@ export default function AddProject({ onClose }: AddProjectProps) {
                   className={styles.copyIcon}
                   onClick={handleCopyCode}
                 >
-                  <Image src="./copy.svg" alt="copy" width={18} height={18} />
+                  <Image src="/copy.svg" alt="copy" width={18} height={18} />
                 </button>
 
-                {/* ✅ 여기로 이동 */}
                 {copyMessageVisible && (
                   <div className={styles.copyMessage}>클립보드에 추가되었습니다.</div>
                 )}
@@ -96,7 +77,11 @@ export default function AddProject({ onClose }: AddProjectProps) {
             <CancelButton onClose={onClose} />
             <GenerateCodeButton
               isCodeGenerated={isCodeGenerated}
-              onClick={handleButtonClick}
+              projectName={projectTitle}
+              onCodeGenerated={(code) => {
+                setGeneratedCode(code);
+                setIsCodeGenerated(true);
+              }}
             />
           </div>
         </div>
