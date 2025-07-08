@@ -5,6 +5,7 @@
   padding: 40px 24px;
   font-family: 'Pretendard', sans-serif;
   color: #222;
+  margin-top: 80px;  
 }
 
 /* 뒤로가기 텍스트 */
@@ -150,24 +151,39 @@
   color: #666;
 }
 
-/* 하단 버튼 */
 .buttonGroup {
   display: flex;
   justify-content: flex-end;
-  margin-top: 48px;
+  gap: 12px;         /* 🔹 버튼 사이 간격 */
+  margin-top: 32px;  /* 🔹 위쪽 간격 */
 }
-
-.blueButton {
-  padding: 10px 24px;
-  background-color: #4a90e2;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: 500;
+.whiteButton {
+  background-color: white;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-size: 14px;
   cursor: pointer;
 }
 
-.blueButton:hover {
-  background-color: #3a7bd5;
+.blueButton {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-size: 14px;
+  cursor: pointer;
 }
+
+.whiteButton:hover {
+  background-color: #f9f9f9;
+}
+
+.blueButton:hover {
+  background-color: #3a7cd0;
+}
+
+
+
