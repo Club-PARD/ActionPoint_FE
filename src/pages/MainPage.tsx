@@ -31,7 +31,7 @@ export default function MainPage() {
 
       {isEmpty ? (
         <div className={styles.emptyWrapper}>
-          <img src="/empty_icon.svg" alt="빈 상태 아이콘" className={styles.emptyIcon} />
+          <img src="/empty.svg" alt="빈 상태 아이콘" className={styles.emptyIcon} />
           <p className={styles.emptyText}><strong>김사랑</strong>님의 액션포인트가 없어요.</p>
           <p className={styles.subText}>프로젝트를 통해 액션 포인트를 만들어 보아요!</p>
 
