@@ -5,9 +5,6 @@ import styles from "../styles/LandingPage.module.css";
 
 export default function LandingPage() {
   const [showLogin, setShowLogin] = useState(false);
-  const { data: session, status } = useSession();
-  const router = useRouter();
-
 
   return (
     <div className={styles.container}>
