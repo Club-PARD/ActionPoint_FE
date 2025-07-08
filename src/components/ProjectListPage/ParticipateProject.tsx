@@ -50,6 +50,7 @@ export default function ParticipateProject({ onClose }: ParticipateProjectProps)
       console.error('❌ 참여 실패:', error.response?.data || error.message);
       alert(`❌ 참여 실패: ${error.response?.data?.error || '에러 발생'}`);
 
+
     }
   };
 
