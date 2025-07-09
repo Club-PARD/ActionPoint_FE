@@ -1,6 +1,9 @@
 import React from "react";
 import styles from "../styles/LandingPage.module.css";
 import LoginButton from "../components/LandingPage/LoginButton";
+import ScrollToTopButton from "@/components/LandingPage/ScrollToTopButton";
+
+
 
 export default function LandingPage() {
   return (
@@ -15,7 +18,9 @@ export default function LandingPage() {
 
       <div className={styles.buttonArea}>
         <LoginButton />
+         
       </div>
+      <ScrollToTopButton />
     </div>
   );
 }

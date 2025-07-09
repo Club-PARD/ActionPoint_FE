@@ -1,0 +1,20 @@
+.scrollButton {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: transparent; /* 🔥 배경 없애기 */
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;               /* 🔥 안쪽 여백 제거 */
+  box-shadow: none;         /* 🔥 그림자 제거 */
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.2)); /* 아이콘만 약간 강조 */
+}
