@@ -14,7 +14,6 @@ interface ProjectSettingsPanelProps {
 }
 
 export default function ProjectSettingsPanel({
-  onClose,
   projectCode,
   projectId,
   userId

@@ -119,6 +119,5 @@ export default function ProjectListPage() {
         </div>
       </main>
     </div>
-
   );
 }
