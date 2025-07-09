@@ -108,6 +108,8 @@
   color: #9CA3AF;
   margin-top: 0;
   margin-bottom: 8px;
+  position:relative;
+  bottom:90%;
 }
 
 .actionPointSection {
