@@ -2,112 +2,112 @@
 
 import { useState } from 'react';
 import Header from "@/components/Header/Header";
-import ParticipantButton from "@/components/ProjectListPage/ParticipantButton";
-import AddProject from "@/components/ProjectListPage/AddProject";
-import ParticipateProject from "@/components/ProjectListPage/ParticipateProject";
-import ActionPointCheckBoxCard from "@/components/ActionPointCheckBoxCard";
+import ActionPointCard from "@/components/MainPage/MainActionPointCard";
 import styles from "../styles/MainPage.module.css";
 
+interface Meeting {
+  id: number;
+  title: string;
+  actionPoints: string[];
+  completedPoints: string[];
+}
+
 export default function MainPage() {
-  // ✅ 더미 프로젝트 데이터
   const dummyProjects = [
-    { id: 1, title: "중간 산출물 제출하기", actionPointCount: 3 },
-    { id: 2, title: "중간 산출물 제출하기", actionPointCount: 2 },
-    { id: 3, title: "중간 산출물 제출하기", actionPointCount: 5 },
-    { id: 4, title: "중간 산출물 제출하기", actionPointCount: 4 },
-    { id: 5, title: "중간 산출물 제출하기", actionPointCount: 1 },
+    { id: 1, title: "1번 산출물 정리하기", actionPointCount: 3 },
+    { id: 2, title: "2번 최종 발표 준비", actionPointCount: 3 },
+    { id: 3, title: "3번 기능 구현 마무리", actionPointCount: 3 },
+    { id: 4, title: "4번 보고서 작성", actionPointCount: 3 },
+    { id: 5, title: "5번 회의록 정리", actionPointCount: 2 },
   ];
 
-  const dummyMeetings = [
+  const dummyMeetings: Meeting[] = [
     {
       id: 1,
-      title: "중간 산출물 제출하기",
-      actionPoints: ["primary 색상 정하기", "무드보드 만들기", "레퍼런스 20개 찾기"],
-      completedPoints: ["레퍼런스 20개 찾기"],
+      title: "1번 산출물 정리하기",
+      actionPoints: ["기획안 작성", "UI 시안 만들기", "기술스택 정리"],
+      completedPoints: ["기획안 작성"],
+    },
+    {
+      id: 2,
+      title: "2번 최종 발표 준비",
+      actionPoints: ["슬라이드 만들기", "발표자 선정", "리허설 진행"],
+      completedPoints: ["발표자 선정"],
+    },
+    {
+      id: 3,
+      title: "3번 기능 구현 마무리",
+      actionPoints: ["버그 수정", "리팩토링", "테스트 코드 작성"],
+      completedPoints: [],
+    },
+    {
+      id: 4,
+      title: "4번 보고서 작성",
+      actionPoints: ["초안 작성", "수정 반영", "최종 제출"],
+      completedPoints: ["초안 작성", "수정 반영"],
+    },
+    {
+      id: 5,
+      title: "5번 회의록 정리",
+      actionPoints: ["지난 회의 내용 정리", "공유 링크 만들기"],
+      completedPoints: [],
     },
   ];
 
-  const [selectedProjectId, setSelectedProjectId] = useState<number | null>(0);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [showAddModal, setShowAddModal] = useState(false);
-  const [showJoinModal, setShowJoinModal] = useState(false);
+  const [selectedProjectId, setSelectedProjectId] = useState<number>(1);
+  const [meetings, setMeetings] = useState<Meeting[]>(dummyMeetings);
 
-  const projectsPerPage = 6;
-  const totalPages = Math.ceil(dummyProjects.length / projectsPerPage);
-  const currentProjects = dummyProjects.slice(
-    (currentPage - 1) * projectsPerPage,
-    currentPage * projectsPerPage
-  );
+  const selectedMeeting = meetings.find(meeting => meeting.id === selectedProjectId);
 
-  const isEmpty = dummyProjects.length === 0;
+  const toggleActionPoint = (meetingId: number, point: string) => {
+    setMeetings(prev =>
+      prev.map(meeting =>
+        meeting.id !== meetingId
+          ? meeting
+          : {
+              ...meeting,
+              completedPoints: meeting.completedPoints.includes(point)
+                ? meeting.completedPoints.filter(p => p !== point)
+                : [...meeting.completedPoints, point],
+            }
+      )
+    );
+  };
 
   return (
     <div className={styles.container}>
       <Header />
-
-      {isEmpty ? (
-        <div className={styles.emptyWrapper}>
-          <img src="/empty.svg" alt="빈 상태 아이콘" className={styles.emptyIcon} />
-          <p className={styles.emptyText}><strong>김사랑</strong>님의 액션포인트가 없어요.</p>
-          <p className={styles.subText}>프로젝트를 통해 액션 포인트를 만들어 보아요!</p>
-
-          <div className={styles.buttonGroup}>
-            <button className={styles.commonButton} onClick={() => setShowAddModal(true)}>
-              프로젝트 생성
-            </button>
-
-            <ParticipantButton
-              projectTitle=""
-              onClick={() => setShowJoinModal(true)}
-            />
-          </div>
-
-          {showAddModal && <AddProject onClose={() => setShowAddModal(false)} />}
-          {showJoinModal && <ParticipateProject onClose={() => setShowJoinModal(false)} />}
+      <div className={styles.contentWrapper}>
+        {/* 왼쪽 프로젝트 리스트 */}
+        <div className={styles.projectList}>
+          <h2 className={styles.sectionTitle}>프로젝트 리스트</h2>
+          <ul className={styles.projectItems}>
+            {dummyProjects.map((project) => (
+              <li
+                key={project.id}
+                className={`${styles.projectItem} ${selectedProjectId === project.id ? styles.selected : ''}`}
+                onClick={() => setSelectedProjectId(project.id)}
+              >
+                <img src="/active.svg" alt="아이콘" className={styles.projectIcon} />
+                <div>
+                  <p className={styles.projectTeam}>PARD 롱커톤</p>
+                  <p className={styles.projectTitle}>{project.title}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
-      ) : (
-        <div className={styles.contentWrapper}>
-          {/* 좌측 프로젝트 리스트 */}
-          <div className={styles.projectList}>
-            <h2 className={styles.sectionTitle}>프로젝트 리스트</h2>
-            <ul className={styles.projectItems}>
-              {currentProjects.map((project, idx) => (
-                <li
-                  key={project.id}
-                  className={`${styles.projectItem} ${selectedProjectId === idx ? styles.selected : ''}`}
-                  onClick={() => setSelectedProjectId(idx)}
-                >
-                  <img src="/folderIcon.svg" alt="프로젝트 아이콘" className={styles.projectIcon} />
-                  <div>
-                    <p className={styles.projectTeam}>PARD 콩커톤</p>
-                    <p className={styles.projectTitle}>{project.title}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
 
-          {/* 우측 액션포인트 영역 */}
-          <div className={styles.actionPointSection}>
-            <h2 className={styles.sectionTitle}>액션 포인트</h2>
-
-            <div className={styles.projectInfo}>
-              <img src="/folderIcon.svg" alt="프로젝트 아이콘" className={styles.projectIcon} />
-              <span className={styles.projectName}>PARD 옹커톤</span>
-            </div>
-
-            <ActionPointCheckBoxCard
-              meeting={dummyMeetings[0]}
-              toggleActionPoint={(meetingId, point) => {
-                // TODO: 추후 상태 관리 로직으로 연결
-                alert(`'${point}' 항목 클릭됨 (meeting ID: ${meetingId})`);
-              }}
+        {/* 오른쪽 액션포인트 카드 */}
+        <div className={styles.actionPointSection}>
+          {selectedMeeting && (
+            <ActionPointCard
+              meeting={selectedMeeting}
+              toggleActionPoint={toggleActionPoint}
             />
-
-            <button className={styles.linkToMeeting}>› 회의록으로 바로 가기</button>
-          </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 }

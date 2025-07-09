@@ -1,0 +1,110 @@
+/* ✅ 액션포인트 섹션 wrapper */
+.actionPointSection {
+  width: 791px;
+  height: 542px;
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  position: relative;
+  box-sizing: border-box;
+margin-top: 8px;
+  padding-top:32px;
+}
+
+/* ✅ 카드 스타일 */
+.card {
+  width: 791px;
+  height: 542px;
+  background-color: #F5F9FF;
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+  box-sizing: border-box;
+  margin-top: 40px;
+}
+
+.next {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.next::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 126px;
+  height: 2px;
+  background-color: #3B82F6;
+  border-radius: 999px;
+}
+
+/* ✅ 프로젝트명 + 아이콘 */
+.projectInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding-left: 36px;
+}
+
+.projectName {
+  font-weight: 500;
+}
+
+/* ✅ 카드 내부 텍스트 스타일 */
+.sub {
+  font-size: 14px;
+  color: #9CA3AF;
+  margin-bottom: 4px;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.countaction {
+  font-size: 13px;
+  color: #3B82F6;
+  margin-bottom: 24px;
+}
+
+/* ✅ 할 일 리스트 */
+.actionList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.actionItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.completedGoal {
+  color: #9CA3AF;
+  text-decoration: line-through;
+}
+
+/* ✅ 회의록 바로가기 버튼 */
+.linkToMeeting {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  background: #3B82F6;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}

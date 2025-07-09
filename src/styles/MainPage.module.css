@@ -1,96 +1,72 @@
-/* 전체 컨테이너 */
 .container {
   width: 100%;
-  min-height: 100vh;
-  background: white;
-  margin-top: 80px;
-}
-
-/* 🟦 빈 상태 UI */
-.emptyWrapper {
   height: calc(100vh - 80px);
+  margin-top: 80px; /* ✅ 헤더 아래로 */
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  background-color: white;
-  text-align: center;
+  box-sizing: border-box;
 }
 
-.emptyIcon {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 16px;
-  opacity: 0.4;
-}
-
-.emptyText {
-  font-size: 14px;
-  color: #6B7280;
-  margin-bottom: 6px;
-}
-
-.subText {
-  font-size: 13px;
-  color: #9CA3AF;
-  margin-bottom: 20px;
-}
-
-.alertText {
-  margin-top: 12px;
-  font-size: 12px;
-  color: #6B7280;
-}
-
-.buttonGroup {
-  display: flex;
-  gap: 12px;
-}
-
-.commonButton {
-  background-color: white;
-  color: #3B82F6;
-  border: 1px solid #3B82F6;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-/* ✅ 기존 콘텐츠 모드 */
-
-/* 전체 영역 (좌우 배치) */
 .contentWrapper {
-  display: flex;
   padding: 32px;
   gap: 32px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: calc(100vh - 80px);
+  box-sizing: border-box;
 }
 
-/* 좌측 프로젝트 리스트 */
 .projectList {
-  width: 300px;
+  width: 349px;
+  height: 542px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
 }
 
 .sectionTitle {
   font-size: 18px;
   font-weight: bold;
+  width: 126px;
   margin-bottom: 16px;
+  position: relative;
 }
 
-/* 프로젝트 리스트 */
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 126px;
+  height: 2px;
+  background-color: #3B82F6;
+  border-radius: 999px;
+}
+
 .projectItems {
   list-style: none;
-  padding: 0;
+  padding: 32px 0 0 0; /* ✅ 여기 수정 */
   margin: 0;
+  background-color: #FAFAFA;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .projectItem {
+  width: 307px;
+  height: 85px;
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 16px;
-  background-color: #F5F5F5;
+  background-color: #FAFAFA;
   border-radius: 12px;
   margin-bottom: 12px;
   cursor: pointer;
@@ -98,11 +74,11 @@
 }
 
 .projectItem:hover {
-  background-color: #e8f0ff;
+  background-color: #EFF6FF;
 }
 
 .selected {
-  background-color: #E0ECFF;
+  background-color: #EFF6FF;
 }
 
 .projectIcon {
@@ -120,35 +96,26 @@
   font-size: 14px;
 }
 
-/* 우측 액션포인트 영역 */
-.actionPointSection {
-  flex-grow: 1;
-  background-color: #F3F8FF;
-  padding: 24px;
-  border-radius: 20px;
-  position: relative;
-}
-
-.projectInfo {
+.pagination {
+  width: 100%;
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
+  padding-right: 26px;
+  gap: 4px;
+  height: 24px;
+  font-size: 13px;
+  color: #9CA3AF;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
-.projectName {
-  font-weight: 500;
-}
-
-.linkToMeeting {
-  position: absolute;
-  bottom: 24px;
-  right: 24px;
-  background: #3B82F6;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 8px;
-  border: none;
-  font-size: 14px;
-  cursor: pointer;
+.actionPointSection {
+  width: 791px;
+  height: 542px;
+  background-color: transparent;
+  border-radius: 0;
+  position: relative;
+  box-sizing: border-box;
+  margin-top: 0; /* ✅ 이걸로 박스 기준 위 맞춤 */
 }
