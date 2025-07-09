@@ -1,0 +1,161 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  font-family: 'Pretendard', sans-serif;
+  color: #222;
+  margin-top: 80px;
+}
+
+.backLink {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 24px;
+  cursor: pointer;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  border-left: 4px solid #2563eb;
+  padding-left: 12px;
+  color: #111827;
+}
+
+.section {
+  margin-bottom: 36px;
+}
+
+.goalBox {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 12px;
+  font-size: 15px;
+  color: #374151;
+}
+
+.fileList {
+  margin-top: 8px;
+}
+
+.fileItem {
+  margin-left: 16px;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.agendaBox {
+  margin-bottom: 24px;
+}
+
+.agendaTitle {
+  font-weight: 500;
+  margin-bottom: 6px;
+  font-size: 16px;
+  color: #1f2937;
+}
+
+.agendaInput {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  resize: vertical;
+}
+.agendaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.agendaRow input {
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: inset 0 0 0 1px #e5e7eb;
+}
+
+.agendaRow input::placeholder {
+  color: #9ca3af;
+}
+
+.agendaRow button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+}
+
+
+
+.floatingAddButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  font-size: 24px;
+  background-color: #e0ecff;
+  border: none;
+  border-radius: 50%;
+  color: #2563eb;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.floatingAddButton:hover {
+  background-color: #d2e3ff;
+}
+
+
+
+
+.buttonGroup {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.whiteButton {
+  background-color: white;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.blueButton {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.whiteButton:hover {
+  background-color: #f9f9f9;
+}
+
+.blueButton:hover {
+  background-color: #3a7cd0;
+}
+
