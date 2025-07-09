@@ -10,6 +10,7 @@ import ParticipationProjectButton from '@/components/ParticipationProjectButton'
 import Header from '@/components/Header/Header';
 import AddProject from '@/components/ProjectListPage/AddProject';
 import { useUserStore } from '@/stores/UserStore';
+import EmptyPage from '@/components/EmptyPage';
 
 interface Project {
   projectId: number;
@@ -57,6 +58,12 @@ export default function ProjectListPage() {
     if (selectedFilter === '종료된 프로젝트') return project.projectStatus === 0;
     return true;
   });
+
+  if (userId === null) return null;
+
+    if (projects.length === 0) {
+      return <EmptyPage />;
+    }
 
   const currentProjects = filteredProjects.slice(startIndex, endIndex);
   const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
