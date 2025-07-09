@@ -1,4 +1,3 @@
-// components/ProjectPage/ProjectPageContent.tsx
 import { useRouter } from 'next/router';
 
 export default function ProjectPageContent() {

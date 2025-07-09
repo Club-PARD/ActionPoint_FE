@@ -56,6 +56,7 @@ export default function MeetingPage() {
   return (
     <div className={styles.container}>
       <Header />
+      {/* <div className={styles.backLink}><span>&lt; 프로젝트로 돌아가기</span></div> */}
             <div className={styles.backLink} onClick={() => router.back()}>&lt; 프로젝트로 돌아가기</div>
 
 
