@@ -5,9 +5,8 @@ import { useRouter } from 'next/navigation';
 import { useUserStore } from '@/stores/UserStore';
 import styles from '../../styles/ParticipantButton.module.css';
 
-
 interface ParticipantButtonProps {
-  projectTitle: string;
+  projectTitle: string
   onClose: () => void;
   setIsError: (val: boolean) => void;
   setErrorMessage: (msg: string) => void;
