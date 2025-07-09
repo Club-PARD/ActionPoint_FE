@@ -1,0 +1,138 @@
+/* WriteMinutesPage.module.css */
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  font-family: 'Pretendard', sans-serif;
+  color: #222;
+  margin-top: 80px;
+}
+
+.backLink {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 32px;
+  cursor: pointer;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #ccc;
+}
+
+.section {
+  margin-bottom: 48px;
+}
+
+.agendaBox {
+  margin-bottom: 32px;
+}
+
+.agendaTitle {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.agendaInput {
+  width: 100%;
+  min-height: 120px;
+  padding: 12px 16px;
+  font-size: 14px;
+  border-radius: 12px;
+  border: none;
+  background-color: #f9f9f9;
+  color: #333;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.uploadArea {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #666;
+}
+
+.fileInputRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.fileInput {
+  flex: 1;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #333;
+}
+
+.uploadButton {
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.blueButton {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.blueButton:hover {
+  background-color: #3a7cd0;
+}
+
+
+.goalBox {
+  background-color: #f9f9f9;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.fileList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fileItem a {
+  color: black;
+  text-decoration: underline;
+  font-weight: 500;
+}
