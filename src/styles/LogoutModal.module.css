@@ -1,0 +1,83 @@
+/* 🔲 배경 오버레이 */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 어두운 배경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+/* 📦 모달 본체 (자연스러운 높이!) */
+.modal {
+    background: var(--white, #FFF);
+    padding: 32px 24px;
+    width: 346px;
+    flex-shrink: 0;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0px 0px 37.354px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* 📝 제목 텍스트 */
+.title {
+    color: var(--Color-Main-Text, var(--zinc-900, #18181B));
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 37.377px;
+    letter-spacing: -0.07px;
+    margin-top: 20px;
+}
+
+/* 📄 설명 텍스트 */
+.description {
+    margin-top: 8px;
+    color: var(--Color-Sub-Text, var(--zinc-500, #71717A));
+    text-align: center;
+
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 270px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 🔘 버튼 묶음 */
+.buttons {
+    margin-top: 30px;
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* ❌ 취소 버튼 */
+.cancel {
+    background-color: #f3f4f6;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ✅ 확인 버튼 */
+.confirm {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
