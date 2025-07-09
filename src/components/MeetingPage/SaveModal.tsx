@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import styles from './SaveChangesModal.module.css';
+import styles from '../../styles/SaveChangesModal.module.css'
 
 interface SaveChangesModalProps {
   onSave: () => void;
@@ -15,16 +15,14 @@ export default function SaveChangesModal({ onSave, onCancel }: SaveChangesModalP
         <h2 className={styles.title}>변경 사항을 저장하시겠어요?</h2>
         <p className={styles.subtitle}>저장하지 않은 내용은 삭제될 수 있어요.</p>
         <div className={styles.buttons}>
-          <button className={styles.cancel} onClick={onCancel} disabled>
+          <button className={styles.cancel} onClick={onCancel}>
             저장하지 않음
           </button>
           <button className={styles.save} onClick={onSave}>
-            저장하기! 
+            저장하기
           </button>
         </div>
       </div>
     </div>
   );
 }
-
-

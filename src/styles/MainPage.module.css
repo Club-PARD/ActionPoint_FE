@@ -1,134 +1,154 @@
+/* 전체 컨테이너 */
 .container {
-    width: 100%;
-    min-height: 100vh;
-    background: var(--blue-50, #EFF6FF);
-    margin-top: 80px;  
+  width: 100%;
+  min-height: 100vh;
+  background: white;
+  margin-top: 80px;
 }
 
+/* 🟦 빈 상태 UI */
+.emptyWrapper {
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  text-align: center;
+}
+
+.emptyIcon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 16px;
+  opacity: 0.4;
+}
+
+.emptyText {
+  font-size: 14px;
+  color: #6B7280;
+  margin-bottom: 6px;
+}
+
+.subText {
+  font-size: 13px;
+  color: #9CA3AF;
+  margin-bottom: 20px;
+}
+
+.alertText {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #6B7280;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 12px;
+}
+
+.commonButton {
+  background-color: white;
+  color: #3B82F6;
+  border: 1px solid #3B82F6;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* ✅ 기존 콘텐츠 모드 */
+
+/* 전체 영역 (좌우 배치) */
 .contentWrapper {
-    display: flex;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-top: 70px;
-    gap: 60px;
+  display: flex;
+  padding: 32px;
+  gap: 32px;
 }
 
-.leftArea {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+/* 좌측 프로젝트 리스트 */
+.projectList {
+  width: 300px;
 }
 
-.whiteCard {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    position: relative;
-    width: 709px;
-    height: 700px;
+.sectionTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
 }
 
-.title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+/* 프로젝트 리스트 */
+.projectItems {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.memoWrapper {
-    position: relative;
-    width: 484px;
-    height: 564px;
-    margin: 0 auto;
+.projectItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background-color: #F5F5F5;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.memoImage {
-    width: 100%;
-    height: 100%;
-    display: block;
+.projectItem:hover {
+  background-color: #e8f0ff;
 }
 
-.memoContent {
-    position: absolute;
-    top: 75px;
-    left: 76px;
-    width: 340px;
+.selected {
+  background-color: #E0ECFF;
 }
 
-.memoContent h3 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+.projectIcon {
+  width: 32px;
+  height: 32px;
 }
 
-.memoContent ul {
-    list-style: none;
-    padding: 0;
+.projectTeam {
+  font-size: 12px;
+  color: #888;
 }
 
-.memoContent li {
-    margin-bottom: 0.5rem;
+.projectTitle {
+  font-weight: bold;
+  font-size: 14px;
 }
 
-.linkText {
-    margin-top: 1rem;
-    color: gray;
-    font-size: 0.9rem;
-    cursor: pointer;
+/* 우측 액션포인트 영역 */
+.actionPointSection {
+  flex-grow: 1;
+  background-color: #F3F8FF;
+  padding: 24px;
+  border-radius: 20px;
+  position: relative;
 }
 
-.rightArea {
-    flex: 1;
+.projectInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
-.calendarArea {
-    background: white;
-    width: 415px;
-    height: 325.297px;
-    flex-shrink: 0;
-    margin-bottom: 20px;
+.projectName {
+  font-weight: 500;
 }
 
-.projectListArea {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    position: relative;
-    margin-top: 70px;
-    padding-top: 30px;
-    width: 438px; /* (199px * 2) + (20px gap) = 정확히 두 개 카드 너비 + gap */
-}
-
-.projectCard {
-    width: 199px;
-    height: 75.3px;
-    background: #BFDBFE;
-    border-radius: 12px;
-    padding: 1rem;
-    cursor: pointer;
-    text-align: center;
-    border: 1px solid transparent;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.projectCard.selected {
-    border-color: #3B82F6;
-}
-
-.pageIndicator {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 0.9rem;
-    color: #3B82F6;
-}
-
-.pageIndicator button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin: 0 3px;
-    color: #3B82F6;
+.linkToMeeting {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  background: #3B82F6;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
 }
