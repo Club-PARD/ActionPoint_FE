@@ -79,7 +79,25 @@ line-height: normal;
 
 .buttonRow{
   display: flex;
-  justify-content: flex-end;  /* 오른쪽 정렬 */
-  gap: 6px;                  /* 버튼 사이 간격 */
+  justify-content: center;  /* 오른쪽 정렬 */
+  gap: 16px;                  /* 버튼 사이 간격 */
   padding-right: 19px;
+}
+
+.participantButton{
+  width: 125px;
+  height: 45px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #3B82F6;
+  color: #FFF;
+  text-align: center;
+
+  /* T/SB/15 */
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 33.88px; /* 225.865% */
+  letter-spacing: -0.052px;
 }

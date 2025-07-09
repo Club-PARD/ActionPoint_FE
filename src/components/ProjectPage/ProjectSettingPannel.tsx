@@ -9,8 +9,8 @@ import styles from '../../styles/ProjectSettingPannel.module.css';
 interface ProjectSettingsPanelProps {
   onClose: () => void;
   projectCode: string;
-  projectId:  string;
-  userId: string;
+  projectId:  number;
+  userId: number;
 }
 
 export default function ProjectSettingsPanel({

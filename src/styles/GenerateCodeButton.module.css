@@ -1,17 +1,18 @@
 .actionButton {
-    display: inline-flex;
-    padding: 8px 15px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    color: var(--white, #FFF);
+    width: 125px;
+    height: 45px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #3B82F6;
+    color: #FFF;
     text-align: center;
+
+    /* T/SB/15 */
     font-family: Pretendard;
-    font-size: 18px;
+    font-size: 15px;
     font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    border-radius: 20px;
-    background: var(--blue-500, #3B82F6);
+    font-weight: 600;
+    line-height: 33.88px; /* 225.865% */
+    letter-spacing: -0.052px;
 }
 
