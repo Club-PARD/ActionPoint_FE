@@ -1,106 +1,16 @@
-.container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.main {
-  flex: 1;
+.wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 166px;
+  background-color: white;
 }
 
-.mainText {
-  color: var(--zinc-950, #09090B);
-  font-family: 'Pretendard', sans-serif;
-  font-size: 43px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 40px;
-  text-align: center;
-}
-
-.textSpacing {
-  margin-top: 38px;
-}
-
-.logoWrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 52px;
-  margin-bottom: 2rem;
-}
-
-.logo {
-  width: 200px;
-  height: auto;
-}
-
-.startButton {
-  display: inline-flex;
-  padding: 8px 15px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  border-radius: 10px;
-  background: var(--blue-500, #3B82F6);
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-}
-
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
+.image {
   width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.modal {
-  background: white;
-  padding: 3rem 2rem;
-  border-radius: 12px;
-  text-align: center;
-  min-width: 340px;
-}
-
-.modalLogoWrapper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-.modalLogo {
-  width: 220px;
+  max-width: 1200px;
   height: auto;
 }
 
-.modalDesc {
-  margin-bottom: 2rem;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--zinc-950, #09090B);
-}
-
-.googleButton {
-  display: inline-flex;
-  padding: 10px 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  border-radius: 10px;
-  background: #fff;
-  color: #000;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  font-size: 16px;
+.buttonArea {
+  margin: 24px 0;
 }

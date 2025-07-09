@@ -1,57 +1,21 @@
-import { useState } from "react";
-import { signIn } from "next-auth/react";
-import Header from "@/components/Header/Header";
+import React from "react";
 import styles from "../styles/LandingPage.module.css";
-import Button from "../components/LandingPage/LoginButton";
+import LoginButton from "../components/LandingPage/LoginButton";
 
 export default function LandingPage() {
-  const [showLogin, setShowLogin] = useState(false);
-
   return (
-    <div className={styles.container}>
-      <Header />
+    <div className={styles.wrapper}>
+      <img src="/landing1.png" className={styles.image} alt="랜딩1" />
 
-      <main className={styles.main}>
-        <h2 className={styles.mainText}>Dreams come true.</h2>
-        <p className={`${styles.mainText} ${styles.textSpacing}`}>
-          Action Point를 통해 회의를 만들어 보아요!
-        </p>
-
-        <div className={styles.logoWrapper}>
-          <img src="/Logo.png" alt="ACTION POINT 로고" className={styles.logo} />
-        </div>
-        <button className={styles.startButton} onClick={() => setShowLogin(true)}>
-          지금 바로 시작하기
-        </button>
-      </main>
-
-      {showLogin && (
-  <div
-    className={styles.modalOverlay}
-    onClick={() => {
-      setShowLogin(false); // 팝업 닫기
-    }}
-  >
-    <div
-      className={styles.modal}
-      onClick={(e) => e.stopPropagation()} 
-    >
-      <div className={styles.modalLogoWrapper}>
-        <img src="/Logo.png" alt="ACTION POINT 로고" className={styles.modalLogo} />
+      <div className={styles.buttonArea}>
+        <LoginButton />
       </div>
-      <p className={styles.modalDesc}>액션 포인트를 통해 효율적 회의를 진행해보세요</p>
-      <button
-        className={styles.googleButton}
-        onClick={() =>
-          signIn("google", { callbackUrl: "/MainPage" })
-        }
-      >
-        Sign up with Google
-      </button>
-    </div>
-  </div>
-)}
 
+      <img src="/landing2.png" className={styles.image} alt="랜딩2" />
+
+      <div className={styles.buttonArea}>
+        <LoginButton />
+      </div>
     </div>
   );
 }
