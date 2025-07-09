@@ -1,14 +1,15 @@
-// ✅ WriteMinutesPage.tsx
 'use client';
 
 import React, { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import styles from '../styles/WriteMinutesPage.module.css';
 import Header from "@/components/Header/Header";
+import SaveModal from '../components/MeetingPage/SaveModal';
 
 export default function WriteMinutesPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const [showModal, setShowModal] = useState(false);
 
   const [agendas, setAgendas] = useState<string[]>([]);
   const [minutes, setMinutes] = useState<string[]>([]);
@@ -35,11 +36,28 @@ export default function WriteMinutesPage() {
     setMinutes(updated);
   };
 
-  const handleSave = () => {
-    console.log('📝 회의록 저장됨:', minutes);
-    alert('회의록이 저장되었습니다!');
-    router.push('/ProjectPage');
-  };
+ const handleSave = () => {
+  const nextParams = new URLSearchParams({
+    goal: encodeURIComponent(goal),
+    agendas: encodeURIComponent(JSON.stringify(agendas)),
+    minutes: encodeURIComponent(JSON.stringify(minutes)),
+    files: encodeURIComponent(JSON.stringify(files)),
+    nextActions: searchParams.get('nextActions') || '',
+    nextAssignees: searchParams.get('nextAssignees') || '',
+    discussion: searchParams.get('discussion') || '',
+  });
+
+  router.push(`/NextMeetingPage?${nextParams.toString()}`);
+};
+
+
+  const handleOpenModal = () => setShowModal(true);
+  const handleCancel = () => setShowModal(false);
+
+//   const handleSave = () => {
+//     console.log('📝 회의록 저장됨:', minutes);
+//     router.push('/ProjectPage');
+//   };
 
   return (
     <div className={styles.container}>
@@ -49,10 +67,10 @@ export default function WriteMinutesPage() {
       <h2 className={styles.sectionTitle}>회의록</h2>
 
       <div className={styles.section}>
-        <div className={styles.goalBox}><strong>📌 회의 목표:</strong> {goal}</div>
+        <div className={styles.goalBox}><strong>회의 목표:</strong> {goal}</div>
 
         <div className={styles.fileList}>
-          <strong>📎 참고자료:</strong>
+          <strong> 참고자료:</strong>
           <ul>
             {files.map((file, index) => (
               <li key={index} className={styles.fileItem}>{file}</li>
@@ -64,15 +82,20 @@ export default function WriteMinutesPage() {
       <div className={styles.section}>
         {agendas.map((agenda, index) => (
           <div key={index} className={styles.agendaBox}>
-            <label className={styles.agendaTitle}>안건{index + 1} {agenda}</label>
+            <label className={styles.agendaTitle}>안건 {index + 1} {agenda}</label>
             <textarea className={styles.agendaInput} placeholder="회의 내용을 입력하세요" value={minutes[index]} onChange={(e) => handleChange(index, e.target.value)} />
           </div>
         ))}
       </div>
 
       <div className={styles.buttonGroup}>
-        <button className={styles.blueButton} onClick={handleSave}>회의록 저장</button>
-        {/* {showModal && (<SaveChangesModal onSave={handleSave} onCancel={handleCancel} />)} */}
+        <button className={styles.blueButton} onClick={handleOpenModal}>회의록 저장</button>
+        {showModal && (
+          <SaveModal
+            onSave={handleSave}
+            onCancel={handleCancel}
+          />
+        )}
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import styles from '../styles/Meeting.module.css';
 import Header from "@/components/Header/Header";
 import { AiOutlinePlus } from 'react-icons/ai';
 import { FiX } from 'react-icons/fi';
-import SaveChangesModal from "../components/MeetingPage/SaveModal";
+import ChangeModal from "../components/MeetingPage/ChangeModal";
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -56,7 +56,6 @@ export default function MeetingPage() {
   return (
     <div className={styles.container}>
       <Header />
-      {/* <div className={styles.backLink}><span>&lt; 프로젝트로 돌아가기</span></div> */}
             <div className={styles.backLink} onClick={() => router.back()}>&lt; 프로젝트로 돌아가기</div>
 
 
@@ -105,7 +104,7 @@ export default function MeetingPage() {
       <div className={styles.buttonGroup}>
         <button className={styles.whiteButton} onClick={handleWriteMinutes}>회의록 작성</button>
         <button className={styles.blueButton} onClick={handleOpenModal}>회의 목표 저장</button>
-        {showModal && (<SaveChangesModal onSave={handleSave} onCancel={handleCancel} />)}
+        {showModal && (<ChangeModal onSave={handleSave} onCancel={handleCancel} />)}
       </div>
     </div>
   );
