@@ -1,26 +1,80 @@
 'use client';
 
 import Header from "@/components/Header/Header";
-import ParticipantButton from "@/components/ProjectListPage/ParticipantButton";
-import AddProject from "@/components/ProjectListPage/AddProject";
-import ParticipateProject from "@/components/ProjectListPage/ParticipateProject"; // ✅ 추가
+
+import ActionPointCard from "@/components/MainPage/MainActionPointCard";
+import EmptyPage from "@/components/EmptyPage";
 import styles from "../styles/MainPage.module.css";
 
-import { useSession } from "next-auth/react";
-// import { useUserStore } from "@/stores/UserStore";
-// import axios from "axios";
-import React, { useState } from 'react';
-
-
+interface Meeting {
+  id: number;
+  title: string;
+  actionPoints: string[];
+  completedPoints: string[];
+}
 
 export default function MainPage() {
-  const { data: session } = useSession(); // ✅ 세션 선언 추가
-  const dummyProjects: { id: number; title: string; actionPointCount: number }[] = [];
+  const userId = "김사랑";
 
-  const [selectedProjectId, setSelectedProjectId] = useState<number | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [showAddModal, setShowAddModal] = useState(false);
-  const [showJoinModal, setShowJoinModal] = useState(false);
+  const dummyProjects = [
+    { id: 1, title: "1번 산출물 정리하기", actionPointCount: 3 },
+    { id: 2, title: "2번 최종 발표 준비", actionPointCount: 3 },
+    { id: 3, title: "3번 기능 구현 마무리", actionPointCount: 3 },
+    { id: 4, title: "4번 보고서 작성", actionPointCount: 3 },
+    { id: 5, title: "5번 회의록 정리", actionPointCount: 2 },
+    { id: 6, title: "6번 테스트 케이스 작성", actionPointCount: 2 },
+    { id: 7, title: "7번 리팩토링", actionPointCount: 2 },
+  ];
+
+  const dummyMeetings: Meeting[] = [
+    {
+      id: 1,
+      title: "1번 산출물 정리하기",
+      actionPoints: ["기획안 작성", "UI 시안 만들기", "기술스택 정리"],
+      completedPoints: ["기획안 작성"],
+    },
+    {
+      id: 2,
+      title: "2번 최종 발표 준비",
+      actionPoints: ["슬라이드 정리", "Q&A 정리", "리허설 진행"],
+      completedPoints: [],
+    },
+    {
+      id: 3,
+      title: "3번 기능 구현 마무리",
+      actionPoints: ["버그 수정", "기능 테스트", "리팩토링"],
+      completedPoints: [],
+    },
+    {
+      id: 4,
+      title: "4번 보고서 작성",
+      actionPoints: ["목차 구성", "본문 작성", "검토"],
+      completedPoints: [],
+    },
+    {
+      id: 5,
+      title: "5번 회의록 정리",
+      actionPoints: ["회의 내용 정리", "PDF 변환"],
+      completedPoints: [],
+    },
+    {
+      id: 6,
+      title: "6번 테스트 케이스 작성",
+      actionPoints: ["경계값 테스트", "예외처리 테스트"],
+      completedPoints: [],
+    },
+    {
+      id: 7,
+      title: "7번 리팩토링",
+      actionPoints: ["중복 제거", "함수 분리"],
+      completedPoints: [],
+    },
+  ];
+
+  const [selectedProjectId, setSelectedProjectId] = useState<number>(1);
+  const [meetings, setMeetings] = useState<Meeting[]>(dummyMeetings);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
 
   const projectsPerPage = 6;
   const totalPages = Math.ceil(dummyProjects.length / projectsPerPage);
@@ -30,42 +84,78 @@ export default function MainPage() {
     currentPage * projectsPerPage
   );
 
+  const selectedMeeting = meetings.find(meeting => meeting.id === selectedProjectId);
   const isEmpty = dummyProjects.length === 0;
+
+  const toggleActionPoint = (meetingId: number, point: string) => {
+    setMeetings(prev =>
+      prev.map(meeting =>
+        meeting.id !== meetingId
+          ? meeting
+          : {
+              ...meeting,
+              completedPoints: meeting.completedPoints.includes(point)
+                ? meeting.completedPoints.filter(p => p !== point)
+                : [...meeting.completedPoints, point],
+            }
+      )
+    );
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage(prev => Math.max(prev - 1, 1));
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage(prev => Math.min(prev + 1, totalPages));
+  };
 
   return (
     <div className={styles.container}>
       <Header />
 
       {isEmpty ? (
-        <div className={styles.emptyWrapper}>
-          <img src="/empty.svg" alt="빈 상태 아이콘" className={styles.emptyIcon} />
 
-
- <p className={styles.emptyText}> {session?.user?.name ?? "김사랑"}님의 액션포인트가 없어요.</p>
-          {/* {session?.user?.name ?? "김사랑"}님 */}
-          
-          <p className={styles.subText}>프로젝트를 통해 액션 포인트를 만들어 보아요!</p>
-
-          <div className={styles.buttonGroup}>
-            <button
-              className={styles.createButton}
-              onClick={() => setShowAddModal(true)}
-            >
-              프로젝트 생성
-            </button>
-
-            <ParticipantButton
-              projectTitle=""
-              onClick={() => setShowJoinModal(true)} // ✅ 참여 모달 열기
-            />
-          </div>
-
-          {showAddModal && <AddProject onClose={() => setShowAddModal(false)} />}
-          {showJoinModal && <ParticipateProject onClose={() => setShowJoinModal(false)} />} {/* ✅ 참여 모달 렌더링 */}
-        </div>
+        <EmptyPage userId={userId} />
       ) : (
         <div className={styles.contentWrapper}>
-          {/* 생략: 기존 콘텐츠 */}
+          {/* 왼쪽: 프로젝트 리스트 */}
+          <div className={styles.projectList}>
+            <h2 className={styles.sectionTitle}>프로젝트 리스트</h2>
+            <ul className={styles.projectItems}>
+              {currentProjects.map((project) => (
+                <li
+                  key={project.id}
+                  className={`${styles.projectItem} ${selectedProjectId === project.id ? styles.selected : ''}`}
+                  onClick={() => setSelectedProjectId(project.id)}
+                >
+                  <img src="/active.svg" alt="프로젝트 아이콘" className={styles.projectIcon} />
+                  <div>
+                    <p className={styles.projectTeam}>PARD 롱커톤</p>
+                    <p className={styles.projectTitle}>{project.title}</p>
+                  </div>
+                </li>
+              ))}
+              <li className={styles.pagination}>
+                <span onClick={handlePrevPage}>&lt;</span>
+                <span className={styles.currentPage}>{currentPage}/{totalPages}</span>
+                <span onClick={handleNextPage}>&gt;</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* 오른쪽: 액션포인트 카드 */}
+          <div className={styles.actionPointSection}>
+            {selectedMeeting ? (
+              <ActionPointCard
+                meeting={selectedMeeting}
+                toggleActionPoint={toggleActionPoint}
+              />
+            ) : (
+              <p style={{ padding: '16px' }}>선택된 프로젝트에 해당하는 회의가 없습니다.</p>
+            )}
+          </div>
+
         </div>
       )}
     </div>
