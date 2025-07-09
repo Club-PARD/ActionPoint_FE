@@ -1,4 +1,3 @@
-// components/ProjectPage/ProjectPageContent.tsx
 import { useRouter } from 'next/router';
 
 export default function ProjectPageContent() {
@@ -9,5 +8,4 @@ export default function ProjectPageContent() {
 
   const numericProjectId = Number(projectId);
 
-  // 나머지 로직에서 numericProjectId 사용
 }

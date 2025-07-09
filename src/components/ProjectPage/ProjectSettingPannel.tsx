@@ -4,21 +4,14 @@ import CopyCodeButton from './CopyCodeButton';
 import LeaveProjectButton from './LeaveProjectButton';
 import styles from '../../styles/ProjectSettingPannel.module.css';
 
-
-
-interface ProjectSettingsPanelProps {
+interface Props {
   onClose: () => void;
   projectCode: string;
-  projectId:  number;
+  projectId: number;
   userId: number;
 }
 
-export default function ProjectSettingsPanel({
-  onClose,
-  projectCode,
-  projectId,
-  userId
-}: ProjectSettingsPanelProps)  {
+export default function ProjectSettingsPanel({ onClose, projectCode, projectId, userId }: Props) {
   return (
     <div className={styles.panel}>
       <div className={styles.content}>
