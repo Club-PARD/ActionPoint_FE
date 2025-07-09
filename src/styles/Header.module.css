@@ -1,29 +1,23 @@
-/* 헤더 전체 */
 .header {
   width: 100%;
   background-color: white;
   border-bottom: 1px solid #eee;
-  display: flex;
-  justify-content: center; /* 내부 정렬 */
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
 }
 
-/* 내부 콘텐츠 정렬 */
 .inner {
   width: 100%;
-  max-width: 1200px;  /* 혹은 너가 사용하는 페이지 최대 폭 */
-  padding: 16px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 72px; /* ✅ 고정 높이 */
+  padding: 0 24px; /* ✅ 위아래 padding 제거 */
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
-
-
-
 
 .left {
   display: flex;
@@ -37,48 +31,23 @@
 }
 
 .active {
-  color: #3B82F6; /* 파란색 강조 */
+  color: #3B82F6;
 }
-
-
-.userName {
-  font-size: 14px;
-  font-weight: 500;
-}
-
-
-.center {
-  display: flex;
-  gap: 16px;
-  font-weight: bold;
-
-}
-
-.active {
-  color: #3B82F6; /* 파란색 강조 */
-
-}
-
-.right {
-  display: flex;
-  gap: 16px;
-
-}
-
 
 .right {
   display: flex;
   align-items: center;
+  gap: 16px;
 }
 
 .profile {
   display: flex;
   align-items: center;
-  gap: 6px; /* 이미지와 텍스트 간 간격 */
+  gap: 6px;
 }
 
 .profileImage {
-  border-radius: 9999px; /* 원형 이미지처럼 보이게 */
+  border-radius: 9999px;
 }
 
 .profileText {

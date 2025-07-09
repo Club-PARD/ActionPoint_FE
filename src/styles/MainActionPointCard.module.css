@@ -1,17 +1,4 @@
-/* ✅ 액션포인트 섹션 wrapper */
-.actionPointSection {
-  width: 791px;
-  height: 558px;
-  background-color: transparent;
-  padding: 0;
-  border-radius: 0;
-  position: relative;
-  box-sizing: border-box;
-margin-top: 8px;
-  padding-top:32px;
-}
-
-/* ✅ 카드 스타일 */
+/* ✅ 카드 wrapper */
 .card {
   width: 791px;
   height: 558px;
@@ -23,6 +10,7 @@ margin-top: 8px;
   margin-top: 40px;
 }
 
+/* ✅ 섹션 제목 */
 .next {
   font-size: 18px;
   font-weight: bold;
@@ -41,32 +29,54 @@ margin-top: 8px;
   border-radius: 999px;
 }
 
-/* ✅ 프로젝트명 + 아이콘 */
+/* ✅ 프로젝트 정보 */
 .projectInfo {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-top: 16px;
   margin-bottom: 16px;
-  padding-left: 36px;
+}
+
+.projectIcon {
+  width: 23.132px;
+  height: 25px;
+  flex-shrink: 0;
 }
 
 .projectName {
   font-weight: 500;
 }
 
-/* ✅ 카드 내부 텍스트 스타일 */
+/* ✅ 텍스트 영역 */
 .sub {
   font-size: 14px;
   color: #9CA3AF;
   margin-bottom: 4px;
 }
 
-.cardTitle {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 12px;
+.cardTitleBox {
+  width: 498px;
+  height: 40px;
+  padding: 0 12px;
+  background: #FFF;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  margin-bottom: 16px;
 }
+
+.cardTitle {
+  color: #000;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 33.88px;
+  letter-spacing: -0.052px;
+}
+
 
 .countaction {
   font-size: 13px;
@@ -74,7 +84,7 @@ margin-top: 8px;
   margin-bottom: 24px;
 }
 
-/* ✅ 할 일 리스트 */
+/* ✅ 액션포인트 리스트 */
 .actionList {
   list-style: none;
   padding: 0;
@@ -88,6 +98,22 @@ margin-top: 8px;
   display: flex;
   align-items: center;
   gap: 8px;
+
+  width: 498px;
+  height: 40px;
+  padding: 0 12px;
+  background: #FFF;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+.actionText {
+  color: var(--Color-Main-Text, var(--zinc-900, #18181B));
+  font-family: 'Pretendard', sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .completedGoal {
@@ -95,16 +121,44 @@ margin-top: 8px;
   text-decoration: line-through;
 }
 
-/* ✅ 회의록 바로가기 버튼 */
-.linkToMeeting {
+/* ✅ 회의록 바로가기 버튼 및 아이콘 */
+.linkToWrapper {
   position: absolute;
   bottom: 24px;
   right: 24px;
-  background: #3B82F6;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.linkToMeeting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 191px;
+  height: 54px;
+  padding: 0 18px;
+  gap: 1px;
+
+  border-radius: 10px;
+  background-color: #3B82F6;
+
+  color: #CBE2FF;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16.6px;
+  font-weight: 500;
+  line-height: 1.17;
+  text-align: center;
+
   border: none;
-  font-size: 14px;
   cursor: pointer;
+  writing-mode: horizontal-tb;
+  white-space: nowrap;
+}
+
+.meetingIcon {
+  width: 24px;
+  height: 24px;
 }

@@ -23,7 +23,9 @@ export default function ActionPointCard({ meeting, toggleActionPoint }: Props) {
       </div>
 
       <h3 className={styles.sub}>다음 회의 안건</h3>
-      <h4 className={styles.cardTitle}>{meeting.title}</h4>
+      <div className={styles.cardTitleBox}>
+        <h4 className={styles.cardTitle}>{meeting.title}</h4>
+      </div>
       <p className={styles.countaction}>총 {meeting.actionPoints.length}개의 액션 포인트가 있어요!</p>
 
       <ul className={styles.actionList}>
@@ -36,9 +38,8 @@ export default function ActionPointCard({ meeting, toggleActionPoint }: Props) {
           .map((point, i) => (
             <li
               key={i}
-              className={`${styles.actionItem} ${
-                meeting.completedPoints.includes(point) ? styles.completedGoal : ''
-              }`}
+              className={`${styles.actionItem} ${meeting.completedPoints.includes(point) ? styles.completedGoal : ''
+                }`}
             >
               <input
                 type="checkbox"
@@ -50,7 +51,14 @@ export default function ActionPointCard({ meeting, toggleActionPoint }: Props) {
           ))}
       </ul>
 
-      <button className={styles.linkToMeeting}>› 회의록으로 바로 가기</button>
+      <div className={styles.linkToWrapper}>
+        <button className={styles.linkToMeeting}>› 회의록으로 바로 가기</button>
+        <img
+          src="/GoToMeetingIcon.svg"
+          alt="회의록 아이콘"
+          className={styles.meetingIcon}
+        />
+      </div>
     </div>
   );
 }

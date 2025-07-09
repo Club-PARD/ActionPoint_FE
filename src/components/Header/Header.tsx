@@ -1,4 +1,3 @@
-// components/Header.tsx
 import styles from "../../styles/Header.module.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,10 +6,24 @@ import { useSession } from "next-auth/react";
 import { useUserStore } from "@/stores/UserStore";
 
 export default function Header() {
-
   const router = useRouter();
   const { data: session } = useSession();
   const userId = useUserStore((state) => state.userId);
+
+  // LandingPage일 때 로고만 표시
+  if (router.pathname.toLowerCase() === "/landingpage") {
+    return (
+      <header className={styles.header}>
+        <div className={styles.inner}>
+          <div className={styles.left}>
+            <Link href="/MainPage">
+              <Image src="/Logo.png" alt="로고" width={120} height={24} />
+            </Link>
+          </div>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <header className={styles.header}>
