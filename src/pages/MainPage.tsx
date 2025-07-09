@@ -5,10 +5,12 @@ import ParticipantButton from "@/components/ProjectListPage/ParticipantButton";
 import AddProject from "@/components/ProjectListPage/AddProject";
 import ParticipateProject from "@/components/ProjectListPage/ParticipateProject"; // ✅ 추가
 import styles from "../styles/MainPage.module.css";
-import { useState } from "react";
+
 import { useSession } from "next-auth/react";
 // import { useUserStore } from "@/stores/UserStore";
 // import axios from "axios";
+import React, { useState } from 'react';
+
 
 
 export default function MainPage() {
