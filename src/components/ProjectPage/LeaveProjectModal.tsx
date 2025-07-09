@@ -4,18 +4,41 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import styles from '@/styles/LeaveProjectModal.module.css';
+import axios from 'axios';
 
 interface Props {
   onCancel: () => void;
-  onConfirm: () => void;
+  onConfirmSuccess: () => void;
+  projectId: number;
+  userId: number;
 }
 
-export default function LeaveProjectModal({ onCancel, onConfirm }: Props) {
+export default function LeaveProjectModal({ onCancel, onConfirmSuccess, projectId, userId }: Props) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const handleLeaveProject = async () => {
+    try {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/project/${projectId}/leave`,
+        {}, // POST body 없음
+        {
+          headers: {
+            'X-USER-ID': userId,
+          },
+        }
+      );
+      alert('프로젝트를 성공적으로 나갔습니다.');
+      onConfirmSuccess(); // 성공 콜백
+    } catch (err) {
+      console.error('❌ 프로젝트 나가기 실패:', err);
+      alert('프로젝트 나가기 중 오류가 발생했습니다.');
+    }
+  };
+
 
   const modal = (
     <div className={styles.overlay}>
@@ -25,7 +48,9 @@ export default function LeaveProjectModal({ onCancel, onConfirm }: Props) {
         <div className={styles.iconWrapper}>
         </div>
         <div className={styles.buttonGroup}>
-          <button className={styles.leaveButton} onClick={onConfirm}>프로젝트 나가기</button>
+            <button className={styles.leaveButton} onClick={handleLeaveProject}>
+              프로젝트 나가기
+            </button>          
           <button className={styles.cancelButton} onClick={onCancel}>돌아가기</button>
         </div>
       </div>

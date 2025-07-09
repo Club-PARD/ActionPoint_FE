@@ -11,6 +11,11 @@
 }
 
 .text {
-  color: #333; /* ✅ 흐릿한 rgba 말고 완전한 검정 */
+  color: var(--zinc-700, #3F3F46);
+  font-family: Pretendard;
+  font-size: 13.882px;
+  font-style: normal;
   font-weight: 500;
+  line-height: 37.019px; /* 266.667% */
+  letter-spacing: -0.049px;
 }

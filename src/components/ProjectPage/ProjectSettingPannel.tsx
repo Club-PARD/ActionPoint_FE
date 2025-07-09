@@ -1,4 +1,3 @@
-// components/ProjectPage/ProjectSettingsPanel.tsx
 'use client';
 
 import CopyCodeButton from './CopyCodeButton';
@@ -7,14 +6,17 @@ import styles from '../../styles/ProjectSettingPannel.module.css';
 
 interface Props {
   onClose: () => void;
+  projectCode: string;
+  projectId: number;
+  userId: number;
 }
 
-export default function ProjectSettingsPanel({ onClose }: Props) {
+export default function ProjectSettingsPanel({ onClose, projectCode, projectId, userId }: Props) {
   return (
     <div className={styles.panel}>
       <div className={styles.content}>
-        <CopyCodeButton />
-        <LeaveProjectButton />
+        <CopyCodeButton code={projectCode} />
+        <LeaveProjectButton projectId={projectId} userId={userId} />
       </div>
     </div>
   );

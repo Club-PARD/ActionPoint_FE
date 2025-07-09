@@ -8,61 +8,58 @@ import ProjectCreateButton from '@/components/ProjectCreateButton';
 import SortDropdown from '@/components/ProjectListPage/SortDropdown';
 import ParticipationProjectButton from '@/components/ParticipationProjectButton';
 import Header from '@/components/Header/Header';
-import { useUserStore } from '@/stores/UserStore'; 
-import { useRouter } from 'next/router'; // ✅ 추가
+import AddProject from '@/components/ProjectListPage/AddProject';
+import { useUserStore } from '@/stores/UserStore';
 
 interface Project {
-  title: string;
-  participant: string;
-  count: number;
-  status: 0 | 1 | 2;
+  projectId: number;
+  projectName: string;
+  ownerName: string;
+  userCnt: number;
+  projectStatus: 0 | 1 | 2;
+}
+
+interface ProjectCreateButtonProps {
+  onClick: () => void;
 }
 
 export default function ProjectListPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [selectedFilter, setSelectedFilter] = useState('최신순');
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const userId = useUserStore((state) => state.userId);
-  const router = useRouter(); // ✅ 라우터 초기화
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+
+  const fetchProjects = async () => {
+    if (!userId) return;
+
+    try {
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/project/lists`, {
+        headers: { 'X-USER-ID': Number(userId) },
+      });
+      setProjects(res.data);
+    } catch (err) {
+      console.error('❌ 프로젝트 목록 불러오기 실패:', err);
+    }
+  };
 
   useEffect(() => {
-    console.log("👀 ProjectListPage 마운트됨");
-    console.log("👀 현재 userId 상태:", userId);
-
-    if (typeof window === 'undefined' || userId === null) {
-      console.log("⛔ userId 없음. 요청 안 보냄.");
-      return;
-    }
-
-    console.log("🚀 프로젝트 목록 GET 요청 보냄");
-
-    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/project/lists`, {
-      headers: {
-        'X-USER-ID': Number(userId),
-      },
-    })
-    .then((res) => {
-      console.log("✅ 응답:", res.data);
-
-      if (Array.isArray(res.data) && res.data.length === 0) {
-        console.log("📭 프로젝트 없음 → NoProjectPage로 이동");
-        router.push('/NoProjectsPage'); // 경로는 실제 파일명에 맞게 수정
-      } else {
-        setProjects(res.data);
-      }
-    })
-      .catch((err) => {
-        console.error("❌ 요청 실패", err);
-        console.log("📦 최종 전송 userId:", userId, typeof userId);
-      });
+    fetchProjects();
   }, [userId]);
 
-  // ✅ 필터 적용
   const filteredProjects = projects.filter((project) => {
-    if (selectedFilter === '진행중인 프로젝트') return project.status === 2;
-    if (selectedFilter === '준비중인 프로젝트') return project.status === 1;
-    if (selectedFilter === '종료된 프로젝트') return project.status === 0;
-    return true; // 전체 보기
+    if (selectedFilter === '진행중인 프로젝트') return project.projectStatus === 2;
+    if (selectedFilter === '준비중인 프로젝트') return project.projectStatus === 1;
+    if (selectedFilter === '종료된 프로젝트') return project.projectStatus === 0;
+    return true;
   });
+
+  const currentProjects = filteredProjects.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
 
   return (
     <div className={styles.pageBackground}>
@@ -76,24 +73,45 @@ export default function ProjectListPage() {
         </div>
 
         <section className={styles.grid}>
-          {filteredProjects.map((p, i) => (
+          {currentProjects.map((p) => (
             <ProjectCard
-              key={i}
-              title={p.title}
-              participant={p.participant}
-              count={p.count}
-              status={p.status}
+              key={p.projectId}
+              title={p.projectName}
+              participant={p.ownerName}
+              count={p.userCnt}
+              status={p.projectStatus}
+              projectId={p.projectId} // ← 추가!
             />
           ))}
         </section>
 
+
         <header className={styles.header}>
           <div className={styles.actions}>
             <ParticipationProjectButton />
-            <ProjectCreateButton />
+            <ProjectCreateButton onClick={() => setIsModalOpen(true)} />
           </div>
         </header>
+
+        {isModalOpen && (
+          <AddProject
+            onClose={() => setIsModalOpen(false)}
+            onProjectCreated={fetchProjects}
+          />
+        )}
+        <div className={styles.pagination}>
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentPage(i + 1)}
+              className={currentPage === i + 1 ? styles.activePage : ''}
+            >
+              {i + 1}
+            </button>
+          ))}
+        </div>
       </main>
     </div>
+
   );
 }
