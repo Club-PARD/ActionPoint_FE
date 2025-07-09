@@ -69,16 +69,11 @@
 }
 
 .pagination {
-  margin-left: 600px;
-  justify-content: center;
   display: flex;
-  width: 34px;
-  height: 34px;
-  padding: 8px;
+  justify-content: center; /* 수평 가운데 정렬 */
   align-items: center;
   gap: 8px;
-  border-radius: 60px;
-  padding-left: 6 00px;
+  margin-top: 2rem; /* 위쪽 여백 */
 }
 
 .pagination button {

@@ -18,8 +18,8 @@
   flex-shrink: 0;
   padding-left: 25px;
   padding-top: 19px;
-  margin-bottom: 92px;
-  margin-top: 100px;
+  margin-bottom: 50px;
+  margin-top: 75px;
 
   color: var(--Color-Main-Text, var(--zinc-900, #18181B));
   font-family: Pretendard;
@@ -34,8 +34,10 @@
   background: var(--Color-Blue50, #CBE2FF);
 }
 
-.optionsButton{
-  margin-left: 1000px;
+.optionsButton {
+  position: absolute;
+  left: 85%;
+  transform: translateX(-50%); /* 버튼 중심 맞추기 */
 }
 
 .content {
@@ -44,7 +46,7 @@
   width: 1148px;
   height: 773px;
   flex-shrink: 0;
-  padding-top: 195px;
+  padding-top: 85px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   display: flex;
@@ -59,6 +61,7 @@
 }
 
 .message {
+  padding-top: 50px;
   color: var(--Color-Sub-Text, var(--zinc-500, #71717A));
   text-align: center;
   font-family: Pretendard;
@@ -67,7 +70,7 @@
   font-weight: 500;
   line-height: 140%; /* 33.6px */
   letter-spacing: -0.084px;
-  padding-bottom: 128px;
+  padding-bottom: 50px;
 }
 
 .ctaButton {
