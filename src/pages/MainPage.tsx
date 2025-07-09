@@ -116,7 +116,7 @@ export default function MainPage() {
 
       {isEmpty ? (
 
-        <EmptyPage userId={userId} />
+        <EmptyPage/>
       ) : (
         <div className={styles.contentWrapper}>
           {/* 왼쪽: 프로젝트 리스트 */}
@@ -136,11 +136,12 @@ export default function MainPage() {
                   </div>
                 </li>
               ))}
-              <li className={styles.pagination}>
-                <span onClick={handlePrevPage}>&lt;</span>
-                <span className={styles.currentPage}>{currentPage}/{totalPages}</span>
-                <span onClick={handleNextPage}>&gt;</span>
-              </li>
+            <li className={styles.pagination}>
+              <span onClick={handlePrevPage}>&lt;</span>
+              <span className={styles.currentPage}>{currentPage}</span>
+              <span className={styles.totalPage}> / {totalPages}</span>
+              <span onClick={handleNextPage}>&gt;</span>
+            </li>
             </ul>
           </div>
 

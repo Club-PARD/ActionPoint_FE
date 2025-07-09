@@ -27,6 +27,7 @@
   flex-direction: column;
   justify-content: flex-start;
   box-sizing: border-box;
+  position: relative;
 }
 
 .sectionTitle {
@@ -97,19 +98,31 @@
 }
 
 .pagination {
-  width: 100%;
+  position: absolute;
+  right: 16px;
+  bottom: 0px;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  padding-right: 26px;
-  gap: 4px;
-  height: 24px;
   font-size: 13px;
-  color: #9CA3AF;
-  margin-top: 0;
-  margin-bottom: 8px;
-  position:relative;
-  bottom:90%;
+  color: var(--Color-Text-sub, #AFAFC1);
+
+  /* T/M/15 */
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.currentPage {
+  color: var(--Color-Main-Blue, #3B82F6);
+
+  /* T/M/15 */
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .actionPointSection {
