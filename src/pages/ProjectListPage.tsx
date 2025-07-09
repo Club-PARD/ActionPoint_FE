@@ -30,7 +30,6 @@ export default function ProjectListPage() {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-
   const fetchProjects = async () => {
     if (!userId) return;
 
@@ -88,7 +87,6 @@ export default function ProjectListPage() {
           ))}
         </section>
 
-
         <header className={styles.header}>
           <div className={styles.actions}>
             <ParticipationProjectButton />
@@ -102,6 +100,7 @@ export default function ProjectListPage() {
             onProjectCreated={fetchProjects}
           />
         )}
+
         <div className={styles.pagination}>
           {Array.from({ length: totalPages }, (_, i) => (
             <button

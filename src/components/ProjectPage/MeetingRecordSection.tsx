@@ -4,6 +4,7 @@ import styles from '../../styles/MeetingRecordSection.module.css';
 import MeetingSettingPannel from './MeetingSettingPannel';
 import Link from 'next/link'; 
 import CreateMeetingButton from './CreateMeetingButton';
+import { useRouter } from 'next/router';
 
 interface Meeting {
   id: number;
@@ -19,6 +20,21 @@ interface Props {
 
 export default function MeetingRecordSection({ meetings, selectedMeetingId, onSelect }: Props) {
   const [openMenuId, setOpenMenuId] = useState<number | null>(null);
+  const clickTimeoutRef = useState<NodeJS.Timeout | null>(null)[0];
+  const router = useRouter();
+
+  const handleClick = (id: number) => {
+    if (clickTimeoutRef) clearTimeout(clickTimeoutRef as NodeJS.Timeout);
+    // 클릭 -> 타임아웃 대기 → 단일 클릭 처리
+    (clickTimeoutRef as NodeJS.Timeout) = setTimeout(() => {
+      onSelect(id);
+    }, 250);
+  };
+
+  const handleDoubleClick = (id: number) => {
+    if (clickTimeoutRef) clearTimeout(clickTimeoutRef as NodeJS.Timeout);
+    router.push(`/meetings/${id}`);
+  };
 
   return (
     <div className={styles.meetingSection}>
@@ -34,7 +50,8 @@ export default function MeetingRecordSection({ meetings, selectedMeetingId, onSe
           <li
             key={meeting.id}
             className={`${styles.meetingItem} ${meeting.id === selectedMeetingId ? styles.selected : ''}`}
-            onClick={() => onSelect(meeting.id)}
+            onClick={() => handleClick(meeting.id)}
+            onDoubleClick={() => handleDoubleClick(meeting.id)}
           >
             <p className={styles.meetingTitle}>{meeting.title}</p>
             <span className={styles.meetingDate}>{meeting.date}</span>
