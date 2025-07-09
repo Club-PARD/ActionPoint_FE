@@ -1,22 +1,18 @@
 'use client';
 
-import { useState } from 'react';
-import AddProject from './ProjectListPage/AddProject';
 import styles from '../styles/ProjectCreateButton.module.css';
 
-export default function ProjectCreateButton() {
-  const [showPopup, setShowPopup] = useState(false);
+interface ProjectCreateButtonProps {
+  onClick: () => void;
+}
 
+export default function ProjectCreateButton({ onClick }: ProjectCreateButtonProps) {
   return (
-    <>
-      <button
-        className={styles.createButton}
-        onClick={() => setShowPopup(true)}
-      >
-        프로젝트 생성
-      </button>
-
-      {showPopup && <AddProject onClose={() => setShowPopup(false)} />}
-    </>
+    <button
+      className={styles.createButton}
+      onClick={onClick}
+    >
+      프로젝트 생성
+    </button>
   );
 }

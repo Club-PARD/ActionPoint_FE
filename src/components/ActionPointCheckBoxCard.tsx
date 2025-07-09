@@ -6,6 +6,7 @@ interface Props {
   meeting: {
     id: number;
     title: string;
+    date: string;
     actionPoints: string[];
     completedPoints: string[];
   };

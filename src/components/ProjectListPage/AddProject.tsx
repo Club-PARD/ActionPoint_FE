@@ -9,9 +9,10 @@ import Image from 'next/image';
 
 interface AddProjectProps {
   onClose: () => void;
+  onProjectCreated: () => void;
 }
 
-export default function AddProject({ onClose }: AddProjectProps) {
+export default function AddProject({ onClose, onProjectCreated }: AddProjectProps) {
   const [projectTitle, setProjectTitle] = useState('');
   const [generatedCode, setGeneratedCode] = useState<string | null>(null);
   const [isCodeGenerated, setIsCodeGenerated] = useState(false);
@@ -80,9 +81,12 @@ export default function AddProject({ onClose }: AddProjectProps) {
               projectName={projectTitle}
               onCodeGenerated={(code) => {
                 setGeneratedCode(code);
-                setIsCodeGenerated(true);
+                setIsCodeGenerated(true); // 코드가 생성됐다는 상태만 바꿔줌
               }}
+              onClose={onClose} // 확인 누르면 닫힘
+              onProjectCreated={onProjectCreated} // 리스트 갱신
             />
+
           </div>
         </div>
       </div>

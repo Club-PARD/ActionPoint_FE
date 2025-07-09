@@ -58,20 +58,20 @@
   line-height: normal;
   letter-spacing: -0.084px;
   padding-left: 18px;
-  padding-bottom: 80px;
+  padding-bottom: 70px;
   padding-top: 10px;
 }
 
 .active .footer {
   width:136px;
-  height: 36px;
+  height: 50px;
   display: inline-flex;
   margin-left: 150px;
   margin-bottom: 20px;
   padding: 8px 10px;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 18px;
   color: var(--Color-Sub-Logo, #60A5FA);
 
   /* T/SM/16 */
@@ -88,7 +88,7 @@
 
 .die .footer{
   width:136px;
-  height: 36px;
+  height: 50px;
   margin-left: 150px;
   margin-bottom: 20px;
 
@@ -112,7 +112,7 @@
 
 .normal .footer{
   width:136px;
-  height: 36px;
+  height: 50px;
   margin-left: 150px;
   margin-bottom: 20px;
 
