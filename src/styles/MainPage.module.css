@@ -1,134 +1,121 @@
 .container {
-    width: 100%;
-    min-height: 100vh;
-    background: var(--blue-50, #EFF6FF);
-    margin-top: 80px;  
+  width: 100%;
+  height: calc(100vh - 80px);
+  margin-top: 80px; /* ✅ 헤더 아래로 */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .contentWrapper {
-    display: flex;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-top: 70px;
-    gap: 60px;
+  padding: 32px;
+  gap: 32px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: calc(100vh - 80px);
+  box-sizing: border-box;
 }
 
-.leftArea {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+.projectList {
+  width: 349px;
+  height: 542px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
 }
 
-.whiteCard {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    position: relative;
-    width: 709px;
-    height: 700px;
+.sectionTitle {
+  font-size: 18px;
+  font-weight: bold;
+  width: 126px;
+  margin-bottom: 16px;
+  position: relative;
 }
 
-.title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 126px;
+  height: 2px;
+  background-color: #3B82F6;
+  border-radius: 999px;
 }
 
-.memoWrapper {
-    position: relative;
-    width: 484px;
-    height: 564px;
-    margin: 0 auto;
+.projectItems {
+  list-style: none;
+  padding: 16px 0 0 0; /* ✅ 여기 수정 */
+  margin: 0;
+  background-color: #FAFAFA;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.memoImage {
-    width: 100%;
-    height: 100%;
-    display: block;
+.projectItem {
+  width: 307px;
+  height: 85px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  background-color: #FAFAFA;
+  border-radius: 12px;
+  margin-bottom: 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.memoContent {
-    position: absolute;
-    top: 75px;
-    left: 76px;
-    width: 340px;
+.projectItem:hover {
+  background-color: #EFF6FF;
 }
 
-.memoContent h3 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+.selected {
+  background-color: #EFF6FF;
 }
 
-.memoContent ul {
-    list-style: none;
-    padding: 0;
+.projectIcon {
+  width: 32px;
+  height: 32px;
 }
 
-.memoContent li {
-    margin-bottom: 0.5rem;
+.projectTeam {
+  font-size: 12px;
+  color: #888;
 }
 
-.linkText {
-    margin-top: 1rem;
-    color: gray;
-    font-size: 0.9rem;
-    cursor: pointer;
+.projectTitle {
+  font-weight: bold;
+  font-size: 14px;
 }
 
-.rightArea {
-    flex: 1;
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 26px;
+  gap: 4px;
+  height: 24px;
+  font-size: 13px;
+  color: #9CA3AF;
+  margin-top: 0;
+  margin-bottom: 8px;
 }
 
-.calendarArea {
-    background: white;
-    width: 415px;
-    height: 325.297px;
-    flex-shrink: 0;
-    margin-bottom: 20px;
-}
-
-.projectListArea {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    position: relative;
-    margin-top: 70px;
-    padding-top: 30px;
-    width: 438px; /* (199px * 2) + (20px gap) = 정확히 두 개 카드 너비 + gap */
-}
-
-.projectCard {
-    width: 199px;
-    height: 75.3px;
-    background: #BFDBFE;
-    border-radius: 12px;
-    padding: 1rem;
-    cursor: pointer;
-    text-align: center;
-    border: 1px solid transparent;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.projectCard.selected {
-    border-color: #3B82F6;
-}
-
-.pageIndicator {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 0.9rem;
-    color: #3B82F6;
-}
-
-.pageIndicator button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin: 0 3px;
-    color: #3B82F6;
+.actionPointSection {
+  width: 791px;
+  height: 542px;
+  background-color: transparent;
+  border-radius: 0;
+  position: relative;
+  box-sizing: border-box;
+  margin-top: 0; /* ✅ 이걸로 박스 기준 위 맞춤 */
 }
