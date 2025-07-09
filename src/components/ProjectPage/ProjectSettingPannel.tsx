@@ -4,12 +4,10 @@ import CopyCodeButton from './CopyCodeButton';
 import LeaveProjectButton from './LeaveProjectButton';
 import styles from '../../styles/ProjectSettingPannel.module.css';
 
-
-
-interface ProjectSettingsPanelProps {
+interface Props {
   onClose: () => void;
   projectCode: string;
-  projectId:  number;
+  projectId: number;
   userId: number;
 }
 
