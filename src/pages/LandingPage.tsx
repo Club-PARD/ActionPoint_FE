@@ -2,6 +2,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import Header from "@/components/Header/Header";
 import styles from "../styles/LandingPage.module.css";
+import Button from "../components/LandingPage/LoginButton";
 
 export default function LandingPage() {
   const [showLogin, setShowLogin] = useState(false);

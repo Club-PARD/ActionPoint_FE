@@ -1,0 +1,22 @@
+.startButton {
+  display: inline-flex;
+  height: 54px;
+  padding: 0px 19px;
+  align-items: center;
+  gap: 1px;
+  flex-shrink: 0;
+
+  border-radius: 10px;
+  background: var(--Color-Sub-Logo, #60A5FA);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+}
+
+.startButton:hover {
+  background-color: #3b82f6; /* hover 시 더 진한 파랑 */
+}
