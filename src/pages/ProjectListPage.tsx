@@ -20,9 +20,9 @@ interface Project {
   projectStatus: 0 | 1 | 2;
 }
 
-interface ProjectCreateButtonProps {
-  onClick: () => void;
-}
+// interface ProjectCreateButtonProps {
+//   onClick: () => void;
+// }
 
 export default function ProjectListPage() {
   const [projects, setProjects] = useState<Project[]>([]);

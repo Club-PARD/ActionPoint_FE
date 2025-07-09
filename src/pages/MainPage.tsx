@@ -115,7 +115,6 @@ export default function MainPage() {
       <Header />
 
       {isEmpty ? (
-
         <EmptyPage/>
       ) : (
         <div className={styles.contentWrapper}>

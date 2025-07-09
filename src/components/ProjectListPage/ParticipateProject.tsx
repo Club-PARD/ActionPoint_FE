@@ -43,10 +43,10 @@ export default function ParticipateProject({ onClose }: ParticipateProjectProps)
       alert('✅ 프로젝트 참여 성공!');
       onClose();
     } catch (error: any) {
-      console.error('❌ 참여 실패:', error.response?.data || error.message);
+      // console.error('❌ 참여 실패:', error.response?.data || error.message);
       setIsError(true);
-      setErrorMessage(error.response?.data?.error || '에러 발생');
-      alert(`❌ 참여 실패: ${errorMessage}`);
+      // setErrorMessage(error.response?.data?.error || '에러 발생');
+      // alert(`❌ 참여 실패: ${errorMessage}`);
     }
   };
 
