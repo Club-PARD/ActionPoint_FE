@@ -50,7 +50,7 @@
 
 .projectItems {
   list-style: none;
-  padding: 32px 0 0 0; /* ✅ 여기 수정 */
+  padding: 16px 0 0 0; /* ✅ 여기 수정 */
   margin: 0;
   background-color: #FAFAFA;
   flex-grow: 1;
@@ -65,10 +65,10 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 16px;
+  padding: 0;
   background-color: #FAFAFA;
   border-radius: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 0;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
@@ -106,7 +106,7 @@
   height: 24px;
   font-size: 13px;
   color: #9CA3AF;
-  margin-top: 8px;
+  margin-top: 0;
   margin-bottom: 8px;
 }
 
