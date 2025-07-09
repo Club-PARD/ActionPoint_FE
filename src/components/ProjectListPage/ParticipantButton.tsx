@@ -64,7 +64,7 @@ export default function ParticipantButton({
   return (
 
     <button onClick={handleJoin} className={styles.button}>
-      참여
+      참여하기
     </button>
   );
 }
