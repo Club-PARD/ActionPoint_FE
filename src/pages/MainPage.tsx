@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
 import Header from "@/components/Header/Header";
+
 import ActionPointCard from "@/components/MainPage/MainActionPointCard";
 import EmptyPage from "@/components/EmptyPage";
 import styles from "../styles/MainPage.module.css";
@@ -75,8 +75,10 @@ export default function MainPage() {
   const [meetings, setMeetings] = useState<Meeting[]>(dummyMeetings);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
+
   const projectsPerPage = 6;
   const totalPages = Math.ceil(dummyProjects.length / projectsPerPage);
+
   const currentProjects = dummyProjects.slice(
     (currentPage - 1) * projectsPerPage,
     currentPage * projectsPerPage
@@ -113,6 +115,7 @@ export default function MainPage() {
       <Header />
 
       {isEmpty ? (
+
         <EmptyPage userId={userId} />
       ) : (
         <div className={styles.contentWrapper}>
@@ -152,6 +155,7 @@ export default function MainPage() {
               <p style={{ padding: '16px' }}>선택된 프로젝트에 해당하는 회의가 없습니다.</p>
             )}
           </div>
+
         </div>
       )}
     </div>

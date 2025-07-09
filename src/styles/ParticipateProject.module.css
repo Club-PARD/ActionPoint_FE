@@ -60,6 +60,23 @@
   margin-bottom: 20px;
 }
 
+.inputError {
+  width: 384px;
+height: 47px;
+flex-shrink: 0;
+border-radius: 10px;
+border: 1px solid var(--Color-System, #F63B3B);
+color: var(--red-500, #EF4444);
+text-align: center;
+
+/* T/M/15 */
+font-family: Pretendard;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+
 .buttonRow{
   display: flex;
   justify-content: flex-end;  /* 오른쪽 정렬 */

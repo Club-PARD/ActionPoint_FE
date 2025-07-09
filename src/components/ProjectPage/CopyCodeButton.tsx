@@ -1,18 +1,19 @@
 'use client';
 
-import axios from 'axios';
 import { useState } from 'react';
 import Image from 'next/image';
 import styles from '../../styles/CopyCodeButton.module.css';
 
-export default function CopyCodeButton() {
+interface CopyCodeButtonProps {
+  code: string;
+}
+
+export default function CopyCodeButton({ code }: CopyCodeButtonProps) {
   const [loading, setLoading] = useState(false);
 
   const handleCopy = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('/api/project/code');
-      const code = res.data.code || res.data;
       await navigator.clipboard.writeText(code);
       alert('코드가 복사되었습니다람쥐~!');
     } catch {

@@ -1,14 +1,20 @@
+'use client';
+
 import styles from '../../styles/ProjectCard.module.css';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 interface ProjectCardProps {
   title: string;
   participant: string;
   count: number;
   status: 0 | 1 | 2;
+  projectId: number;
 }
 
-export default function ProjectCard({ title, participant, count, status }: ProjectCardProps) {
+export default function ProjectCard({ title, participant, count, status, projectId }: ProjectCardProps) {
+  const router = useRouter();
+
   const getBackgroundClass = () => {
     switch (status) {
       case 0:
@@ -21,20 +27,26 @@ export default function ProjectCard({ title, participant, count, status }: Proje
         return '';
     }
   };
+
   const getImageSrc = () => {
-  switch (status) {
-    case 0:
-      return './active.svg';
-    case 1:
-      return './Normal.svg';
-    case 2:
-      return './Die.svg';
-    default:
-      return '';
-  }
-};
+    switch (status) {
+      case 0:
+        return '/active.svg';
+      case 1:
+        return '/Normal.svg';
+      case 2:
+        return '/Die.svg';
+      default:
+        return '';
+    }
+  };
+
+  const handleClick = () => {
+    router.push(`/project/${projectId}`); // 👈 이동!
+  };
+
   return (
-    <div className={`${styles.card} ${getBackgroundClass()}`}>
+    <div className={`${styles.card} ${getBackgroundClass()}`} onClick={handleClick}>
       <div className={styles.image}>
         <Image src={getImageSrc()} alt="project status" width={46} height={46} />
       </div>

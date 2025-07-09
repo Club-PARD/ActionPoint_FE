@@ -3,6 +3,7 @@ import { useState } from 'react';
 import styles from '../../styles/MeetingRecordSection.module.css';
 import MeetingSettingPannel from './MeetingSettingPannel';
 import Link from 'next/link'; 
+import CreateMeetingButton from './CreateMeetingButton';
 
 interface Meeting {
   id: number;
@@ -24,8 +25,8 @@ export default function MeetingRecordSection({ meetings, selectedMeetingId, onSe
       <div className={styles.meetingHeader}>
         <h3 className={styles.sectionTitle}>회의 기록</h3>
         <Link href="/MeetingPage" passHref>
-    <button className={styles.createBtn}>+ 새로운 회의록 작성하기</button>
-  </Link>
+           <CreateMeetingButton />
+        </Link>
       </div>
 
       <ul className={styles.meetingList}>
