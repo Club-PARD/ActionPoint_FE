@@ -20,10 +20,6 @@ interface Project {
   projectStatus: 0 | 1 | 2;
 }
 
-interface ProjectCreateButtonProps {
-  onClick: () => void;
-}
-
 export default function ProjectListPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [selectedFilter, setSelectedFilter] = useState('최신순');
