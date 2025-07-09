@@ -11,7 +11,7 @@ export default function ScrollToTopButton() {
 
   return (
     <button className={styles.scrollButton} onClick={scrollToTop}>
-      <img src="/arrow_up_ios.png" alt="맨 위로" className={styles.icon} />
+       <img src="/arrow.png" className={styles.icon} />
     </button>
   );
 }
