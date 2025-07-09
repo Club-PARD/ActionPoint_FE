@@ -14,7 +14,7 @@ interface Meeting {
 }
 
 export default function MainPage() {
-  const userId = "김사랑";
+  //const userId = "김사랑";
 
   const dummyProjects = [
     { id: 1, title: "1번 산출물 정리하기", actionPointCount: 3 },
