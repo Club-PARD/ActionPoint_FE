@@ -64,7 +64,7 @@ export default function WriteMinutesPage() {
       <div className={styles.section}>
         {agendas.map((agenda, index) => (
           <div key={index} className={styles.agendaBox}>
-            <label className={styles.agendaTitle}>안건{index + 1}) {agenda}</label>
+            <label className={styles.agendaTitle}>안건{index + 1} {agenda}</label>
             <textarea className={styles.agendaInput} placeholder="회의 내용을 입력하세요" value={minutes[index]} onChange={(e) => handleChange(index, e.target.value)} />
           </div>
         ))}
