@@ -68,12 +68,12 @@ export default function ParticipateProject({ onClose }: ParticipateProjectProps)
 
         <div className={styles.buttonRow}>
           <CancelButton onClose={onClose} />
-          <button
-            className={styles.participantButton}
-            onClick={() => handleClick(projectTitle)}
-          >
-            참여하기
-          </button>
+          <ParticipantButton
+            projectTitle={projectTitle}
+            onClose={onClose}
+            setIsError={setIsError}
+            setErrorMessage={setErrorMessage}
+          />
         </div>
       </div>
     </div>
