@@ -1,20 +1,20 @@
 /* CancelButton.module.css */
 
 .button {
-  display: inline-flex;
-  padding: 8px 15px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  border-radius: 20px;
-  border: 1px solid var(--zinc-400, #A1A1AA);
-  color: var(--zinc-400, #A1A1AA);
-  text-align: center;
-  font-family: Pretendard;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+width: 125px;
+height: 45px;
+flex-shrink: 0;
+color: #AFAFC1;
+text-align: center;
+border-radius: 10px;
+background: #F0F0F0;
+/* T/SB/15 */
+font-family: Pretendard;
+font-size: 15px;
+font-style: normal;
+font-weight: 600;
+line-height: 33.88px; /* 225.865% */
+letter-spacing: -0.052px;
 }
 
 .button:hover {

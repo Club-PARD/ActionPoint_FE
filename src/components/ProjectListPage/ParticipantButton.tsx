@@ -1,11 +1,9 @@
 'use client';
 
-
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { useUserStore } from '@/stores/UserStore';
 import styles from '../../styles/ParticipantButton.module.css';
-import styles from '../../styles/MainPage.module.css';
 
 
 interface ParticipantButtonProps {
