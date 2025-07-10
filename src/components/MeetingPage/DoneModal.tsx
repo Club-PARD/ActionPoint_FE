@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'; // ✅ 추가
 import styles from '../../styles/ChangeModal.module.css';
 
 interface DoneModalProps {
-    onSave: () => void;
+  onSave: () => void;
   onCancel: () => void;
 }
 
