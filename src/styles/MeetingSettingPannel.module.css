@@ -1,4 +1,7 @@
 .menu {
+    position: absolute; /* ✅ 페이지 흐름과 분리 */
+    z-index: 1000;       /* 다른 요소 위에 뜨도록 */
+    left:80%;
     width: 217px;
     height: 120px;
     flex-shrink: 0;

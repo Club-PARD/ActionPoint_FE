@@ -14,6 +14,7 @@ interface Project {
   latestMeetingId: number;
   latestMeetingTitle: string;
   myActionPointsCount: number;
+  meetingLastSummary: string;
   myActionPoints: ActionPoint[];
 }
 
@@ -133,7 +134,7 @@ export default function MainPage() {
             <ActionPointCard
               meeting={{
                 id: selectedProject.latestMeetingId,
-                title: selectedProject.latestMeetingTitle,
+                title: selectedProject.meetingLastSummary,
                 actionPoints: selectedProject.myActionPoints.map((p) => p.actionContent),
                 completedPoints: selectedProject.myActionPoints
                   .filter((p) => p.finished)
