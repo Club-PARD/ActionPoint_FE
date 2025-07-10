@@ -14,7 +14,7 @@ export default function CreateMeetingButton({ projectId, userId }: Props) {
 
   const handleClick = async () => {
     try {
-      // ✅ 서버에 projectId 전달
+      console.log('🟢 선택한 프로젝트 ID:', projectId); // ✅ 프로젝트 ID 출력
       await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/meetings/${projectId}/pass-id`,
         {},
@@ -25,7 +25,6 @@ export default function CreateMeetingButton({ projectId, userId }: Props) {
         }
       );
 
-      // ✅ 페이지 이동
       router.push('/MeetingPage');
     } catch (error) {
       console.error('❌ 회의 페이지 이동 전 projectId 전달 실패:', error);
