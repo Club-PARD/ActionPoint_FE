@@ -21,14 +21,14 @@
   margin-bottom: 48px;
 }
 
-/* 섹션 제목 */
+
 .sectionTitle {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 24px;
   padding-bottom: 8px;
   border-bottom: 2px solid #ccc;
-}
+} 
 
 /* form 요소 배치 */
 .formGrid {
@@ -73,14 +73,6 @@
   color: #333;
 }
 
-
-
-
-/* 
-.formRow input:focus,
-.formRow textarea:focus {
-  border-color: #4a90e2;
-} */
 
 .formRow textarea {
   min-height: 120px;
