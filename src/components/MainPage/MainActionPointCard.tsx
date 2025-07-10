@@ -52,7 +52,12 @@ export default function ActionPointCard({ meeting, toggleActionPoint }: Props) {
       </ul>
 
       <div className={styles.linkToWrapper}>
-        <button className={styles.linkToMeeting}>› 회의록으로 바로 가기</button>
+        <div className={styles.balloonWrapper}>
+          <button className={styles.linkToMeeting}>
+            › 회의록으로 바로 가기
+          </button>
+          <div className={styles.balloonTail} />
+        </div>
         <img
           src="/GoToMeetingIcon.svg"
           alt="회의록 아이콘"
