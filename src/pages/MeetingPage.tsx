@@ -2,13 +2,14 @@
 // MeetingPage.tsx
 'use client';
 
-import styles from '../styles/Meeting.module.css';
 import Header from "@/components/Header/Header";
+import ChangeModal from "../components/MeetingPage/ChangeModal";
 import { AiOutlinePlus } from 'react-icons/ai';
 import { FiX } from 'react-icons/fi';
-import ChangeModal from "../components/MeetingPage/ChangeModal";
-import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
+import axiosInstance from '../../src/utils/axiosInstance';
+import styles from '../styles/Meeting.module.css';
 
 interface FileInputItem {
   id: number;
@@ -17,7 +18,6 @@ interface FileInputItem {
 
 export default function MeetingPage() {
   const router = useRouter();
-
   const [showModal, setShowModal] = useState(false);
   const [agendaList, setAgendaList] = useState(['']);
   const [fileInputs, setFileInputs] = useState<FileInputItem[]>([
@@ -28,13 +28,7 @@ export default function MeetingPage() {
   const [meetingTime, setMeetingTime] = useState('');
   const [participants, setParticipants] = useState('');
   const [recorder, setRecorder] = useState('');
-  
-  // 유효성 검사 에러 상태
-  const [errors, setErrors] = useState({
-    goal: '',
-    participants: '',
-    recorder: ''
-  });
+  const [errors, setErrors] = useState({ goal: '', participants: '', recorder: '' });
 
   const handleOpenModal = () => setShowModal(true);
   const handleCancel = () => setShowModal(false);
@@ -52,84 +46,122 @@ export default function MeetingPage() {
     setFileInputs(prev => prev.map(input => input.id === id ? { ...input, files } : input));
   };
 
-  const getFileNames = () => {
-    return fileInputs.map((input) => input.files?.[0]?.name).filter((name): name is string => !!name);
-  };
-
-  // 유효성 검사 함수
   const validateForm = () => {
-    const newErrors = {
-      goal: '',
-      participants: '',
-      recorder: '',
-      agendaList: '',
-    };
-
-    if (!goal.trim()) {
-      newErrors.goal = '회의 목표를 입력해주세요.';
-    }
-
-    if (!participants.trim()) {
-      newErrors.participants = '참여자를 입력해주세요.';
-    }
-
-    if (!recorder.trim()) {
-      newErrors.recorder = '기록자를 입력해주세요.';
-    }
-
-    if (agendaList.length === 0 || agendaList.some(item => !item.trim())) {
-  newErrors.agendaList = '하나 이상의 안건을 입력해주세요.';
-}
-
+    const newErrors = { goal: '', participants: '', recorder: '', agendaList: '' };
+    if (!goal.trim()) newErrors.goal = '회의 목표를 입력해주세요.';
+    if (!participants.trim()) newErrors.participants = '참여자를 입력해주세요.';
+    if (!recorder.trim()) newErrors.recorder = '기록자를 입력해주세요.';
+    if (agendaList.length === 0 || agendaList.some(item => !item.trim())) newErrors.agendaList = '하나 이상의 안건을 입력해주세요.';
     setErrors(newErrors);
     return !newErrors.goal && !newErrors.participants && !newErrors.recorder && !newErrors.agendaList;
   };
 
-  // 입력값 변경 시 해당 필드 에러 제거
   const handleInputChange = (field: string, value: string) => {
     setErrors(prev => ({ ...prev, [field]: '' }));
-    
-    switch (field) {
-      case 'goal':
-        setGoal(value);
-        break;
-      case 'participants':
-        setParticipants(value);
-        break;
-      case 'recorder':
-        setRecorder(value);
-        break;
-      case 'agendaList':
-        break;
-    }
+    if (field === 'goal') setGoal(value);
+    else if (field === 'participants') setParticipants(value);
+    else if (field === 'recorder') setRecorder(value);
   };
 
-  const handleSave = () => {
-    if (validateForm()) {
+  const handleSave = async () => {
+    if (!validateForm()) return;
+
+    const formData = new FormData();
+    const projectId = 6; // 🔸 실제로는 prop/context 등에서 받아야 함
+    const writerId = 6; // 🔸 실제 사용자 ID
+
+    const data = {
+      projectId,
+      meetingTitle: goal,
+      meetingDate: new Date(meetingDate).toISOString(),
+      meetingTime,
+      meetingParticipants: participants,
+      meetingWriterId: writerId,
+      agendaTitles: agendaList
+    };
+
+    const jsonBlob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+    formData.append('data', jsonBlob);
+
+    fileInputs.forEach(input => {
+      if (input.files && input.files.length > 0) {
+        Array.from(input.files).forEach(file => {
+          formData.append('files', file);
+        });
+      }
+    });
+
+    try {
+      const response = await axiosInstance.post('/meetings/create/title', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+      alert('회의가 성공적으로 저장되었습니다!');
       setShowModal(false);
-      alert('저장 완료!');
+      console.log(response.data);
+    } catch (error: unknown) {
+      console.error('저장 실패:', error);
+      alert('저장에 실패했습니다.');
     }
   };
 
-  const handleWriteMinutes = () => {
-    if (validateForm()) {
-      const agendasParam = encodeURIComponent(JSON.stringify(agendaList));
-      const goalParam = encodeURIComponent(goal);
-      const filesParam = encodeURIComponent(JSON.stringify(getFileNames()));
-      const meetingDateParam = encodeURIComponent(meetingDate);
-      const meetingTimeParam = encodeURIComponent(meetingTime);
-      const participantsParam = encodeURIComponent(participants);
-      const recorderParam = encodeURIComponent(recorder);
-      
-      router.push(`/WriteMinutesPage?agendas=${agendasParam}&goal=${goalParam}&files=${filesParam}&meetingDate=${meetingDateParam}&meetingTime=${meetingTimeParam}&participants=${participantsParam}&recorder=${recorderParam}`);
-    }
+  const handleWriteMinutes = async () => {
+  if (!validateForm()) return;
+
+  const formData = new FormData();
+  const projectId = 6; // 실제 값으로 교체
+  const writerId = 6; // 실제 값으로 교체
+
+  const data = {
+    projectId,
+    meetingTitle: goal,
+    meetingDate: new Date(meetingDate).toISOString(),
+    meetingTime,
+    meetingParticipants: participants,
+    meetingWriterId: writerId,
+    agendaTitles: agendaList,
   };
+
+  const jsonBlob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+  formData.append('data', jsonBlob);
+
+  fileInputs.forEach((input) => {
+    if (input.files && input.files.length > 0) {
+      Array.from(input.files).forEach((file) => {
+        formData.append('files', file);
+      });
+    }
+  });
+
+  try {
+    const response = await axiosInstance.post('/meetings/create/title', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+
+    // 성공 시 회의 데이터 → query string 으로 넘김
+    const agendasParam = encodeURIComponent(JSON.stringify(agendaList));
+    const goalParam = encodeURIComponent(goal);
+    const filesParam = encodeURIComponent(JSON.stringify(
+      fileInputs.map(input => input.files?.[0]?.name).filter((name): name is string => !!name)
+    ));
+    const meetingDateParam = encodeURIComponent(meetingDate);
+    const meetingTimeParam = encodeURIComponent(meetingTime);
+    const participantsParam = encodeURIComponent(participants);
+    const recorderParam = encodeURIComponent(recorder);
+
+    alert('회의가 성공적으로 등록되었습니다!');
+    router.push(`/WriteMinutesPage?agendas=${agendasParam}&goal=${goalParam}&files=${filesParam}&meetingDate=${meetingDateParam}&meetingTime=${meetingTimeParam}&participants=${participantsParam}&recorder=${recorderParam}`);
+
+  } catch (error: unknown) {
+    console.error('회의록 등록 실패:', error);
+    alert('회의 등록 중 오류가 발생했습니다.');
+  }
+};
+
 
   return (
     <div className={styles.container}>
       <Header />
       <div className={styles.backLink} onClick={() => router.back()}>&lt; 프로젝트로 돌아가기</div>
-
       <section className={styles.section}>
         <h3 className={styles.sectionTitle}>회의 목표</h3>
         <div className={styles.formRow}>
