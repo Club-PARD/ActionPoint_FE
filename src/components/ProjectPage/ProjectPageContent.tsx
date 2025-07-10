@@ -183,17 +183,17 @@ export default function ProjectPageContent({ projectId }: ProjectPageProps) {
           <ProgressCard percent={percent} message={getProgressMessage(percent)} />
         </div>
 
-        <MeetingRecordSection
-          meetings={projectData.meetings.map((m) => ({
-            id: m.meetingId,
-            title: m.meetingTitle,
-            date: new Date(m.meetingDate).toLocaleDateString('ko-KR'),
-            actionPoints: m.actionPoints.map((p) => p.actionCentent),
-            completedPoints: m.actionPoints.filter((p) => p.finished).map((p) => p.actionCentent),
-          }))}
-          selectedMeetingId={selectedMeetingId}
-          onSelect={setSelectedMeetingId}
-        />
+          <MeetingRecordSection
+            meetings={projectData.meetings.map((m) => ({
+              id: m.meetingId,
+              title: m.meetingTitle,
+              date: new Date(m.meetingDate).toLocaleDateString('ko-KR'),
+            }))}
+            selectedMeetingId={selectedMeetingId}
+            onSelect={setSelectedMeetingId}
+            projectId={projectId} // ✅ 추가
+            userId={userId}       // ✅ 추가
+          />
       </div>
     </div>
   );
