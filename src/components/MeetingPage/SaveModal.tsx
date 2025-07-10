@@ -5,17 +5,25 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import styles from '../../styles/ChangeModal.module.css';
 
+
 interface SaveModalProps {
-    onSave: () => void;
+  onSave: () => void;
   onCancel: () => void;
 }
 
-export default function SaveModal({ onCancel }: SaveModalProps) {
+export default function SaveModal({ onSave, onCancel }: SaveModalProps) {
   const router = useRouter(); 
 
-  const handleGoNext = () => {
-    router.push('/NextMeetingPage'); // ✅ 다음 페이지로 이동
-  };
+  const handleGoNext = async () => {
+  try {
+    const meetingId = await onSave(); // ✅ meetingId 받아옴
+    if (meetingId === null) return;
+
+    router.push(`/NextMeetingPage?meetingId=${meetingId}`);
+  } catch (error) {
+    console.error("❌ onSave() 실패:", error);
+  }
+};
 
   return (
     <div className={styles.overlay}>
@@ -37,4 +45,3 @@ export default function SaveModal({ onCancel }: SaveModalProps) {
     </div>
   );
 }
-

@@ -3,13 +3,17 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import styles from '../styles/WriteMinutesPage.module.css';
-import Header from "@/components/Header/Header";
 import SaveModal from '../components/MeetingPage/SaveModal';
 import axios from 'axios';
+
+import axiosInstance from '../../src/utils/axiosInstance';
+
+
 
 interface AgendaItem {
   agendaId: number;
   agendaTitle: string;
+  agendaContent?: string;
 }
 
 export default function WriteMinutesPage() {
@@ -29,7 +33,7 @@ export default function WriteMinutesPage() {
 
     if (agendaParam) {
       const parsed: AgendaItem[] = JSON.parse(decodeURIComponent(agendaParam));
-      console.log('✅ 받은 agendas:', parsed); // ✅ agendaId 확인 로그 추가
+      console.log('✅ 받은 agendas:', parsed);
       setAgendas(parsed);
       setMinutes(new Array(parsed.length).fill(''));
     }
@@ -43,51 +47,35 @@ export default function WriteMinutesPage() {
     setMinutes(updated);
   };
 
-  const handleSave = async () => {
-    try {
-      const patchPayload = agendas.map((agenda, idx) => ({
-        agendaId: Number(agenda.agendaId),
-        agendaContent: minutes[idx],
-      }));
+  const handleSave = async (): Promise<number | null> => {
+  try {
+    const patchPayload = agendas.map((agenda, idx) => ({
+      agendaId: agenda.agendaId,
+      agendaContent: minutes[idx] ?? '',
+    }));
 
-      console.log('📦 PATCH payload 확인:', JSON.stringify(patchPayload, null, 2));
+    const response = await axiosInstance.patch('/meetings/create/agendas', patchPayload);
 
-      const response = await axios.patch('/meetings/create/agendas', JSON.stringify(patchPayload), {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+    console.log('📨 PATCH 응답 전체:', response);
+    console.log('📨 PATCH 응답 데이터:', response.data);
 
-      console.log('✅ PATCH 성공 응답:', response.data);
+    const meetingId = response.data; // 또는 response.data.meetingId
+    if (!meetingId) throw new Error('No meetingId returned from server');
 
-      const nextParams = new URLSearchParams({
-        goal: encodeURIComponent(goal),
-        agendas: encodeURIComponent(JSON.stringify(agendas)),
-        minutes: encodeURIComponent(JSON.stringify(minutes)),
-        files: encodeURIComponent(JSON.stringify(files)),
-        nextActions: searchParams.get('nextActions') || '',
-        nextAssignees: searchParams.get('nextAssignees') || '',
-        discussion: searchParams.get('discussion') || '',
-      });
+    return meetingId;
+  } catch (error) {
+    console.error('❌ 회의록 저장 실패:', error);
+    return null;
+  }
+};
 
-      router.push(`/NextMeetingPage?${nextParams.toString()}`);
-    } catch (error) {
-      alert('회의록 저장에 실패했습니다.');
-      console.error('❌ API 호출 오류:', error);
 
-      if (axios.isAxiosError(error)) {
-        console.error('Response data:', error.response?.data);
-        console.error('Response status:', error.response?.status);
-      }
-    }
-  };
 
   const handleOpenModal = () => setShowModal(true);
   const handleCancel = () => setShowModal(false);
 
   return (
     <div className={styles.container}>
-      <Header />
       <div className={styles.backLink} onClick={() => router.back()}>&lt; 회의록 돌아가기</div>
 
       <h2 className={styles.sectionTitle}>회의록</h2>
@@ -124,11 +112,12 @@ export default function WriteMinutesPage() {
       <div className={styles.buttonGroup}>
         <button className={styles.blueButton} onClick={handleOpenModal}>회의록 저장</button>
         {showModal && (
-          <SaveModal
-            onSave={handleSave}
-            onCancel={handleCancel}
-          />
-        )}
+  <SaveModal
+    onSave={handleSave}  // 이제 meetingId 반환
+    onCancel={handleCancel}
+  />
+)}
+
       </div>
     </div>
   );
