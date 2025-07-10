@@ -54,7 +54,7 @@ export default function NoMeetingPage({ projectName, projectCode, projectId, use
           아직 추가된 회의 목표가 없어요<br />
           회의 목표 작성을 통해 회의 목표를 만들어보세요!
         </p>
-        <CreateMeetingButton />
+           <CreateMeetingButton projectId={projectId} userId={userId} />
       </div>
     </div>
   );
