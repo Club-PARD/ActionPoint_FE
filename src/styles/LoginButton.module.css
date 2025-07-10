@@ -1,22 +1,21 @@
 .startButton {
-  display: inline-flex;
-  height: 54px;
-  padding: 0px 19px;
-  align-items: center;
-  gap: 1px;
-  flex-shrink: 0;
+display: inline-flex;
+height: 54px;
+padding: 0px 19px;
+align-items: center;
+gap: 1px;
+flex-shrink: 0;
+border-radius: 10px;
+background: var(--Color-Main-Blue, #3B82F6);
 
-  border-radius: 10px;
-  background: var(--Color-Sub-Logo, #60A5FA);
-  color: white;
-  font-size: 16px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
+color: var(--Color-Semi-Gray, #FAFAFA);
+text-align: center;
 
-  transition: background-color 0.2s ease;
-}
-
-.startButton:hover {
-  background-color: #3b82f6;
+/* T/SB/20 */
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: 37.377px; /* 186.885% */
+letter-spacing: -0.07px;
 }
