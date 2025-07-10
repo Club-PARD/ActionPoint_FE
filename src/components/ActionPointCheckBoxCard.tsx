@@ -6,7 +6,6 @@ interface ActionPoint {
   id: number;
   content: string;
   finished: boolean;
-  userId: number;
   userName: string;
 }
 
@@ -17,11 +16,10 @@ interface Props {
     date: string;
     actionPoints: ActionPoint[];
   };
-  userId: number;
   toggleActionPoint: (pointId: number) => void;
 }
 
-export default function ActionPointCheckBoxCard({ meeting, toggleActionPoint, userId }: Props) {
+export default function ActionPointCheckBoxCard({ meeting, toggleActionPoint}: Props) {
   return (
     <div className={styles.card}>
       <h2 className={styles.next}>다음 회의 안건</h2>
