@@ -4,6 +4,7 @@
   align-items: center;
   background-color: white;
   padding-top: 72px; /* ✅ 헤더 높이만큼 여백 확보 */
+  padding-bottom: 20;
 }
 
 .image {
