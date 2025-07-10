@@ -45,14 +45,10 @@
 
 .actionList {
   list-style: none;
-  padding: 0;
+  padding-top: 50px;
   margin: 0; 
 }
 
-.actionText{
-  padding-left: 15px;
-  padding-top: 0px;
-}
 
 /* 부모 항목 */
 .actionItem {
@@ -68,6 +64,12 @@
   border-radius: 5px;
   background: #FFF;
   margin-bottom: 10px;
+}
+
+.actionsText{
+  position: relative;
+  left:20px;
+  top:4px;       
 }
 
 /* 기본 체크박스 숨기고 커스텀 스타일 적용 */

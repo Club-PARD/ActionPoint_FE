@@ -2,15 +2,20 @@
 
 import styles from '../styles/ActionPointCheckBoxCard.module.css';
 
+interface ActionPoint {
+  id: number;
+  content: string;
+  finished: boolean;
+}
+
 interface Props {
   meeting: {
     id: number;
     title: string;
     date: string;
-    actionPoints: string[];
-    completedPoints: string[];
+    actionPoints: ActionPoint[];
   };
-  toggleActionPoint: (meetingId: number, point: string) => void;
+  toggleActionPoint: (meetingId: number, pointId: number) => void;
 }
 
 export default function ActionPointCheckBoxCard({ meeting, toggleActionPoint }: Props) {
@@ -24,27 +29,24 @@ export default function ActionPointCheckBoxCard({ meeting, toggleActionPoint }: 
         <ul className={styles.actionList}>
           {[...meeting.actionPoints]
             .sort((a, b) => {
-              const aDone = meeting.completedPoints.includes(a);
-              const bDone = meeting.completedPoints.includes(b);
-              return aDone === bDone ? 0 : aDone ? 1 : -1;
+              return a.finished === b.finished ? 0 : a.finished ? 1 : -1;
             })
-            .map((point, i) => (
-               <li
-                key={i}
-                className={`${styles.actionItem} ${
-                  meeting.completedPoints.includes(point) ? styles.completedGoal : ''
-                }`}
+            .map((point) => (
+              <li
+                key={point.id}
+                className={`${styles.actionItem} ${point.finished ? styles.completedGoal : ''}`}
               >
                 <input
                   type="checkbox"
-                  checked={meeting.completedPoints.includes(point)}
-                  onChange={() => toggleActionPoint(meeting.id, point)}
+                  checked={point.finished}
+                  onChange={() => toggleActionPoint(meeting.id, point.id)}
                 />
-                <span className={styles.actionText}>{point}</span> 
+                <span className={styles.actionsText}>{point.content}</span>
               </li>
             ))}
         </ul>
-        </div>
       </div>
+    </div>
   );
 }
+
