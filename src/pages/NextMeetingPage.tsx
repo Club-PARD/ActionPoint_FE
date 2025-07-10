@@ -1,3 +1,4 @@
+//회의록 작성 3단계
 'use client';
 
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -89,8 +90,6 @@ export default function NextMeetingPage() {
     setNextActions(prev => prev.filter((_, i) => i !== index));
     setNextAssignees(prev => prev.filter((_, i) => i !== index));
   };
-
-
 
   return (
     <div className={styles.container}>
