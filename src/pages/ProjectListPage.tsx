@@ -49,9 +49,9 @@ export default function ProjectListPage() {
   }, [userId]);
 
   const filteredProjects = projects.filter((project) => {
-    if (selectedFilter === '진행중인 프로젝트') return project.projectStatus === 2;
+    if (selectedFilter === '진행중인 프로젝트') return project.projectStatus === 0;
     if (selectedFilter === '준비중인 프로젝트') return project.projectStatus === 1;
-    if (selectedFilter === '종료된 프로젝트') return project.projectStatus === 0;
+    if (selectedFilter === '종료된 프로젝트') return project.projectStatus === 2;
     return true;
   });
 

@@ -1,9 +1,9 @@
 // 파일: components/MeetingRecordSection.tsx
-import { useState } from 'react';
 import styles from '../../styles/MeetingRecordSection.module.css';
 import MeetingSettingPannel from './MeetingSettingPannel';
 import CreateMeetingButton from './CreateMeetingButton';
 import { useRouter } from 'next/router';
+import { useState, useRef, useEffect } from 'react';
 
 interface Meeting {
   id: number;
@@ -17,6 +17,7 @@ interface Props {
   onSelect: (id: number) => void;
   projectId: number; // ✅ 추가
   userId: number;    // ✅ 추가
+  onClose: () => void;
 }
 
 export default function MeetingRecordSection({
@@ -24,30 +25,49 @@ export default function MeetingRecordSection({
   selectedMeetingId,
   onSelect,
   projectId,
-  userId, // ✅ 이거 빠졌던 거!
+  userId,
 }: Props) {
   const [openMenuId, setOpenMenuId] = useState<number | null>(null);
-  const clickTimeoutRef = useState<NodeJS.Timeout | null>(null)[0];
+
+  // ✅ 타임아웃 핸들을 보관할 ref
+  const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const panelRef = useRef<HTMLDivElement | null>(null);
   const router = useRouter();
 
   const handleClick = (id: number) => {
-    if (clickTimeoutRef) clearTimeout(clickTimeoutRef as NodeJS.Timeout);
-    // 클릭 -> 타임아웃 대기 → 단일 클릭 처리
-    (clickTimeoutRef as NodeJS.Timeout) = setTimeout(() => {
+    // 이전 타임아웃이 있으면 지우기
+    if (clickTimeoutRef.current) {
+      clearTimeout(clickTimeoutRef.current);
+    }
+
+    // ✅ ref.current 에 저장 (재할당 아님)
+    clickTimeoutRef.current = setTimeout(() => {
       onSelect(id);
     }, 250);
   };
 
   const handleDoubleClick = (id: number) => {
-    if (clickTimeoutRef) clearTimeout(clickTimeoutRef as NodeJS.Timeout);
+    if (clickTimeoutRef.current) {
+      clearTimeout(clickTimeoutRef.current);
+    }
     router.push(`/meetings/${id}`);
   };
 
+  /* 외부 클릭 감지 */
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (panelRef.current && !panelRef.current.contains(e.target as Node)) {
+        setOpenMenuId(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
   return (
     <div className={styles.meetingSection}>
       <div className={styles.meetingHeader}>
         <h3 className={styles.sectionTitle}>회의 기록</h3>
-           <CreateMeetingButton projectId={projectId} userId={userId} />
+        <CreateMeetingButton projectId={projectId} userId={userId} />
       </div>
 
       <ul className={styles.meetingList}>
@@ -61,18 +81,18 @@ export default function MeetingRecordSection({
             <p className={styles.meetingTitle}>{meeting.title}</p>
             <span className={styles.meetingDate}>{meeting.date}</span>
 
-            {/* 메뉴 버튼 + 토글 */}
-              <button
-                className={styles.menuBtn}
-                onClick={(e) => {
-                  e.stopPropagation(); // 회의 선택 방지
-                  setOpenMenuId(openMenuId === meeting.id ? null : meeting.id);
-                }}
-              >
-                ⋮
-              </button>
+            <button
+              className={styles.menuBtn}
+              onClick={(e) => {
+                e.stopPropagation();
+                setOpenMenuId(openMenuId === meeting.id ? null : meeting.id);
+              }}
+            >
+              ⋮
+            </button>
 
-              {openMenuId === meeting.id && (
+            {openMenuId === meeting.id && (
+              <div ref={panelRef}>
                 <MeetingSettingPannel
                   onEdit={() => {
                     console.log(`Edit ${meeting.id}`);
@@ -82,8 +102,10 @@ export default function MeetingRecordSection({
                     console.log(`Delete ${meeting.id}`);
                     setOpenMenuId(null);
                   }}
+                  onClose={() => setOpenMenuId(null)}
                 />
-              )}
+              </div>
+            )}
           </li>
         ))}
       </ul>

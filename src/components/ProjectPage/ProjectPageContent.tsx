@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from '../../styles/ProjectPage.module.css';
 import ActionPointCheckBoxCard from '@/components/ActionPointCheckBoxCard';
@@ -8,6 +7,7 @@ import MeetingRecordSection from '@/components/ProjectPage/MeetingRecordSection'
 import Header from '@/components/Header/Header';
 import { useUserStore } from '@/stores/UserStore';
 import NoMeetingPage from '../../pages/NoMeetingPage';
+import { useEffect, useRef, useState } from 'react'; // ✅ useRef 추가
 
 interface ProjectDetailResponse {
   projectName: string;
@@ -162,7 +162,10 @@ export default function ProjectPageContent({ projectId }: ProjectPageProps) {
             )}
           </div>
         </div>
-
+        <div className={styles.He}> 
+          <span className={styles.ActionP}>액션 포인트</span>
+          <span className={styles.Progr}>나의 진행도</span>
+        </div>
         <div className={styles.topSection}>
           <ActionPointCheckBoxCard
             meeting={{
@@ -182,17 +185,22 @@ export default function ProjectPageContent({ projectId }: ProjectPageProps) {
           <ProgressCard percent={percent} message={getProgressMessage(percent)} />
         </div>
 
-          <MeetingRecordSection
-            meetings={projectData.meetings.map((m) => ({
-              id: m.meetingId,
-              title: m.meetingTitle,
-              date: new Date(m.meetingDate).toLocaleDateString('ko-KR'),
-            }))}
-            selectedMeetingId={selectedMeetingId}
-            onSelect={setSelectedMeetingId}
-            projectId={projectId} // ✅ 추가
-            userId={userId}       // ✅ 추가
-          />
+            <MeetingRecordSection
+              meetings={projectData.meetings.map((m) => ({
+                id: m.meetingId,
+                title: m.meetingTitle,
+                date: new Date(m.meetingDate).toLocaleDateString('ko-KR'),
+              }))}
+              selectedMeetingId={selectedMeetingId}
+              onSelect={setSelectedMeetingId}
+              projectId={projectId}
+              userId={userId}
+              onClose={() => {
+                // 외부에서 열려 있는 패널 닫기 등의 처리
+                console.log('🛑 MeetingRecordSection 닫기 호출됨');
+              }}
+            />
+
       </div>
     </div>
   );
