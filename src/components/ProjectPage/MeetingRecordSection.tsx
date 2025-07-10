@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import styles from '../../styles/MeetingRecordSection.module.css';
 import MeetingSettingPannel from './MeetingSettingPannel';
-import Link from 'next/link'; 
 import CreateMeetingButton from './CreateMeetingButton';
 import { useRouter } from 'next/router';
 
