@@ -1,4 +1,5 @@
-// ✅ MeetingPage.tsx
+//회의록 작성 1단계
+// MeetingPage.tsx
 'use client';
 
 import styles from '../styles/Meeting.module.css';
@@ -136,7 +137,7 @@ export default function MeetingPage() {
           <label>회의 목표 *</label>
           <input 
             type="text" 
-            placeholder="회의 목표를 작성해주세요." 
+            placeholder="EX) 신규 서비스 개발 아이디어 브레인스토밍"
             value={goal} 
             onChange={(e) => handleInputChange('goal', e.target.value)}
             style={{ borderColor: errors.goal ? '#ef4444' : '' }}
@@ -164,7 +165,7 @@ export default function MeetingPage() {
             <label>참여자 *</label>
             <input 
               type="text" 
-              placeholder="참여자를 입력해주세요" 
+              placeholder="EX) 김왈라, 박왈왈, 김옥지, 김빵빵" 
               value={participants} 
               onChange={(e) => handleInputChange('participants', e.target.value)}
               style={{ borderColor: errors.participants ? '#ef4444' : '' }}
@@ -175,7 +176,7 @@ export default function MeetingPage() {
             <label>기록자 *</label>
             <input 
               type="text" 
-              placeholder="기록자를 입력해주세요" 
+              placeholder="EX) 김왈라"
               value={recorder} 
               onChange={(e) => handleInputChange('recorder', e.target.value)}
               style={{ borderColor: errors.recorder ? '#ef4444' : '' }}
@@ -194,10 +195,9 @@ export default function MeetingPage() {
             <button className={styles.uploadLineRemove} onClick={() => handleRemoveFileInput(input.id)} title="삭제"><FiX /></button>
           </div>
         ))}
-        {fileInputs.length === 0 && (
-          <button onClick={handleAddFileInput} className={styles.addFileButton}>+ 파일 추가</button>
-        )}
       </section>
+
+         
 
       <section className={styles.section}>
         <h3 className={styles.sectionTitle}>회의 안건 * </h3>
@@ -206,10 +206,13 @@ export default function MeetingPage() {
             <label className={styles.agendaLabel}>회의 안건 {index + 1}</label>
             <div className={styles.agendaInputWrapper}>
               <input type="text" className={styles.agendaInput} placeholder="회의 안건을 작성해주세요" value={agenda} onChange={(e) => handleAgendaChange(index, e.target.value)} />
-              <button className={styles.agendaRemoveButton} onClick={() => handleRemoveAgenda(index)} title="삭제"><FiX /></button>
+              <button className={styles.agendaRemoveButton} onClick={() => handleRemoveAgenda(index)} title="삭제"><FiX />
+              </button>
             </div>
           </div>
-        ))}
+        )
+      )
+        }
        
       
         <button onClick={handleAddAgenda} className={styles.floatingAddButton}><AiOutlinePlus /></button>

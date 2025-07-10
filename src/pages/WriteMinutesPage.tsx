@@ -1,3 +1,5 @@
+//회의록 작성 2단계
+
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';

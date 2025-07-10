@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation'; // ✅ 추가
+import { useRouter } from 'next/navigation';
 import styles from '../../styles/ChangeModal.module.css';
 
 interface SaveModalProps {
@@ -10,8 +10,8 @@ interface SaveModalProps {
   onCancel: () => void;
 }
 
-export default function SaveModal({ onSave, onCancel }: SaveModalProps) {
-  const router = useRouter(); // ✅ 라우터 객체 사용
+export default function SaveModal({ onCancel }: SaveModalProps) {
+  const router = useRouter(); 
 
   const handleGoNext = () => {
     router.push('/NextMeetingPage'); // ✅ 다음 페이지로 이동

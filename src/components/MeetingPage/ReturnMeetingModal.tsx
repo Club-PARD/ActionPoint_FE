@@ -3,12 +3,12 @@
 import React from 'react';
 import styles from '../../styles/ChangeModal.module.css'
 
-interface ChangeModalProps {
+interface ReturnMeetingModalProps {
   onSave: () => void;
   onCancel: () => void;
 }
 
-export default function ChangeModal({ onSave, onCancel }: ChangeModalProps) {
+export default function ChangeModal({ onSave, onCancel }: ReturnMeetingModalProps) {
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>

@@ -7,15 +7,15 @@ import styles from '../../styles/ChangeModal.module.css';
 
 interface DoneModalProps {
   onSave: () => void;
-  onCancel: () => void;
+  
 }
 
-export default function SaveModal({ onSave, onCancel }: DoneModalProps) {
+export default function SaveModal({ onSave }: DoneModalProps) {
   const router = useRouter(); // ✅ 라우터 객체 사용
 
-  const handleGoNext = () => {
-    router.push('/NextMeetingPage'); // ✅ 다음 페이지로 이동
-  };
+  // const handleGoNext = () => {
+  //   router.push('/NextMeetingPage'); // ✅ 다음 페이지로 이동
+  // };
 
   return (
     <div className={styles.overlay}>
@@ -25,7 +25,7 @@ export default function SaveModal({ onSave, onCancel }: DoneModalProps) {
         </div>
         <h2 className={styles.title}>회의록 작성을 완료 했어요!</h2>
         <div className={styles.buttons}>
-          <button className={styles.save} onClick={handleGoNext}>
+          <button className={styles.save} onClick={onSave}>
             확인
           </button>
         </div>
