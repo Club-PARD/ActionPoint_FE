@@ -11,7 +11,7 @@ export default function EmptyPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { data: session } = useSession(); // ✅ 세션 정보 가져오기
 
-  const userName = session?.user?.name ?? "김사랑"; // ✅ 사용자 이름 또는 기본값
+  const userName = session?.user?.name ?? "김왈라"; // ✅ 사용자 이름 또는 기본값
 
   return (
     <div className={styles.emptyWrapper}>
