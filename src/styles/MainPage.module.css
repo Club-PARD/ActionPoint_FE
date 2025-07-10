@@ -27,7 +27,6 @@
   flex-direction: column;
   justify-content: flex-start;
   box-sizing: border-box;
-  position: relative;
 }
 
 .sectionTitle {
@@ -58,6 +57,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  min-height: 555px; /* 리스트 6개 높이 + 간격 고려 */
+  justify-content: flex-start;
+  border-radius: 20px;
 }
 
 .projectItem {
@@ -98,31 +101,22 @@
 }
 
 .pagination {
-  position: absolute;
-  right: 16px;
-  bottom: 0px;
+  width: 100%;
   display: flex;
+  justify-content: flex-end;
   align-items: center;
+  padding-right: 26px;
+  gap: 4px;
+  height: 24px;
   font-size: 13px;
-  color: var(--Color-Text-sub, #AFAFC1);
-
-  /* T/M/15 */
-  font-family: Pretendard;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  color: #9CA3AF;
+  margin-bottom: 8px;
+   margin-top: auto;
 }
 
 .currentPage {
-  color: var(--Color-Main-Blue, #3B82F6);
-
-  /* T/M/15 */
-  font-family: Pretendard;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  font-weight: bold;
+  color: #3B82F6; /* ✅ 강조 색상 */
 }
 
 .actionPointSection {
