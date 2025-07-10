@@ -35,7 +35,6 @@ export default function MainPage() {
   const projectsPerPage = 6;
   const totalPages = Math.ceil(projects.length / projectsPerPage);
   const currentProjects = projects.slice((currentPage - 1) * projectsPerPage, currentPage * projectsPerPage);
-
   const selectedProject = projects.find((p) => p.projectId === selectedProjectId);
 
   useEffect(() => {

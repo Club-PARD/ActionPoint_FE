@@ -66,11 +66,7 @@
   margin-bottom: 10px;
 }
 
-.actionsText{
-  position: relative;
-  left:20px;
-  top:4px;       
-}
+
 
 /* 기본 체크박스 숨기고 커스텀 스타일 적용 */
 .actionItem input[type='checkbox'] {
