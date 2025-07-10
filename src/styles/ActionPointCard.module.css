@@ -13,7 +13,7 @@
   background-color: #ccc;
   position: relative;
   z-index: 1;
-  pointer-events: none; /* ✅ 클릭 방지 */
+  pointer-events: none;
 }
 
 .cardContent {
