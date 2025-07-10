@@ -1,5 +1,6 @@
 'use client';
 
+import { signOut } from 'next-auth/react';
 import styles from '@/styles/LogoutModal.module.css';
 
 interface Props {
@@ -7,9 +8,8 @@ interface Props {
 }
 
 export default function LogoutModal({ onClose }: Props) {
-  const handleConfirmLogout = () => {
-    // 실제 로그아웃 처리 로직
-    location.href = '/LandingPage';
+  const handleConfirmLogout = async () => {
+    await signOut({ callbackUrl: '/LandingPage' }); // ✅ 구글 세션도 같이 로그아웃됨
   };
 
   return (
