@@ -387,3 +387,40 @@
   font-size: 18px;
   cursor: pointer;
 }
+
+
+.fileList {
+  margin-top: 6px;
+  padding-left: 16px;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.fileItem::before {
+  content: '📎 ';
+}
+
+
+.uploadLineRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.fakeFileInput {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #fafafa;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hiddenFileInput {
+  display: none;
+}
