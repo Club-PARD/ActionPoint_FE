@@ -13,7 +13,7 @@ export default function ProgressCard({ percent, message }: Props) {
       <div className={styles.progressWrapper}>
         <div className={styles.imageWrapper}>
           <Image
-            src="./Walla.svg"
+            src="/Walla.svg"
             alt="액션 포인트 이미지"
             width={74}
             height={66}

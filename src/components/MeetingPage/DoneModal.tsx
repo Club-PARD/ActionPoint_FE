@@ -2,20 +2,14 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation'; // ✅ 추가
 import styles from '../../styles/ChangeModal.module.css';
 
 interface DoneModalProps {
-    onSave: () => void;
-  onCancel: () => void;
+  onSave: () => void;
+  
 }
 
-export default function SaveModal({ onSave, onCancel }: DoneModalProps) {
-  const router = useRouter(); // ✅ 라우터 객체 사용
-
-  const handleGoNext = () => {
-    router.push('/NextMeetingPage'); // ✅ 다음 페이지로 이동
-  };
+export default function SaveModal({ onSave }: DoneModalProps) {
 
   return (
     <div className={styles.overlay}>
@@ -25,7 +19,7 @@ export default function SaveModal({ onSave, onCancel }: DoneModalProps) {
         </div>
         <h2 className={styles.title}>회의록 작성을 완료 했어요!</h2>
         <div className={styles.buttons}>
-          <button className={styles.save} onClick={handleGoNext}>
+          <button className={styles.save} onClick={onSave}>
             확인
           </button>
         </div>

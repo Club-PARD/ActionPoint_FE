@@ -1,5 +1,6 @@
-'use client';
+//회의록 작성 2단계
 
+'use client';
 import React, { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import styles from '../styles/WriteMinutesPage.module.css';
@@ -50,14 +51,8 @@ export default function WriteMinutesPage() {
   router.push(`/NextMeetingPage?${nextParams.toString()}`);
 };
 
-
   const handleOpenModal = () => setShowModal(true);
   const handleCancel = () => setShowModal(false);
-
-//   const handleSave = () => {
-//     console.log('📝 회의록 저장됨:', minutes);
-//     router.push('/ProjectPage');
-//   };
 
   return (
     <div className={styles.container}>
@@ -67,22 +62,23 @@ export default function WriteMinutesPage() {
       <h2 className={styles.sectionTitle}>회의록</h2>
 
       <div className={styles.section}>
-        <div className={styles.goalBox}><strong>회의 목표:</strong> {goal}</div>
+        <div className={styles.goalBox}><label>회의 목표:</label> {goal}</div>
 
         <div className={styles.fileList}>
-          <strong> 참고자료:</strong>
-          <ul>
-            {files.map((file, index) => (
-              <li key={index} className={styles.fileItem}>{file}</li>
-            ))}
-          </ul>
-        </div>
+  <div className={styles.fileBox}>
+    <label>참고자료:</label>
+      {files.map((file, index) => (
+        <li key={index} className={styles.fileItem}>{file}</li>
+      ))}
+    
+  </div>
+</div>
       </div>
 
       <div className={styles.section}>
         {agendas.map((agenda, index) => (
           <div key={index} className={styles.agendaBox}>
-            <label className={styles.agendaTitle}>안건 {index + 1} {agenda}</label>
+            <label className={styles.agendaTitle}> [ 안건 {index + 1} {agenda} ]</label>
             <textarea className={styles.agendaInput} placeholder="회의 내용을 입력하세요" value={minutes[index]} onChange={(e) => handleChange(index, e.target.value)} />
           </div>
         ))}

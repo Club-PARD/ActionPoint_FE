@@ -2,13 +2,20 @@
 
 import React from 'react';
 import styles from '../../styles/ChangeModal.module.css'
+import Router from 'next/router';
+
 
 interface ChangeModalProps{
   onSave: () => void;
   onCancel: () => void;
 }
 
-export default function ReturnModal({ onSave, onCancel }: ChangeModalProps) {
+export default function ReturnModal({onCancel }: ChangeModalProps) {
+
+  const handleGoNext = () => {
+    Router.push('/NextMeetingPage'); // ✅ 다음 페이지로 이동
+  };
+
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
@@ -18,7 +25,7 @@ export default function ReturnModal({ onSave, onCancel }: ChangeModalProps) {
           <button className={styles.cancel} onClick={onCancel}>
             저장하지 않음
           </button>
-          <button className={styles.save} onClick={onSave}>
+          <button className={styles.save} onClick={handleGoNext}>
             작성하러 가기
           </button>
         </div>
