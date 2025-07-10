@@ -11,7 +11,11 @@ interface Props {
   userId: number;
 }
 
-export default function ProjectSettingsPanel({ onClose, projectCode, projectId, userId }: Props) {
+export default function ProjectSettingsPanel({
+  projectCode,
+  projectId,
+  userId
+}: ProjectSettingsPanelProps)  {
   return (
     <div className={styles.panel}>
       <div className={styles.content}>

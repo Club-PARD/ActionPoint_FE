@@ -6,6 +6,5 @@ export default function ProjectPageContent() {
 
   if (!projectId || Array.isArray(projectId)) return <div>잘못된 접근입니다.</div>;
 
-  // const numericProjectId = Number(projectId);
-
+  // 나머지 로직에서 numericProjectId 사용
 }

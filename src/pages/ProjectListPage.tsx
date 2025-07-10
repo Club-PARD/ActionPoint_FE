@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -20,10 +21,6 @@ interface Project {
   projectStatus: 0 | 1 | 2;
 }
 
-// interface ProjectCreateButtonProps {
-//   onClick: () => void;
-// }
-
 export default function ProjectListPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [selectedFilter, setSelectedFilter] = useState('최신순');
@@ -33,7 +30,6 @@ export default function ProjectListPage() {
   const itemsPerPage = 6;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-
 
   const fetchProjects = async () => {
     if (!userId) return;
@@ -92,7 +88,6 @@ export default function ProjectListPage() {
           ))}
         </section>
 
-
         <header className={styles.header}>
           <div className={styles.actions}>
             <ParticipationProjectButton />
@@ -106,6 +101,7 @@ export default function ProjectListPage() {
             onProjectCreated={fetchProjects}
           />
         )}
+
         <div className={styles.pagination}>
           {Array.from({ length: totalPages }, (_, i) => (
             <button
@@ -119,6 +115,5 @@ export default function ProjectListPage() {
         </div>
       </main>
     </div>
-
   );
 }

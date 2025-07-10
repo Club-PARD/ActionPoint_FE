@@ -44,7 +44,7 @@ export const authOptions: NextAuthOptions = {
 
     async session({ session, token }) {
       if (session.user && token.userId) {
-        (session.user as any).id = token.userId;
+        session.user.id = Number(token.userId);
       }
       return session;
     },
@@ -55,4 +55,3 @@ export const authOptions: NextAuthOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
-

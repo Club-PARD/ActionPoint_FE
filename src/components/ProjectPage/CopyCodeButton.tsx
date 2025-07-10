@@ -10,27 +10,39 @@ interface CopyCodeButtonProps {
 
 export default function CopyCodeButton({ code }: CopyCodeButtonProps) {
   const [loading, setLoading] = useState(false);
+  const [copiedMessage, setCopiedMessage] = useState('');
 
   const handleCopy = async () => {
     try {
       setLoading(true);
       await navigator.clipboard.writeText(code);
-      alert('코드가 복사되었습니다람쥐~!');
+      setCopiedMessage('프로젝트 코드가 복사되었습니다.');
+      setTimeout(() => setCopiedMessage(''), 2000);
     } catch {
-      alert('복사 실패');
+      setCopiedMessage('❌ 복사 실패');
+      setTimeout(() => setCopiedMessage(''), 2000);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <button
-      onClick={handleCopy}
-      disabled={loading}
-      className={styles.button}
-    >
-      <Image src="/copy.svg" alt="copy icon" width={20} height={20} />
-      <span className={styles.copycode}>{loading ? '복사 중...' : '코드 복사하기'}</span>
-    </button>
+    <>
+      {copiedMessage && (
+        <div className={styles.toastMessage}>
+          {copiedMessage}
+        </div>
+      )}
+      <button
+        onClick={handleCopy}
+        disabled={loading}
+        className={styles.button}
+      >
+        <Image src="/copy.svg" alt="copy icon" width={20} height={20} />
+        <span className={styles.copycode}>
+          {loading ? '복사 중...' : '코드 복사하기'}
+        </span>
+      </button>
+    </>
   );
 }

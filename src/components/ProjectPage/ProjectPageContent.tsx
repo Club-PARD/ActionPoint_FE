@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from '../../styles/ProjectPage.module.css';
@@ -89,7 +87,7 @@ export default function ProjectPageContent({ projectId }: ProjectPageProps) {
         projectName={projectData.projectName}
         projectCode={projectData.projectCode}
         projectId={projectId}
-        userId={userId} // ✅ 이 시점에서 userId는 null이 아님
+        userId={userId} 
       />
     );
   }
@@ -107,8 +105,8 @@ export default function ProjectPageContent({ projectId }: ProjectPageProps) {
 
   const getProgressMessage = (percent: number): string => {
     if (percent === 100) return '전부 끝! 정말 멋져요!\n오늘의 나에게 박수 짝짝~';
-    if (percent >= 95) return '헉! 거의 다 왔어요~ 마지막 하나,\n우리 꼭 마무리해봐요!';
-    if (percent >= 75) return '여기까지 온 거 진짜 대단해요!\n 이제 마무리만 남았어요!';
+    if (percent >= 75) return '헉! 거의 다 왔어요~ 마지막 하나,\n우리 꼭 마무리해봐요!';
+    if (percent >= 50) return '여기까지 온 거 진짜 대단해요!\n 이제 마무리만 남았어요!';
     if (percent >= 25) return '좋아요! 이미 첫 발을 내디뎠어요.\n 계속 이렇게만 가봐요~';
     return '처음 한 걸음이 가장 멋진 거 아시죠?\n 우리 이제 시작해봐요!';
   };
