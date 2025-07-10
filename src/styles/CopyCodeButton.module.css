@@ -5,12 +5,13 @@
 }
 
 .copycode{
-    font-family: Pretendard;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 40px; /* 266.667% */
-    letter-spacing: -0.052px;
+  color: var(--zinc-700, #3F3F46);
+  font-family: Pretendard;
+  font-size: 13.882px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 37.019px; /* 266.667% */
+  letter-spacing: -0.049px;
     padding-left: 16px;
 }
 
@@ -21,4 +22,37 @@
 .button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.toastMessage {
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  animation: fadeInOut 2s ease-in-out;
+
+  display: inline-flex;
+  height: 49px;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--blue-500, #3B82F6);
+  color: var(--blue-50, #EFF6FF);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px; /* 116.667% */
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
 }

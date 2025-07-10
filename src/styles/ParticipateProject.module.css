@@ -81,7 +81,6 @@ line-height: normal;
   display: flex;
   justify-content: center;  /* 오른쪽 정렬 */
   gap: 16px;                  /* 버튼 사이 간격 */
-  padding-right: 19px;
 }
 
 .participantButton{
@@ -101,3 +100,4 @@ line-height: normal;
   line-height: 33.88px; /* 225.865% */
   letter-spacing: -0.052px;
 }
+
