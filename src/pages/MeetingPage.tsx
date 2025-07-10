@@ -47,7 +47,6 @@ export default function MeetingPage() {
     setAgendaList(newList);
   };
 
-  const handleAddFileInput = () => setFileInputs([...fileInputs, { id: Date.now(), files: null }]);
   const handleRemoveFileInput = (id: number) => setFileInputs(prev => prev.filter(input => input.id !== id));
   const handleFileChange = (id: number, files: FileList | null) => {
     setFileInputs(prev => prev.map(input => input.id === id ? { ...input, files } : input));
