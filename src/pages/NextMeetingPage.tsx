@@ -23,6 +23,10 @@ export default function NextMeetingPage() {
   const router = useRouter();
   
   const [goal, setGoal] = useState('');
+  const [meetingDate, setMeetingDate] = useState('');
+  const [meetingTime, setMeetingTime] = useState('');
+  const [participants, setParticipants] = useState('');
+  const [recorder, setRecorder] = useState('');
   const [files, setFiles] = useState<string[]>([]);
   const [agendas, setAgendas] = useState<string[]>([]);
   const [minutes, setMinutes] = useState<string[]>([]);
@@ -52,6 +56,10 @@ export default function NextMeetingPage() {
     };
 
     setGoal(getDecodedParam('goal'));
+    setMeetingDate(getDecodedParam('meetingDate'));
+    setMeetingTime(getDecodedParam('meetingTime'));
+    setParticipants(getDecodedParam('participants'));
+    setRecorder(getDecodedParam('recorder'));
     setFiles(getDecodedArrayParam('files', []));
     setAgendas(getDecodedArrayParam('agendas', []));
     setMinutes(getDecodedArrayParam('minutes', []));
@@ -89,24 +97,75 @@ export default function NextMeetingPage() {
       <Header />
       <div className={styles.backLink} onClick={() => router.back()}>&lt; 돌아가기</div>
 
-      <h2 className={styles.sectionTitle}>회의 요약</h2>
 
-      <div className={styles.goalBox}><strong>회의 목표:</strong> {goal}</div>
+      <section className={styles.section}>
+              <h3 className={styles.sectionTitle}>회의 목표</h3>
+              <div className={styles.formRow}>
+                <label>회의 목표 *</label>
+                <input 
+                  type="text" 
+                  placeholder="회의 목표를 작성해주세요." 
+                  value={goal} 
+                  onChange={(e) => setGoal(e.target.value)} 
+                  readOnly 
+                />
+              </div>
+              <div className={styles.formGrid}>
+                <div className={styles.formRow}>
+                  <label>회의 날짜</label>
+                  <input 
+                    type="date" 
+                    value={meetingDate} 
+                    onChange={(e) => setMeetingDate(e.target.value)}
+                    readOnly 
+                  />
+                </div>
+                <div className={styles.formRow}>
+                  <label>시간</label>
+                  <input 
+                    type="time" 
+                    value={meetingTime} 
+                    onChange={(e) => setMeetingTime(e.target.value)}
+                    readOnly 
+                  />
+                </div>
+                <div className={styles.formRow}>
+                  <label>참여자 *</label>
+                  <input 
+                    type="text" 
+                    placeholder="참여자를 입력해주세요" 
+                    value={participants} 
+                    onChange={(e) => setParticipants(e.target.value)}
+                    readOnly 
+                  />
+                </div>
+                <div className={styles.formRow}>
+                  <label>기록자 *</label>
+                  <input 
+                    type="text" 
+                    placeholder="기록자를 입력해주세요" 
+                    value={recorder} 
+                    onChange={(e) => setRecorder(e.target.value)}
+                    readOnly 
+                  />
+                </div>
+              </div>
 
-      <div className={styles.fileList}>
-        <strong>참고자료:</strong>
+               <div className={styles.fileList}>
+        <label>참고자료 :</label>
         <ul>{files.map((f, i) => <li key={i} className={styles.fileItem}>{f}</li>)}</ul>
       </div>
-
-      {/* 회의록 내용 표시 - 수정된 부분 */}
+            </section>
+            
       {agendas.map((agenda, i) => (
-        <div key={i} className={styles.agendaBox}>
-          <div className={styles.agendaTitle}>안건 {i + 1}: {agenda}</div>
-          <div className={styles.minuteContent}>
-            {minutes[i] || '회의 내용이 없습니다.'}
-          </div>
-        </div>
-      ))}
+  <div key={i} className={styles.agendaBox}>
+    <div className={styles.agendaTitle}>안건 {i + 1}: {agenda}</div>
+    <div className={styles.minuteContent}>
+      {minutes[i]?.trim() !== '' ? minutes[i] : '회의 내용이 없습니다.'}
+    </div>
+  </div>
+))}
+
 
       {/* 다음 회의를 위한 준비 */}
       <div className={styles.section}>
