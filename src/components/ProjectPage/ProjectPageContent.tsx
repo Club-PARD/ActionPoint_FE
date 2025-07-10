@@ -177,7 +177,6 @@ export default function ProjectPageContent({ projectId }: ProjectPageProps) {
                 userName: p.userName,
               })),
             }}
-            userId={userId}
             toggleActionPoint={toggleActionPoint}
           />
           <ProgressCard percent={percent} message={getProgressMessage(percent)} />
