@@ -44,7 +44,7 @@ export default function NextMeetingPage() {
       return param ? decodeURIComponent(param) : '';
     };
 
-    const getDecodedArrayParam = (key: string, defaultValue: any[] = []) => {
+    const getDecodedArrayParam = (key: string, defaultValue: unknown[] = []) => {
       const param = searchParams.get(key);
       if (!param) return defaultValue;
       try {
@@ -156,7 +156,7 @@ export default function NextMeetingPage() {
         <ul>{files.map((f, i) => <li key={i} className={styles.fileItem}>{f}</li>)}</ul>
       </div>
             </section>
-            
+
       {agendas.map((agenda, i) => (
   <div key={i} className={styles.agendaBox}>
     <div className={styles.agendaTitle}>안건 {i + 1}: {agenda}</div>
