@@ -49,15 +49,15 @@ export default function ParticipantButton({
       console.error('❌ 프로젝트 참여 실패:', error);
       setIsError(true);
 
-      if (axios.isAxiosError(error)) {
-        if (error.response?.status === 400) {
-          setErrorMessage('유효하지 않은 코드입니다.');
-        } else {
-          setErrorMessage('유효하지 않는 코드 입니다. ');
-        }
-      } else {
-        setErrorMessage('알 수 없는 오류가 발생했습니다.');
-      }
+      // if (axios.isAxiosError(error)) {
+      //   if (error.response?.status === 400) {
+      //     setErrorMessage('유효하지 않은 코드입니다.');
+      //   } else {
+      //     setErrorMessage('유효하지 않는 코드 입니다. ');
+      //   }
+      // } else {
+      //   setErrorMessage('알 수 없는 오류가 발생했습니다.');
+      // }
     }
   };
 
