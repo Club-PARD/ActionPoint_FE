@@ -10,6 +10,7 @@
   width: 528px;
   height: 296px;
   border-radius: 10px;
+  z-index: 1;
 }
 
 .progressWrapper {

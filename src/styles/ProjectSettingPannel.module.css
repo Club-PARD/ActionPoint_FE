@@ -1,6 +1,7 @@
 /* styles/ProjectSettingPannel.module.css */
 
 .panel {
+  position: absolute; /* 필요 시 상대 위치 */
   width: 234px;
   height: 100px;
   flex-shrink: 0;
@@ -10,9 +11,7 @@
   margin-left: 890px; /* 필요시 상대값으로 변경 권장 */
   margin-top: 20px;
   padding: 10px 14px 10px 16px;
-  opacity: 1; /* ✅ 명시적 불투명 */
   z-index: 9999; /* ✅ 다른 요소보다 위에 표시되도록 */
-  position: absolute; /* 필요 시 상대 위치 */
 }
 
 .content {

@@ -15,9 +15,17 @@ interface Props {
   meetings: Meeting[];
   selectedMeetingId: number;
   onSelect: (id: number) => void;
+  projectId: number; // ✅ 추가
+  userId: number;    // ✅ 추가
 }
 
-export default function MeetingRecordSection({ meetings, selectedMeetingId, onSelect }: Props) {
+export default function MeetingRecordSection({
+  meetings,
+  selectedMeetingId,
+  onSelect,
+  projectId,
+  userId, // ✅ 이거 빠졌던 거!
+}: Props) {
   const [openMenuId, setOpenMenuId] = useState<number | null>(null);
   const clickTimeoutRef = useState<NodeJS.Timeout | null>(null)[0];
   const router = useRouter();
@@ -39,7 +47,7 @@ export default function MeetingRecordSection({ meetings, selectedMeetingId, onSe
     <div className={styles.meetingSection}>
       <div className={styles.meetingHeader}>
         <h3 className={styles.sectionTitle}>회의 기록</h3>
-           <CreateMeetingButton />
+           <CreateMeetingButton projectId={projectId} userId={userId} />
       </div>
 
       <ul className={styles.meetingList}>

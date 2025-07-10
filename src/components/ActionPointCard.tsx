@@ -1,23 +1,37 @@
 import styles from "../styles/ActionPointCard.module.css";
 
-type Props = {
-  title: string;
-  checklist: string[];
-};
+interface ActionPoint {
+  id: number;
+  content: string;
+  finished: boolean;
+}
 
-export default function ActionPointCard({ title, checklist }: Props) {
+interface Props {
+  meeting: {
+    id: number;
+    title: string;
+    date: string;
+    actionPoints: ActionPoint[];
+  };
+  toggleActionPoint: (pointId: number) => void; // ✅ pointId만 넘김
+}
+
+export default function ActionPointCard({ meeting, toggleActionPoint }: Props) {
   return (
     <div className={styles.card}>
       <div className={styles.folderShape}></div>
       <div className={styles.cardContent}>
-        <h3>{title}</h3>
+        <h3>{meeting.title}</h3>
         <ul>
-          {checklist.map((item, idx) => (
-            <li key={idx}>
-              <input type="checkbox" id={`check-${idx}`} />
-              <label htmlFor={`check-${idx}`}>{item}</label>
+          {meeting.actionPoints.map((point) => (
+            <li key={point.id}>
+              <input
+                type="checkbox"
+                checked={point.finished}
+                onChange={() => toggleActionPoint(point.id)} // ✅ 올바른 토글
+              />
+              <label>{point.content}</label>
             </li>
-            
           ))}
         </ul>
       </div>

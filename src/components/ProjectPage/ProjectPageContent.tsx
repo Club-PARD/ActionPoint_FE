@@ -66,41 +66,45 @@ export default function ProjectPageContent({ projectId }: ProjectPageProps) {
   }, [userId, projectId]);
 
   // ✅ 액션 포인트 상태 토글
-  const toggleActionPoint = async (meetingId: number, actionPointId: number) => {
-    try {
-      const url = `${process.env.NEXT_PUBLIC_API_URL}/acitonpoints/${actionPointId}/toggle`;
-      console.log('➡️ PATCH 요청 URL:', url);
+    const toggleActionPoint = async (actionPointId: number) => {
+      try {
+        await axios.patch(
+          `${process.env.NEXT_PUBLIC_API_URL}/acitonpoints/${actionPointId}/toggle`,
+          {},
+          {
+            headers: {
+              'X-USER-ID': Number(userId),
+            },
+          }
+        );
 
-      await axios.patch(
-        url,
-        {},
-        {
-          headers: {
-            'X-USER-ID': Number(userId),
-          },
-        }
-      );
+        // ✅ 상태 업데이트 (불변성 유지)
+        setProjectData((prev) => {
+          if (!prev) return prev;
 
-      // 프론트엔드 상태 업데이트
-      setProjectData((prev) => {
-        if (!prev) return prev;
+          const updatedMeetings = prev.meetings.map((meeting) => {
+            if (meeting.meetingId !== selectedMeetingId) return meeting;
 
-        const updatedMeetings = prev.meetings.map((meeting) => {
-          if (meeting.meetingId !== meetingId) return meeting;
+            const updatedPoints = meeting.actionPoints.map((p) =>
+              p.actionPointId === actionPointId ? { ...p, finished: !p.finished } : p
+            );
 
-          const updatedPoints = meeting.actionPoints.map((p) =>
-            p.actionPointId === actionPointId ? { ...p, finished: !p.finished } : p
-          );
+            return {
+              ...meeting,
+              actionPoints: updatedPoints,
+            };
+          });
 
-          return { ...meeting, actionPoints: updatedPoints };
+          return {
+            ...prev,
+            meetings: updatedMeetings,
+          };
         });
+      } catch (err) {
+        console.error("❌ 액션 포인트 상태 토글 실패:", err);
+      }
+    };
 
-        return { ...prev, meetings: updatedMeetings };
-      });
-    } catch (err) {
-      console.error('❌ 액션포인트 토글 실패:', err);
-    }
-  };
 
   // 📦 로딩/에러 처리
   if (!projectData || userId === null) return <div>로딩 중...</div>;
@@ -166,29 +170,30 @@ export default function ProjectPageContent({ projectId }: ProjectPageProps) {
               title: currentMeeting.meetingTitle,
               date: new Date(currentMeeting.meetingDate).toLocaleDateString('ko-KR'),
               actionPoints: currentMeeting.actionPoints.map((p) => ({
-                id: p.actionPointId,
+                id: p.actionPointId, // 이거 정확히!
                 content: p.actionCentent,
-                finished: p.finished
+                finished: p.finished,
+                userId: p.userId,
+                userName: p.userName,
               })),
             }}
-            toggleActionPoint={(id) => toggleActionPoint(currentMeeting.meetingId, id)}
+            userId={userId}
+            toggleActionPoint={toggleActionPoint}
           />
-
-
           <ProgressCard percent={percent} message={getProgressMessage(percent)} />
         </div>
 
-        <MeetingRecordSection
-          meetings={projectData.meetings.map((m) => ({
-            id: m.meetingId,
-            title: m.meetingTitle,
-            date: new Date(m.meetingDate).toLocaleDateString('ko-KR'),
-            actionPoints: m.actionPoints.map((p) => p.actionCentent),
-            completedPoints: m.actionPoints.filter((p) => p.finished).map((p) => p.actionCentent),
-          }))}
-          selectedMeetingId={selectedMeetingId}
-          onSelect={setSelectedMeetingId}
-        />
+          <MeetingRecordSection
+            meetings={projectData.meetings.map((m) => ({
+              id: m.meetingId,
+              title: m.meetingTitle,
+              date: new Date(m.meetingDate).toLocaleDateString('ko-KR'),
+            }))}
+            selectedMeetingId={selectedMeetingId}
+            onSelect={setSelectedMeetingId}
+            projectId={projectId} // ✅ 추가
+            userId={userId}       // ✅ 추가
+          />
       </div>
     </div>
   );
