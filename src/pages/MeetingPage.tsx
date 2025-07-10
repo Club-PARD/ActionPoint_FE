@@ -67,8 +67,8 @@ export default function MeetingPage() {
     if (!validateForm()) return;
 
     const formData = new FormData();
-    const projectId = 6; // 🔸 실제로는 prop/context 등에서 받아야 함
-    const writerId = 6; // 🔸 실제 사용자 ID
+    const projectId = 12; 
+    const writerId = 6; 
 
     const data = {
       projectId,
@@ -91,7 +91,13 @@ export default function MeetingPage() {
       }
     });
 
+    for (let pair of formData.entries()) {
+  console.log(pair[0], pair[1]);
+}
+
     try {
+      console.log('🔍 data 확인:', data);
+
       const response = await axiosInstance.post('/meetings/create/title', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
@@ -104,12 +110,14 @@ export default function MeetingPage() {
     }
   };
 
+  
+
   const handleWriteMinutes = async () => {
   if (!validateForm()) return;
 
   const formData = new FormData();
-  const projectId = 6; // 실제 값으로 교체
-  const writerId = 6; // 실제 값으로 교체
+  const projectId = 12; 
+  const writerId = 6; 
 
   const data = {
     projectId,
@@ -137,8 +145,7 @@ export default function MeetingPage() {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
 
-    // 성공 시 회의 데이터 → query string 으로 넘김
-    const agendasParam = encodeURIComponent(JSON.stringify(agendaList));
+    const agendaResponse = response.data; // ex: [{ agendaId: 1, agendaTitle: '안건1' }, ...]
     const goalParam = encodeURIComponent(goal);
     const filesParam = encodeURIComponent(JSON.stringify(
       fileInputs.map(input => input.files?.[0]?.name).filter((name): name is string => !!name)
@@ -147,10 +154,10 @@ export default function MeetingPage() {
     const meetingTimeParam = encodeURIComponent(meetingTime);
     const participantsParam = encodeURIComponent(participants);
     const recorderParam = encodeURIComponent(recorder);
+    const agendasParam = encodeURIComponent(JSON.stringify(agendaResponse));
 
     alert('회의가 성공적으로 등록되었습니다!');
     router.push(`/WriteMinutesPage?agendas=${agendasParam}&goal=${goalParam}&files=${filesParam}&meetingDate=${meetingDateParam}&meetingTime=${meetingTimeParam}&participants=${participantsParam}&recorder=${recorderParam}`);
-
   } catch (error: unknown) {
     console.error('회의록 등록 실패:', error);
     alert('회의 등록 중 오류가 발생했습니다.');
@@ -257,3 +264,4 @@ export default function MeetingPage() {
     </div>
   );
 }
+
