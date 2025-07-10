@@ -58,12 +58,14 @@ export default function GenerateCodeButton({
       const code = response.data.projectCode;
       onCodeGenerated(code); // ✅ 코드 설정만 하고 닫지는 않음
       console.log('✅ 프로젝트 생성 성공:', code);
-    } catch (error: any) {
-      console.error('❌ 프로젝트 생성 실패:', error);
-    } finally {
-      setLoading(false);
+      } catch (error: unknown) {
+        if (axios.isAxiosError(error)) {
+          console.error('❌ 프로젝트 생성 실패:', error.response?.data);
+        } else {
+          console.error('❌ 알 수 없는 에러:', error);
+        }
+      }
     }
-  };
 
   return (
     <div className={styles.action}>

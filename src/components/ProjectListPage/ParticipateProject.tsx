@@ -29,6 +29,7 @@ export default function ParticipateProject({ onClose }: ParticipateProjectProps)
           placeholder="코드를 입력해주세요"
           className={`${styles.input} ${isError ? styles.inputError : ''}`}
         />
+        {isError && <p className={styles.errorMessage}>{errorMessage}</p>}
 
         <div className={styles.buttonRow}>
           <CancelButton onClose={onClose} />
