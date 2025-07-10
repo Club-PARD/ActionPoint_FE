@@ -20,6 +20,8 @@ export default function LandingPage() {
       <div className={styles.buttonArea}>
         <LoginButton />
       </div>
+      
+      <h6> © 2025 불만있냐. All rights reserved. 김사랑 김솔미 김제람 박하솔 조상근 최옥토 </h6>
 
       <ScrollToTopButton />
     </div>
