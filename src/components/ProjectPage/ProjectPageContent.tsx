@@ -9,10 +9,10 @@ import Header from '@/components/Header/Header';
 import { useUserStore } from '@/stores/UserStore';
 import NoMeetingPage from '../../pages/NoMeetingPage';
 
-interface ActionPoint {
-  actionContent: string;
-  userId: number;
-  finished: boolean;
+interface ProjectDetailResponse {
+  projectName: string;
+  projectCode: string;
+  meetings: Meeting[];
 }
 
 interface Meeting {
@@ -22,10 +22,12 @@ interface Meeting {
   actionPoints: ActionPoint[];
 }
 
-interface ProjectDetailResponse {
-  projectName: string;
-  projectCode: string;
-  meetings: Meeting[];
+interface ActionPoint {
+  actionPointId: number;
+  actionCentent: string;
+  userId: number;
+  userName: string;
+  finished: boolean;
 }
 
 interface ProjectPageProps {
@@ -36,9 +38,9 @@ export default function ProjectPageContent({ projectId }: ProjectPageProps) {
   const [projectData, setProjectData] = useState<ProjectDetailResponse | null>(null);
   const [selectedMeetingId, setSelectedMeetingId] = useState<number | null>(null);
   const [showSettings, setShowSettings] = useState(false);
-
   const userId = useUserStore((state) => state.userId);
 
+  // 📥 프로젝트 데이터 가져오기
   useEffect(() => {
     if (!userId || !projectId) return;
 
@@ -50,6 +52,7 @@ export default function ProjectPageContent({ projectId }: ProjectPageProps) {
       })
       .then((res) => {
         const data = res.data;
+        console.log('✅ 불러온 프로젝트 상세 데이터:', data);
         setProjectData(data);
 
         if (data.meetings.length > 0) {
@@ -62,23 +65,44 @@ export default function ProjectPageContent({ projectId }: ProjectPageProps) {
       });
   }, [userId, projectId]);
 
+  // ✅ 액션 포인트 상태 토글
+  const toggleActionPoint = async (meetingId: number, actionPointId: number) => {
+    try {
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/acitonpoints/${actionPointId}/toggle`;
+      console.log('➡️ PATCH 요청 URL:', url);
 
-  const toggleActionPoint = (meetingId: number, pointContent: string) => {
-    setProjectData((prev) => {
-      if (!prev) return prev;
-      const updatedMeetings = prev.meetings.map((meeting) => {
-        if (meeting.meetingId !== meetingId) return meeting;
-        const updatedPoints = meeting.actionPoints.map((point) =>
-          point.actionContent === pointContent
-            ? { ...point, finished: !point.finished }
-            : point
-        );
-        return { ...meeting, actionPoints: updatedPoints };
+      await axios.patch(
+        url,
+        {},
+        {
+          headers: {
+            'X-USER-ID': Number(userId),
+          },
+        }
+      );
+
+      // 프론트엔드 상태 업데이트
+      setProjectData((prev) => {
+        if (!prev) return prev;
+
+        const updatedMeetings = prev.meetings.map((meeting) => {
+          if (meeting.meetingId !== meetingId) return meeting;
+
+          const updatedPoints = meeting.actionPoints.map((p) =>
+            p.actionPointId === actionPointId ? { ...p, finished: !p.finished } : p
+          );
+
+          return { ...meeting, actionPoints: updatedPoints };
+        });
+
+        return { ...prev, meetings: updatedMeetings };
       });
-      return { ...prev, meetings: updatedMeetings };
-    });
+    } catch (err) {
+      console.error('❌ 액션포인트 토글 실패:', err);
+    }
   };
 
+  // 📦 로딩/에러 처리
   if (!projectData || userId === null) return <div>로딩 중...</div>;
 
   if (projectData.meetings.length === 0) {
@@ -87,12 +111,10 @@ export default function ProjectPageContent({ projectId }: ProjectPageProps) {
         projectName={projectData.projectName}
         projectCode={projectData.projectCode}
         projectId={projectId}
-        userId={userId} 
+        userId={userId}
       />
     );
   }
-
-
 
   if (selectedMeetingId === null) return <div>회의 정보를 불러올 수 없습니다.</div>;
 
@@ -124,13 +146,13 @@ export default function ProjectPageContent({ projectId }: ProjectPageProps) {
             >
               ⋮
             </button>
-            {userId !== null && showSettings && (
+            {showSettings && (
               <div className={styles.settingsPanelWrapper}>
                 <ProjectSettingsPanel
                   onClose={() => setShowSettings(false)}
                   projectCode={projectData.projectCode}
                   projectId={projectId}
-                  userId={userId} // userId는 이제 number로 확실함
+                  userId={userId}
                 />
               </div>
             )}
@@ -143,13 +165,16 @@ export default function ProjectPageContent({ projectId }: ProjectPageProps) {
               id: currentMeeting.meetingId,
               title: currentMeeting.meetingTitle,
               date: new Date(currentMeeting.meetingDate).toLocaleDateString('ko-KR'),
-              actionPoints: currentMeeting.actionPoints.map((p) => p.actionContent),
-              completedPoints: currentMeeting.actionPoints
-                .filter((p) => p.finished)
-                .map((p) => p.actionContent),
+              actionPoints: currentMeeting.actionPoints.map((p) => ({
+                id: p.actionPointId,
+                content: p.actionCentent,
+                finished: p.finished
+              })),
             }}
-            toggleActionPoint={(id, point) => toggleActionPoint(currentMeeting.meetingId, point)}
+            toggleActionPoint={(id) => toggleActionPoint(currentMeeting.meetingId, id)}
           />
+
+
           <ProgressCard percent={percent} message={getProgressMessage(percent)} />
         </div>
 
@@ -158,11 +183,11 @@ export default function ProjectPageContent({ projectId }: ProjectPageProps) {
             id: m.meetingId,
             title: m.meetingTitle,
             date: new Date(m.meetingDate).toLocaleDateString('ko-KR'),
-            actionPoints: m.actionPoints.map((p) => p.actionContent),
-            completedPoints: m.actionPoints.filter((p) => p.finished).map((p) => p.actionContent),
+            actionPoints: m.actionPoints.map((p) => p.actionCentent),
+            completedPoints: m.actionPoints.filter((p) => p.finished).map((p) => p.actionCentent),
           }))}
           selectedMeetingId={selectedMeetingId}
-          onSelect={(id) => setSelectedMeetingId(id)}
+          onSelect={setSelectedMeetingId}
         />
       </div>
     </div>

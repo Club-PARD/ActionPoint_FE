@@ -40,9 +40,7 @@ export default function MeetingRecordSection({ meetings, selectedMeetingId, onSe
     <div className={styles.meetingSection}>
       <div className={styles.meetingHeader}>
         <h3 className={styles.sectionTitle}>회의 기록</h3>
-        <Link href="/MeetingPage" passHref>
            <CreateMeetingButton />
-        </Link>
       </div>
 
       <ul className={styles.meetingList}>
