@@ -185,21 +185,23 @@ export default function ProjectPageContent({ projectId }: ProjectPageProps) {
           <ProgressCard percent={percent} message={getProgressMessage(percent)} />
         </div>
 
-            <MeetingRecordSection
-              meetings={projectData.meetings.map((m) => ({
-                id: m.meetingId,
-                title: m.meetingTitle,
-                date: new Date(m.meetingDate).toLocaleDateString('ko-KR'),
-              }))}
-              selectedMeetingId={selectedMeetingId}
-              onSelect={setSelectedMeetingId}
-              projectId={projectId}
-              userId={userId}
-              onClose={() => {
-                // 외부에서 열려 있는 패널 닫기 등의 처리
-                console.log('🛑 MeetingRecordSection 닫기 호출됨');
-              }}
-            />
+        <MeetingRecordSection
+          meetings={[...projectData.meetings]
+            .sort((a, b) => b.meetingId - a.meetingId) // meetingId 기준 내림차순 정렬
+            .map((m) => ({
+              id: m.meetingId,
+              title: m.meetingTitle,
+              date: new Date(m.meetingDate).toLocaleDateString('ko-KR'),
+            }))}
+          selectedMeetingId={selectedMeetingId}
+          onSelect={setSelectedMeetingId}
+          projectId={projectId}
+          userId={userId}
+          onClose={() => {
+            console.log('🛑 MeetingRecordSection 닫기 호출됨');
+          }}
+        />
+
 
       </div>
     </div>

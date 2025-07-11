@@ -13,6 +13,7 @@
 }
 
 .projectTitle{
+  position: relative;
   width: 1148px;
   height: 73px;
   flex-shrink: 0;
@@ -36,7 +37,7 @@
 
 .optionsButton {
   position: absolute;
-  left: 85%;
+    right:50px;  
   transform: translateX(-50%); /* 버튼 중심 맞추기 */
 }
 
