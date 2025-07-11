@@ -607,3 +607,45 @@
   width: 100%;
   word-break: break-word;
 }
+
+/* MeetingViewerPage.module.css */
+.buttonWrapper {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.backToProjectButton {
+  background-color: #e5e7eb;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #111827;
+  transition: background-color 0.2s ease;
+}
+
+.backToProjectButton:hover {
+  background-color: #d1d5db;
+}
+
+
+.buttonWrapper {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.primaryButton {
+  background-color: #2563eb; /* 파란색 */
+  color: #fff;
+  font-size: 15px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.primaryButton:hover {
+  background-color: #1e40af; /* 진한 파랑 */
+}

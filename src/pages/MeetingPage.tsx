@@ -225,20 +225,39 @@ export default function MeetingPage() {
       </section>
 
       <section className={styles.section}>
-        <h3 className={styles.sectionTitle}>참고 자료</h3>
-        {fileInputs.map((input) => (
-          <div key={input.id} className={styles.uploadLineRow}>
-<input
-  type="file" multiple
-  accept="application/pdf"  // ✅ PDF만 허용
-  className={styles.uploadLineInput}
-  onChange={(e) => handleFileChange(input.id, e.target.files)}
-/>
-            <button className={styles.uploadLineButton}>업로드</button>
-            <button className={styles.uploadLineRemove} onClick={() => handleRemoveFileInput(input.id)} title="삭제"><FiX /></button>
-          </div>
-        ))}
-      </section>
+  <h3 className={styles.sectionTitle}>참고 자료</h3>
+
+  {fileInputs.map((input) => (
+    <div key={input.id} className={styles.uploadLineRow}>
+      <input
+        type="file"
+
+        accept="application/pdf"
+        className={styles.uploadLineInput}
+        onChange={(e) => handleFileChange(input.id, e.target.files)}
+      />
+      <button
+        className={styles.uploadLineRemove}
+        onClick={() => handleRemoveFileInput(input.id)}
+        title="삭제"
+      >
+        <FiX />
+      </button>
+    </div>
+  ))}
+
+  <div className={styles.centeredAddButtonWrapper}>
+    <button
+      type="button"
+      onClick={() => setFileInputs(prev => [...prev, { id: Date.now(), files: null }])}
+      className={styles.floatingAddButton}
+    >
+      <AiOutlinePlus />
+    </button>
+  </div>
+</section>
+
+
 
          
 
@@ -258,7 +277,11 @@ export default function MeetingPage() {
         }
        
       
-        <button onClick={handleAddAgenda} className={styles.floatingAddButton}><AiOutlinePlus /></button>
+<div className={styles.centeredAddButtonWrapper}>
+  <button onClick={handleAddAgenda} className={styles.floatingAddButton}>
+    <AiOutlinePlus />
+  </button>
+</div>
       </section>
 
       <div className={styles.buttonGroup}>

@@ -1,17 +1,18 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import axiosInstance from '@/utils/axiosInstance';
-// import styles from '../../styles/MeetingViewerPage.module.css';
 import styles from '.././styles/MeetingViewerPage.module.css';
 import Header from '@/components/Header/Header';
 
 export default function MeetingViewerPage() {
   const searchParams = useSearchParams();
   const meetingId = searchParams.get('meetingId');
+  const router = useRouter();
 
   const [data, setData] = useState<any>(null);
+  const [projectId, setProjectId] = useState<number | null>(null);
 
   useEffect(() => {
     if (!meetingId) return;
@@ -20,6 +21,7 @@ export default function MeetingViewerPage() {
       try {
         const res = await axiosInstance.get(`/meetings/${meetingId}`);
         setData(res.data);
+        setProjectId(res.data.projectId); // ✅ projectId 따로 저장
       } catch (err) {
         console.error('불러오기 실패:', err);
       }
@@ -33,11 +35,15 @@ export default function MeetingViewerPage() {
   return (
     <div className={styles.container}>
       <Header />
-      <div className={styles.backLink} onClick={() => history.back()}>&lt; 돌아가기</div>
+      <div className={styles.backLink} onClick={() => router.back()}>&lt; 이전으로</div>
 
       <section className={styles.section}>
         <h3 className={styles.sectionTitle}>회의 정보</h3>
         <div className={styles.formGrid}>
+          <div className={styles.formRow}>
+            <label>프로젝트 ID</label>
+            <input type="text" value={data.projectId} readOnly />
+          </div>
           <div className={styles.formRow}>
             <label>회의 제목</label>
             <input type="text" value={data.meetingTitle} readOnly />
@@ -61,31 +67,28 @@ export default function MeetingViewerPage() {
         </div>
 
         <div className={styles.fileList}>
-  <label>참고자료 :</label>
-  <ul>
-    {data.referenceUrls?.map((url: string, i: number) => {
-      const fileName = url.split('/').pop();
-      return (
-        <li key={i} className={styles.fileItem}>
-          <div className={styles.inputBox}>
-            <a
-              href={url}
-              download={fileName}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.downloadLink}
-            >
-              📎 {fileName}
-            </a>
-          </div>
-        </li>
-      );
-    })}
-  </ul>
-</div>
-
-
-
+          <label>참고자료 :</label>
+          <ul>
+            {data.referenceUrls?.map((url: string, i: number) => {
+              const fileName = url.split('/').pop();
+              return (
+                <li key={i} className={styles.fileItem}>
+                  <div className={styles.inputBox}>
+                    <a
+                      href={url}
+                      download={fileName}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.downloadLink}
+                    >
+                      📎 {fileName}
+                    </a>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </section>
 
       <section className={styles.section}>
@@ -119,6 +122,19 @@ export default function MeetingViewerPage() {
           </div>
         ))}
       </section>
+
+      <div className={styles.buttonWrapper}>
+  <button
+    className={styles.primaryButton}
+    onClick={() => {
+      if (projectId) router.push(`/project/${projectId}`);
+      else alert('프로젝트 ID가 존재하지 않습니다.');
+    }}
+  >
+    &lt; 프로젝트로 돌아가기
+  </button>
+</div>
+
     </div>
   );
 }
