@@ -47,29 +47,48 @@ export default function WriteMinutesPage() {
     setMinutes(updated);
   };
 
-  const handleSave = async (): Promise<number | null> => {
+  const handleSave = async (): Promise<void> => {
   try {
+    // 1. PATCH 요청 payload 구성
     const patchPayload = agendas.map((agenda, idx) => ({
       agendaId: agenda.agendaId,
       agendaContent: minutes[idx] ?? '',
     }));
 
+    // 2. PATCH 요청 보내기
     const response = await axiosInstance.patch('/meetings/create/agendas', patchPayload);
+    console.log('📨 PATCH 응답:', response.data);
 
-    console.log('📨 PATCH 응답 전체:', response);
-    console.log('📨 PATCH 응답 데이터:', response.data);
+    // 3. 응답으로부터 필요한 값 확인
+    const meetingId = response.data.meetingId ?? 1;
 
-    const meetingId = response.data; // 또는 response.data.meetingId
-    if (!meetingId) throw new Error('No meetingId returned from server');
+    // 4. query string 구성
+    const goalParam = encodeURIComponent(goal);
+    const filesParam = encodeURIComponent(JSON.stringify(files));
+    const agendasParam = encodeURIComponent(JSON.stringify(agendas));
+    const minutesParam = encodeURIComponent(JSON.stringify(minutes));
 
-    return meetingId;
+    const meetingDateParam = encodeURIComponent(searchParams.get('meetingDate') ?? '');
+    const meetingTimeParam = encodeURIComponent(searchParams.get('meetingTime') ?? '');
+    const participantsParam = encodeURIComponent(searchParams.get('participants') ?? '');
+    const recorderParam = encodeURIComponent(searchParams.get('recorder') ?? '');
+
+
+    // 5. 3단계로 이동
+    router.push(`/NextMeetingPage?goal=${goalParam}` +
+      `&files=${filesParam}` +
+      `&agendas=${agendasParam}` +
+      `&minutes=${minutesParam}` +
+      `&meetingDate=${meetingDateParam}` +
+      `&meetingTime=${meetingTimeParam}` +
+      `&participants=${participantsParam}` +
+      `&recorder=${recorderParam}`
+    );
   } catch (error) {
     console.error('❌ 회의록 저장 실패:', error);
-    return null;
+    alert('회의록 저장 중 오류가 발생했습니다.');
   }
 };
-
-
 
   const handleOpenModal = () => setShowModal(true);
   const handleCancel = () => setShowModal(false);
@@ -109,16 +128,26 @@ export default function WriteMinutesPage() {
         ))}
       </div>
 
-      <div className={styles.buttonGroup}>
-        <button className={styles.blueButton} onClick={handleOpenModal}>회의록 저장</button>
+
+<div className={styles.buttonGroup}>
+  <button className={styles.blueButton} onClick={handleSave}>
+    회의록 저장 및 다음 단계로
+  </button>
+</div>
+
+
+      {/* <div className={styles.buttonGroup}>
+<button onClick={handleSave}>회의록 저장 및 다음 단계로</button> */}
         {showModal && (
   <SaveModal
     onSave={handleSave}  // 이제 meetingId 반환
     onCancel={handleCancel}
   />
 )}
-
-      </div>
+      
     </div>
   );
 }
+
+
+

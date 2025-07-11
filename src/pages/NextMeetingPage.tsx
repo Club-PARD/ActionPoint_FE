@@ -1,4 +1,3 @@
-//회의록 작성 3단계
 'use client';
 
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -7,37 +6,93 @@ import styles from '../styles/NextMeetingPage.module.css';
 import Header from '@/components/Header/Header';
 import { FiX } from 'react-icons/fi';
 import SaveModal from '../components/MeetingPage/SaveModal';
+import axiosInstance from '../../src/utils/axiosInstance';
 
 export default function NextMeetingPage() {
-  
-    const [showModal, setShowModal] = useState(false);
-    const [agendaList, setAgendaList] = useState(['']);
-   
-  const handleAgendaChange = (index: number, value: string) => {
-    const newList = [...agendaList];
-    newList[index] = value;
-    setAgendaList(newList);
-  };
-  
+  const [showModal, setShowModal] = useState(false);
+  const [agendaList, setAgendaList] = useState(['']);
 
   const searchParams = useSearchParams();
   const router = useRouter();
-  
+
   const [goal, setGoal] = useState('');
   const [meetingDate, setMeetingDate] = useState('');
   const [meetingTime, setMeetingTime] = useState('');
   const [participants, setParticipants] = useState('');
   const [recorder, setRecorder] = useState('');
   const [files, setFiles] = useState<string[]>([]);
-  const [agendas, setAgendas] = useState<string[]>([]);
+  const [agendas, setAgendas] = useState<any[]>([]);
   const [minutes, setMinutes] = useState<string[]>([]);
   const [nextActions, setNextActions] = useState<string[]>(['']);
   const [nextAssignees, setNextAssignees] = useState<string[]>(['']);
   const [discussion, setDiscussion] = useState('');
-  
+
+  const handleAgendaChange = (index: number, value: string) => {
+    const newList = [...agendaList];
+    newList[index] = value;
+    setAgendaList(newList);
+  };
+
   const handleOpenModal = () => setShowModal(true);
-  const handleSave = () => { setShowModal(false); alert('저장 완료!'); };
   const handleCancel = () => setShowModal(false);
+
+  const handleSave = async () => {
+  try {
+    // 1. 회의 안건 저장
+    const patchPayloadForAgendas = agendas.map((agenda, idx) => ({
+      agendaId: agenda.agendaId,
+      agendaContent: minutes[idx] ?? '',
+    }));
+
+    console.log('📦 PATCH 안건 내용 요청:', patchPayloadForAgendas);
+
+
+    const agendaRes = await axiosInstance.patch('/meetings/create/agendas', patchPayloadForAgendas);
+const meetingId = agendaRes.data; // ✅ 숫자 그대로 받음
+
+
+    if (!meetingId || isNaN(meetingId)) {
+      alert('❌ 서버 응답에 유효한 meetingId가 없습니다.');
+      console.error('❌ 서버 응답 meetingId:', meetingId);
+      return;
+    }
+
+    console.log('✅ 안건 저장 성공, 받은 meetingId:', meetingId);
+
+    // 2. 추가 논의 사항 저장
+    const patchDiscussionRes = await axiosInstance.patch(
+      `/meetings/create/${meetingId}/summary`,
+      { meetingLastSummary: discussion },
+      { headers: { 'Content-Type': 'application/json' } }
+    );
+    console.log('✅ 논의사항 저장 성공:', patchDiscussionRes.data);
+
+    // 3. 액션포인트 저장
+    const actionPointPayload = nextActions.map((action, idx) => ({
+      actionPointId: 0,
+      actionContent: action,
+      userId: Number(nextAssignees[idx]),
+      userName: '',
+      finished: false,
+    }));
+
+    const actionRes = await axiosInstance.post(
+      `/meetings/create/${meetingId}/actionpoints`,
+      actionPointPayload
+    );
+    console.log('✅ 액션포인트 저장 성공:', actionRes.data);
+
+    alert('모든 회의 정보가 성공적으로 저장되었습니다!');
+    setShowModal(false);
+
+    // ✅ 회의 뷰어 페이지로 이동
+    router.push(`/MeetingViewerPage?meetingId=${meetingId}`);
+  } catch (error: any) {
+    console.error('❌ 저장 중 오류:', error.response?.data || error.message);
+    alert('저장 중 오류가 발생했습니다.');
+  }
+};
+
 
   useEffect(() => {
     const getDecodedParam = (key: string) => {
@@ -96,77 +151,43 @@ export default function NextMeetingPage() {
       <Header />
       <div className={styles.backLink} onClick={() => router.back()}>&lt; 돌아가기</div>
 
-
       <section className={styles.section}>
-              <h3 className={styles.sectionTitle}>회의 목표</h3>
-              <div className={styles.formRow}>
-                <label>회의 목표 *</label>
-                <input 
-                  type="text" 
-                  placeholder="회의 목표를 작성해주세요." 
-                  value={goal} 
-                  onChange={(e) => setGoal(e.target.value)} 
-                  readOnly 
-                />
-              </div>
-              <div className={styles.formGrid}>
-                <div className={styles.formRow}>
-                  <label>회의 날짜</label>
-                  <input 
-                    type="date" 
-                    value={meetingDate} 
-                    onChange={(e) => setMeetingDate(e.target.value)}
-                    readOnly 
-                  />
-                </div>
-                <div className={styles.formRow}>
-                  <label>시간</label>
-                  <input 
-                    type="time" 
-                    value={meetingTime} 
-                    onChange={(e) => setMeetingTime(e.target.value)}
-                    readOnly 
-                  />
-                </div>
-                <div className={styles.formRow}>
-                  <label>참여자 *</label>
-                  <input 
-                    type="text" 
-                    placeholder="참여자를 입력해주세요" 
-                    value={participants} 
-                    onChange={(e) => setParticipants(e.target.value)}
-                    readOnly 
-                  />
-                </div>
-                <div className={styles.formRow}>
-                  <label>기록자 *</label>
-                  <input 
-                    type="text" 
-                    placeholder="기록자를 입력해주세요" 
-                    value={recorder} 
-                    onChange={(e) => setRecorder(e.target.value)}
-                    readOnly 
-                  />
-                </div>
-              </div>
+        <h3 className={styles.sectionTitle}>회의 목표</h3>
+        <div className={styles.formRow}>
+          <label>회의 목표 *</label>
+          <input type="text" value={goal} readOnly />
+        </div>
+        <div className={styles.formGrid}>
+          <div className={styles.formRow}>
+            <label>회의 날짜</label>
+            <input type="date" value={meetingDate} readOnly />
+          </div>
+          <div className={styles.formRow}>
+            <label>시간</label>
+            <input type="time" value={meetingTime} readOnly />
+          </div>
+          <div className={styles.formRow}>
+            <label>참여자 *</label>
+            <input type="text" value={participants} readOnly />
+          </div>
+          <div className={styles.formRow}>
+            <label>기록자 *</label>
+            <input type="text" value={recorder} readOnly />
+          </div>
+        </div>
 
-               <div className={styles.fileList}>
-        <label>참고자료 :</label>
-        <ul>{files.map((f, i) => <li key={i} className={styles.fileItem}>{f}</li>)}</ul>
-      </div>
-            </section>
+        {/* ✅ 참고자료 별도 박스로 분리 */}
+<div className={styles.referenceBox}>
+  <div className={styles.referenceTitle}>참고자료 :</div>
+  <ul>
+    {files.map((f, i) => (
+      <li key={i} className={styles.referenceFile}>{f}</li>
+    ))}
+  </ul>
+</div>
 
-      {agendas.map((agenda, i) => (
-  <div key={i} className={styles.agendaBox}>
-    <div className={styles.agendaTitle}>안건 {i + 1}: {agenda}</div>
-    <div className={styles.minuteContent}>
-      {minutes[i]?.trim() !== '' ? minutes[i] : '회의 내용이 없습니다.'}
-    </div>
-  </div>
-))}
+      </section>
 
-
-      {/* 다음 회의를 위한 준비 */}
       <div className={styles.section}>
         <h3 className={styles.sectionTitle}>다음 회의를 위한 준비</h3>
         {nextActions.map((action, index) => (
@@ -193,7 +214,6 @@ export default function NextMeetingPage() {
         <button onClick={handleAddNextAction} className={styles.floatingAddButton}>＋</button>
       </div>
 
-      {/* 추가 논의 사항 */}
       <div className={styles.section}>
         <h3 className={styles.sectionTitle}>추가 논의 사항</h3>
         <textarea
@@ -204,30 +224,22 @@ export default function NextMeetingPage() {
         />
       </div>
 
-       <section className={styles.section}>
+      <section className={styles.section}>
         <h3 className={styles.sectionTitle}>오늘의 회의 안건</h3>
-        {agendaList.map((agenda, index) => (
-          <div key={index} className={styles.agendaRow}>
-            <label className={styles.agendaLabel}>회의 안건 {index + 1}</label>
-            <div className={styles.agendaInputWrapper}>
-              <input type="text" className={styles.agendaInput} placeholder="회의 안건을 작성해주세요" value={agenda} onChange={(e) => handleAgendaChange(index, e.target.value)} />
+        {agendas.map((agenda, index) => (
+          <div key={index} className={styles.agendaBox}>
+            <label className={styles.agendaTitle}>회의 안건 {index + 1}</label>
+            <div className={styles.minuteContent}>
+              {minutes[index]?.trim() !== '' ? minutes[index] : '회의 내용이 없습니다.'}
             </div>
           </div>
         ))}
-        
       </section>
 
-       <div className={styles.buttonGroup}>
-          <button className={styles.whiteButton} onClick={handleOpenModal}>편집하기</button>
-
-        <button className={styles.blueButton} onClick={handleOpenModal}>회의록 작성완료</button>
-        {showModal && (
-          <SaveModal
-            onSave={handleSave}
-            onCancel={handleCancel}
-          />
-        )
-        } 
+      <div className={styles.buttonGroup}>
+        <button className={styles.blueButton} onClick={handleSave}>
+          회의 작성 완료
+        </button>
       </div>
     </div>
   );

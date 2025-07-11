@@ -39,15 +39,8 @@
 }
 
 .fileList {
-  background-color: #f9fafb;       /* ✅ 연한 회색 배경 */
-  border: 1px solid #e5e7eb;       /* ✅ 테두리 */
-  border-radius: 10px;             /* ✅ 둥근 모서리 */
-  padding: 16px;                   /* ✅ 내부 여백 */
-  margin-top: 12px;                /* ✅ 상단 여백 */
-  font-size: 15px;
-  color: #374151;
+  margin-top: 8px;
 }
-
 
 .fileItem {
   margin-left: 16px;
@@ -90,7 +83,7 @@
   border: none;
   border-radius: 10px;
   background-color: #f9f9f9;
-  box-shadow: inset 0 0 0 1px #e5e7eb;
+  /* box-shadow: inset 0 0 0 1px #e5e7eb; */
 }
 
 .agendaRow input::placeholder {
@@ -459,6 +452,7 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 16px;
+   box-shadow: none !important; /* ✅ 이 줄도 추가 */
 }
 
 .agendaLabel {
@@ -571,7 +565,7 @@
   background-color: #f8f9fa;
   padding: 16px;
   border-radius: 10px;
-  border: 1px solid #e5e7eb;
+  /* border: 1px solid #e5e7eb; */
   color: #374151;
   font-size: 15px;
   white-space: pre-wrap;
@@ -579,22 +573,37 @@
 }
 
 
-.referenceBox {
-  background-color: #f9fafb;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 16px;
-  margin-top: 24px;
-  margin-bottom: 36px;
-  font-size: 15px;
-  color: #374151;
+.downloadLink {
+  color: #2563eb;
+  text-decoration: none;
 }
-.referenceTitle {
-  font-weight: 600;
-  font-size: 15px;
-  margin-bottom: 8px;
+
+.downloadLink:hover {
+  text-decoration: underline;
 }
-.referenceFile {
+
+
+.fileItem {
+  margin-top: 8px;
+}
+
+.downloadLink {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.downloadLink:hover {
+  text-decoration: underline;
+}
+
+.inputBox {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 12px 16px;
   font-size: 14px;
-  color: #4b5563;
+  color: #333;
+  border: none; /* ✅ 테두리 제거 */
+  display: inline-block;
+  width: 100%;
+  word-break: break-word;
 }

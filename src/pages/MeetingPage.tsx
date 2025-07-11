@@ -228,7 +228,12 @@ export default function MeetingPage() {
         <h3 className={styles.sectionTitle}>참고 자료</h3>
         {fileInputs.map((input) => (
           <div key={input.id} className={styles.uploadLineRow}>
-            <input type="file" className={styles.uploadLineInput} onChange={(e) => handleFileChange(input.id, e.target.files)} />
+<input
+  type="file" multiple
+  accept="application/pdf"  // ✅ PDF만 허용
+  className={styles.uploadLineInput}
+  onChange={(e) => handleFileChange(input.id, e.target.files)}
+/>
             <button className={styles.uploadLineButton}>업로드</button>
             <button className={styles.uploadLineRemove} onClick={() => handleRemoveFileInput(input.id)} title="삭제"><FiX /></button>
           </div>
