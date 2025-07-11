@@ -12,7 +12,7 @@
     "axios": "^1.10.0",
     "googleapis": "^150.0.1",
     "lucide-react": "^0.525.0",
-    "next": "^15.3.4",
+    "next": "^15.3.5",
     "next-auth": "^4.24.11",
     "nodemailer": "^6.10.1",
     "react": "^19.0.0",
