@@ -1,28 +1,20 @@
 <div align="center">  
 
 # ActionPoint_WEB
+<img src="public/readme/LOGO.svg" width="600" height="200"/>
 
-<br><br>
-
-<img src="../ActionPoint_FE/public/Logo.svg" width="600" height="200"/>
-
-# ✔️ ActionPoint (액션포인트)
+# ActionPoint (액션포인트)
 
 
 <div align="left"> 
-*￼😀서비스 한 줄 설명: 회의부터 실행계획까지 체계적으로 돕는 가이드 서비스😀*
-<br>
-<br>
-팀프로젝트를 하는 대학생들은 회의 과정에서, 그리고 실행계획을 세우는 것에 어려움을 겪습니다. 액션포인트는 회의 템플릿, 달성률 시각화 및 동기부여 기능을 통해 회의부터 실행까지 체계적으로 이어지도록 돕는 서비스입니다.
-
-<div align="left"> 
-
-💬 **서비스 한 줄 설명:** 회의부터 실행계획까지 체계적으로 돕는 가이드 서비스
+<h2>✔️ 회의부터 실행 계획까지 체계적으로 돕는 가이드 서비스</h2>
 <br>
 
 **그래서 오늘 무슨 얘기했지? 나 뭐 해야한다고??!**<br>
-팀 프로젝트를 하는 대학생들은 회의 과정에서, 그리고 실행 계획을 세우는 것에 어려움을 겪습니다. 
-액션포인트는 회의 템플릿, 달성률 시각화 및 동기부여 기능을 통해 회의부터 실행까지 체계적으로 이어지도록 돕는 서비스입니다.
+💬 팀 프로젝트를 하는 대학생들은 회의 과정에서, 그리고 실행계획을 세우는 것에 어려움을 겪습니다. 액션포인트는 회의 템플릿, 달성률 시각화 및 동기부여 기능을 통해 회의부터 실행까지 체계적으로 이어지도록 돕는 서비스입니다.
+
+<div align="left"> 
+
 </div>
 
 ---
@@ -34,11 +26,9 @@
 
 
 ### 🎯 타겟 🎯
-- 의미 없이 끝나는 회의가 반복되어 실행으로 이어지지 않는 것에 답답함을 느끼는 대학생
+- 의미없이 끝나는 회의가 반복되어 실행으로 이어지지 않는 것에 답답함을 느끼는 대학생
 - 회의를 단순한 대화가 아닌, 진짜 실행으로 연결되는 시간으로 만들고 싶은 대학생
 - 회의 때마다 무슨 이야기를 했는지 정리가 안 되고, 결국 "나 뭐 해야 하지?" 하고 방황하는 대학생
-
-**의미없이** 끝나는 회의가 반복되어 실행으로 이어지지 않는 것에 답답함을 느끼는 대학생
 
 ### ★ 솔루션 ★
 
@@ -75,14 +65,18 @@
 ## 🛠 개발환경
 
 <div>
-  <img src="https://img.shields.io/badge/Github-white?style=for-the-badge&logo=Github&logoColor=181717">
   <img src="https://img.shields.io/badge/TypeScript-white?style=for-the-badge&logo=TypeScript&logoColor=3178C6">
-  <img src="https://img.shields.io/badge/Node.js-white?style=for-the-badge&logo=Node.js&logoColor=339933">
+  <img src="https://img.shields.io/badge/Node.js-white?style=for-the-badge&logo=Node.js&logoColor=339933"><br>
+  <img src="https://img.shields.io/badge/Github-white?style=for-the-badge&logo=Github&logoColor=181717">
+  <img src="https://img.shields.io/badge/Figma-white?style=for-the-badge&logo=Figma&logoColor=F24E1E">
+  <img src="https://img.shields.io/badge/Notion-white?style=for-the-badge&logo=Notion&logoColor=000000">
+  <img src="https://img.shields.io/badge/Slack-white?style=for-the-badge&logo=Slack&logoColor=4A154B">
+
 </div>
 
 ---
 
-## 📺 서비스 화면 구성
+## 📺 서비스 화면 구성 📺
 
 ### ✅ 메인 페이지
 <table align="center">
