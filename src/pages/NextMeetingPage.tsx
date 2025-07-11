@@ -1,3 +1,4 @@
+//회의록 작성 3단계
 'use client';
 
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -187,32 +188,43 @@ const meetingId = agendaRes.data; // ✅ 숫자 그대로 받음
 </div>
 
       </section>
+{nextActions.map((action, index) => (
+  <div key={index} className={styles.agendaRow}>
+    <input
+      type="text"
+      value={action}
+      placeholder="다음 회의를 위한 액션 포인트를 작성해주세요"
+      onChange={(e) => handleChangeNextAction(index, e.target.value)}
+    />
+    <input
+      type="text"
+      value={nextAssignees[index]}
+      placeholder="누구에게"
+      onChange={(e) => handleChangeAssignee(index, e.target.value)}
+    />
+    <button
+      onClick={() => handleRemoveNextAction(index)}
+      title="삭제"
+      className={styles.inlineRemoveButton}
+    >
+      <FiX />
+    </button>
+  </div>
+))}
 
-      <div className={styles.section}>
-        <h3 className={styles.sectionTitle}>다음 회의를 위한 준비</h3>
-        {nextActions.map((action, index) => (
-          <div key={index} className={styles.agendaRow}>
-            <input
-              type="text"
-              value={action}
-              placeholder="다음 회의를 위한 액션 포인트를 작성해주세요"
-              onChange={(e) => handleChangeNextAction(index, e.target.value)}
-            />
-            <input
-              type="text"
-              value={nextAssignees[index]}
-              placeholder="누구에게"
-              onChange={(e) => handleChangeAssignee(index, e.target.value)}
-            />
-            {index > 0 && (
-              <button onClick={() => handleRemoveNextAction(index)} title="삭제">
-                <FiX />
-              </button>
-            )}
-          </div>
-        ))}
-        <button onClick={handleAddNextAction} className={styles.floatingAddButton}>＋</button>
-      </div>
+{/* 가운데 정렬된 + 버튼 */}
+<div className={styles.centeredAddButtonWrapper}>
+  <button
+    onClick={handleAddNextAction}
+    className={styles.floatingAddButton}
+    type="button"
+    title="추가"
+  >
+    +
+  </button>
+</div>
+
+
 
       <div className={styles.section}>
         <h3 className={styles.sectionTitle}>추가 논의 사항</h3>

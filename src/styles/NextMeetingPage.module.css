@@ -598,3 +598,68 @@
   font-size: 14px;
   color: #4b5563;
 }
+
+
+.inlineAddButton {
+  background-color: #d6e9ff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  color: #2185d0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.inlineAddButton:hover {
+  background-color: #c6dfff;
+}
+
+.inlineRemoveButton {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+
+
+.centeredAddButtonWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.floatingAddButton {
+  background-color: #e0ecff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  color: #2563eb;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.floatingAddButton:hover {
+  background-color: #d2e3ff;
+}
+
+.inlineRemoveButton {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+}
