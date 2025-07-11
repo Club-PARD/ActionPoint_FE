@@ -44,7 +44,7 @@
 
 .meetingItem:hover {
   border-radius: 12px;
-  background: var(--blue-50, #EFF6FF);
+  background: var(--slate-200, #E2E8F0);
 }
 
 .selected {
@@ -82,4 +82,35 @@
   color: #A1A1AA;
   cursor: pointer;
   left:96%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  color: var(--Color-Main-Text, var(--zinc-900, #18181B));
+}
+
+.pageNumber {
+  color: var(--Color-Main-Text, var(--zinc-900, #18181B));
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%; /* 18px */
+  letter-spacing: -0.052px;
+}
+
+.activePage {
+  color: var(--Color-Main-Blue, #3B82F6);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%; /* 18px */
+  letter-spacing: -0.052px;
 }

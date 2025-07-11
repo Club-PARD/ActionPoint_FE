@@ -20,6 +20,7 @@
 
 .progressRow {
   margin-left: 43px;
+  justify-content: space-between;
   display: flex;
   align-items: center;
   gap: 12px; /* 퍼센트와 바 사이 간격 */
@@ -57,7 +58,6 @@
 }
 
 .percentLabel {
-  margin-left: 140px;
   color: var(--Color-Sub-Logo, #60A5FA);
   text-align: right;
   font-family: Pretendard;
