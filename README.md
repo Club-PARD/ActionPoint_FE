@@ -11,10 +11,9 @@
 
 <div align="left"> 
 *￼😀서비스 한 줄 설명: 회의부터 실행계획까지 체계적으로 돕는 가이드 서비스😀*
-
+<br>
+<br>
 팀프로젝트를 하는 대학생들은 회의 과정에서, 그리고 실행계획을 세우는 것에 어려움을 겪습니다. 액션포인트는 회의 템플릿, 달성률 시각화 및 동기부여 기능을 통해 회의부터 실행까지 체계적으로 이어지도록 돕는 서비스입니다.
-
-
 
 <div align="left"> 
 
@@ -41,25 +40,25 @@
 
 **의미없이** 끝나는 회의가 반복되어 실행으로 이어지지 않는 것에 답답함을 느끼는 대학생
 
-### 솔루션
+### ★ 솔루션 ★
 
-1. 사용자가 작성한 일정을 오늘 날짜 기준으로 확인할 수 있도록 표시합니다.  
+1. 오늘의 회의 안건과 그에 맞는 회의록을 작성할 수 있도록 도와줍니다.
 
-2. 사용자가 해야 할 일을 세부적인 단계로 나눌 수 있도록 도와주는 **세분화 기능**을 통해 진입 장벽을 낮춥니다.  
+2. 회의에서 나온 액션포인트를 한 눈에 확인하고 프로젝트 별로, 회의 별로도 볼 수 있도록 합니다.
 
-3. 사용자가 원하는 마감 기한을 직접 설정할 수 있습니다.  
+3. 액션포인트 완료 여부에 맞춰 진행률과 그에 맞는 동기부여 멘트를 제공합니다.
 
 <br>
 
 ### ♥ 팀원 소개 ♥
 
-| 🪽 김제람 🪽 | 😎 김사랑 😎 | ❣️ 조상근 ❣️ |
+| 🪽 김제람 🪽 | ❣️ 김사랑 ❣️ | 🐻 조상근 🐻 |
 |:-----------:|:-----------:|:--------------:|
 | PM | Designer | Backend |
-| (사진) | <img src="https://github.com/user-attachments/assets/89013085-a1ad-4969-8328-ef7617585873" style="width: 150px; height: 150px; object-fit: cover;"> | (사진) |
-| 🐻‍❄️ 김솔미 🐻‍❄️ | 🐰 박하솔 🐰 | ❤️ 최옥토 ❤️ |
+| <img src="public/readme/제람.jpeg" style="width: 150px; height: 150px; object-fit: cover;"> | <img src="https://github.com/user-attachments/assets/89013085-a1ad-4969-8328-ef7617585873" style="width: 150px; height: 150px; object-fit: cover;"> | <img src="public/readme/상근.jpeg" style="width: 150px; height: 150px; object-fit: cover;"> |
+| ☃️ 김솔미 ☃️ | 🔥 박하솔 🔥 | 😎 최옥토 😎 |
 | Frontend | Frontend | Frontend |
-| (사진) | (사진) | (사진) |
+| <img src="public/readme/솔미.svg" style="width: 150px; height: 150px; object-fit: cover;"> | <img src="public/readme/하솔.jpeg" style="width: 150px; height: 150px; object-fit: cover;"> | <img src="public/readme/옥토.png" style="width: 150px; height: 150px; object-fit: cover;"> |
 
 ---
 
@@ -140,17 +139,3 @@
   <img src="public/readme/solmi/회의록 최종 페이지.svg" height="250" />
 </p>
 <p align="center">회의록 최종 페이지</p>
----
-
-## ★ 핵심 기능 설명
-
-1. **메인 페이지**: 오늘 등록된 일정을 체크리스트로 확인 가능
-2. **캘린더**: 일정 목록을 달력과 당일 기준으로 나누어 확인
-3. **일정 등록**:
-   - 간단 일정: 제목과 날짜만 입력
-   - 세분화 일정: 제목, 시작일, 종료일, 세부 단계별 시간 설정 가능
-4. **동기 부여 모달**:
-   - 일정 등록 완료 시 응원 메시지 모달
-   - 모든 일정 완료 시 축하 모달 제공
-
----
