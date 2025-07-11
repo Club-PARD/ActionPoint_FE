@@ -4,6 +4,7 @@ import MeetingSettingPannel from './MeetingSettingPannel';
 import CreateMeetingButton from './CreateMeetingButton';
 import { useRouter } from 'next/router';
 import { useState, useRef, useEffect } from 'react';
+import LeaveMeetingModal from './LeaveMeetingModal';
 
 interface Meeting {
   id: number;
@@ -33,6 +34,15 @@ export default function MeetingRecordSection({
   const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
   const router = useRouter();
+  const ITEMS_PER_PAGE = 3;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [showDeleteModalId, setShowDeleteModalId] = useState<number | null>(null);
+
+  const totalPages = Math.max(1, Math.ceil(meetings.length / ITEMS_PER_PAGE));
+  const paginatedMeetings = meetings.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
 
   const handleClick = (id: number) => {
     // 이전 타임아웃이 있으면 지우기
@@ -71,7 +81,7 @@ export default function MeetingRecordSection({
       </div>
 
       <ul className={styles.meetingList}>
-        {meetings.map((meeting) => (
+        {paginatedMeetings.map((meeting) => (
           <li
             key={meeting.id}
             className={`${styles.meetingItem} ${meeting.id === selectedMeetingId ? styles.selected : ''}`}
@@ -93,22 +103,46 @@ export default function MeetingRecordSection({
 
             {openMenuId === meeting.id && (
               <div ref={panelRef}>
-                <MeetingSettingPannel
-                  onEdit={() => {
-                    console.log(`Edit ${meeting.id}`);
-                    setOpenMenuId(null);
-                  }}
-                  onDelete={() => {
-                    console.log(`Delete ${meeting.id}`);
-                    setOpenMenuId(null);
-                  }}
-                  onClose={() => setOpenMenuId(null)}
-                />
+              <MeetingSettingPannel
+                meetingId={meeting.id}           // ✅ 추가
+                userId={userId}                  // ✅ 추가
+                onEdit={() => {
+                  console.log(`Edit ${meeting.id}`);
+                  setOpenMenuId(null);
+                }}
+                onDelete={() => {
+                  setOpenMenuId(null); // ✅ 실제 삭제는 아래 모달에서 수행하므로 이건 메뉴만 닫기
+                }}
+                onClose={() => setOpenMenuId(null)}
+              />
               </div>
             )}
           </li>
         ))}
       </ul>
+        <div className={styles.pagination}>
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
+            disabled={currentPage === 1}
+          >
+            &lt;
+          </button>
+
+          <span className={`${styles.pageNumber} ${styles.activePage}`}>
+            {currentPage}
+          </span>
+          <span className={styles.pageNumber}>/</span>
+          <span className={styles.pageNumber}>
+            {totalPages}
+          </span>
+
+          <button
+            onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
+            disabled={currentPage === totalPages}
+          >
+            &gt;
+          </button>
+        </div>
     </div>
   );
 }

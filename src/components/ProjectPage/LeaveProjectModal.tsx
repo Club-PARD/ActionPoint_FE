@@ -47,11 +47,11 @@ export default function LeaveProjectModal({ onCancel, onConfirmSuccess, projectI
         <p className={styles.description}>프로젝트를 나가면 리스트에서 보이지 않아요.</p>
         <div className={styles.iconWrapper}>
         </div>
-        <div className={styles.buttonGroup}>
-            <button className={styles.leaveButton} onClick={handleLeaveProject}>
+        <div className={styles.buttonGroup}>    
+          <button className={styles.leaveButton} onClick={onCancel}>돌아가기</button>
+          <button className={styles.cancelButton} onClick={handleLeaveProject}>
               프로젝트 나가기
-            </button>          
-          <button className={styles.cancelButton} onClick={onCancel}>돌아가기</button>
+            </button>      
         </div>
       </div>
     </div>

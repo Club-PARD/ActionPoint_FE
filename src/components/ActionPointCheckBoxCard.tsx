@@ -24,7 +24,8 @@ export default function ActionPointCheckBoxCard({ meeting, toggleActionPoint }: 
   const itemsPerPage = 3;
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(meeting.actionPoints.length / itemsPerPage);
+  const totalPages = Math.max(1, Math.ceil(meeting.actionPoints.length / itemsPerPage));
+
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentItems = [...meeting.actionPoints]
     .sort((a, b) => (a.finished === b.finished ? 0 : a.finished ? 1 : -1))
