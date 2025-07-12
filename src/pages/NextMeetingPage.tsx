@@ -22,7 +22,7 @@ export default function NextMeetingPage() {
   const [participants, setParticipants] = useState('');
   const [recorder, setRecorder] = useState('');
   const [files, setFiles] = useState<string[]>([]);
-  const [agendas, setAgendas] = useState<any[]>([]);
+  const [agendas, setAgendas] = useState<unknown[]>([]);
   const [minutes, setMinutes] = useState<string[]>([]);
   const [nextActions, setNextActions] = useState<string[]>(['']);
   const [nextAssignees, setNextAssignees] = useState<string[]>(['']);
