@@ -17,7 +17,7 @@ export default function LeaveProjectModal({ onCancel, onConfirmSuccess, projectI
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    setMounted(true); 
   }, []);
 
   const handleLeaveProject = async () => {
