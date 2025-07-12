@@ -28,14 +28,7 @@ export default function NextMeetingPage() {
   const [nextAssignees, setNextAssignees] = useState<string[]>(['']);
   const [discussion, setDiscussion] = useState('');
 
-  const handleAgendaChange = (index: number, value: string) => {
-    const newList = [...agendaList];
-    newList[index] = value;
-    setAgendaList(newList);
-  };
-
-  const handleOpenModal = () => setShowModal(true);
-  const handleCancel = () => setShowModal(false);
+ 
 
   const handleSave = async () => {
   try {

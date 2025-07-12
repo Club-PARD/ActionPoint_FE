@@ -77,9 +77,8 @@ useEffect(() => {
     if (!validateForm()) return;
 
     const formData = new FormData();
-    const projectId = 12; 
-    const writerId = 6; 
-
+  const projectId = 59; 
+  const writerId = 10; 
     const data = {
       projectId,
       meetingTitle: goal,
@@ -126,8 +125,8 @@ useEffect(() => {
   if (!validateForm()) return;
 
   const formData = new FormData();
-  const projectId = 55; 
-  const writerId = 7; 
+  const projectId = 59; 
+  const writerId = 10; 
 
   const data = {
     projectId,

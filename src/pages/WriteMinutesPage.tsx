@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import styles from '../styles/WriteMinutesPage.module.css';
 import SaveModal from '../components/MeetingPage/SaveModal';
-import axios from 'axios';
 import Header from '../components/Header/Header';
 
 import axiosInstance from '../../src/utils/axiosInstance';
@@ -62,7 +61,6 @@ export default function WriteMinutesPage() {
     console.log('📨 PATCH 응답:', response.data);
 
     // 3. 응답으로부터 필요한 값 확인
-    const meetingId = response.data.meetingId ?? 1;
 
     // 4. query string 구성
     const goalParam = encodeURIComponent(goal);
@@ -92,7 +90,6 @@ export default function WriteMinutesPage() {
   }
 };
 
-  const handleOpenModal = () => setShowModal(true);
   const handleCancel = () => setShowModal(false);
 
   return (
