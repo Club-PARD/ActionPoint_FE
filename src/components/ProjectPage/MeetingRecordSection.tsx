@@ -57,11 +57,14 @@ export default function MeetingRecordSection({
   };
 
   const handleDoubleClick = (id: number) => {
-    if (clickTimeoutRef.current) {
-      clearTimeout(clickTimeoutRef.current);
-    }
-    router.push(`/meetings/${id}`);
+    if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
+
+    router.push({
+      pathname: '/MeetingViewerPage',
+      query: { meetingId: id },
+    });
   };
+
 
   /* 외부 클릭 감지 */
   useEffect(() => {

@@ -68,9 +68,6 @@ export default function Header() {
             <Link href="/MainPage">
               <span className={router.pathname === "/MainPage" ? styles.active : ""}>액션 포인트</span>
             </Link>
-            <Link href="/MeetingPage">
-              <span className={router.pathname === "/MeetingPage" ? styles.active : ""}>회의 페이지</span>
-            </Link>
           </nav>
 
           <div className={styles.right}>

@@ -7,7 +7,7 @@ import ChangeModal from "../components/MeetingPage/ChangeModal";
 import { AiOutlinePlus } from 'react-icons/ai';
 import { FiX } from 'react-icons/fi';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axiosInstance from '../../src/utils/axiosInstance';
 import styles from '../styles/Meeting.module.css';
 
@@ -18,6 +18,16 @@ interface FileInputItem {
 
 export default function MeetingPage() {
   const router = useRouter();
+  const getTodayDate = (): string => {
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+};
+useEffect(() => {
+  setMeetingDate(getTodayDate());
+}, []);
   const [showModal, setShowModal] = useState(false);
   const [agendaList, setAgendaList] = useState(['']);
   const [fileInputs, setFileInputs] = useState<FileInputItem[]>([
@@ -116,8 +126,8 @@ export default function MeetingPage() {
   if (!validateForm()) return;
 
   const formData = new FormData();
-  const projectId = 12; 
-  const writerId = 6; 
+  const projectId = 55; 
+  const writerId = 7; 
 
   const data = {
     projectId,
