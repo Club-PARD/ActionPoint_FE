@@ -25,7 +25,6 @@ export default function GenerateCodeButton({
 
   const handleClick = async () => {
     if (isCodeGenerated) {
-      // ✅ 확인 버튼 눌림 → 모달 닫고 리스트 갱신
       onProjectCreated();
       onClose();
       return;

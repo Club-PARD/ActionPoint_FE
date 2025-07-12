@@ -116,8 +116,8 @@ export default function MeetingPage() {
   if (!validateForm()) return;
 
   const formData = new FormData();
-  const projectId = 12; 
-  const writerId = 6; 
+  const projectId = 55; 
+  const writerId = 7; 
 
   const data = {
     projectId,
