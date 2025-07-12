@@ -6,6 +6,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import styles from '../styles/WriteMinutesPage.module.css';
 import SaveModal from '../components/MeetingPage/SaveModal';
 import axios from 'axios';
+import Header from '../components/Header/Header';
 
 import axiosInstance from '../../src/utils/axiosInstance';
 
@@ -96,6 +97,7 @@ export default function WriteMinutesPage() {
 
   return (
     <div className={styles.container}>
+      <Header></Header>
       <div className={styles.backLink} onClick={() => router.back()}>&lt; 회의록 돌아가기</div>
 
       <h2 className={styles.sectionTitle}>회의록</h2>
